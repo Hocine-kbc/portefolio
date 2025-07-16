@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, User, MessageSquare, Sparkles } from 'lucide-react';
+import '../styles/Contact.scss';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -76,10 +77,10 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white text-responsive-sm">Email</h4>
                     <a 
-                      href="mailto:contact@Hocine-dev.fr" 
+                      href="mailto:kebcihocine94@gmail.com" 
                       className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-responsive-xs"
                     >
-                      contact@Hocine-dev.fr
+                      kebcihocine94@gmail.com
                     </a>
                   </div>
                 </div>
@@ -94,7 +95,7 @@ const Contact = () => {
                       href="tel:+33123456789" 
                       className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                     >
-                      +33 1 23 45 67 89
+                      +33 6 03 54 35 24
                     </a>
                   </div>
                 </div>
@@ -105,7 +106,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white">Localisation</h4>
-                    <span className="text-green-600 dark:text-green-400">Paris, France</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=06+Avenue+Salvador+Allende,+69100+Villeurbanne,+France"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors"
+                    >
+                      06 Avenue Salvador Allende, 69100 Villeurbanne, France
+                    </a>
                   </div>
                 </div>
               </div>
@@ -120,7 +128,7 @@ const Contact = () => {
                 {[
                   { icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-gray-100 dark:hover:bg-gray-700" },
                   { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-blue-100 dark:hover:bg-blue-900/30" },
-                  { icon: Mail, href: "mailto:contact@Hocine-dev.fr", label: "Email", color: "hover:bg-green-100 dark:hover:bg-green-900/30" }
+                  { icon: Mail, href: "mailto:kebcihocine94@gmail.com", label: "Email", color: "hover:bg-green-100 dark:hover:bg-green-900/30" }
                 ].map(({ icon: Icon, href, label, color }, index) => (
                   <a
                     key={index}

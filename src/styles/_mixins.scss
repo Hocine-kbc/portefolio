@@ -1,0 +1,22 @@
+// _mixins.scss
+
+// Définition des breakpoints
+$breakpoints: (
+  xs: 480px,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);
+
+// Mixin pour les media queries
+@mixin respond-to($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @if $size {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "⚠️ Le breakpoint #{$breakpoint} n'existe pas dans la map \$breakpoints.";
+  }
+}

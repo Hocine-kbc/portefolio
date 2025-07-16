@@ -3,6 +3,7 @@ import { Menu, X, Github, Linkedin, Mail, Sun, Moon, Home, FolderOpen, User, Mes
 import { useTheme } from '../contexts/ThemeContext';
 import { useNavigation } from '../contexts/NavigationContext';
 import logo from '../images/logo_portfolio-hocine.svg';
+import '../styles/Header.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

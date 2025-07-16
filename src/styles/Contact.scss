@@ -1,0 +1,49 @@
+@import '../index.scss';
+// Styles spécifiques au composant Contact 
+.form {
+  &-input, &-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: #1f2937;
+    
+    @include respond-to('xs') {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+    
+    @include respond-to('md') {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .dark & {
+      border-color: #4b5563;
+      background: #374151;
+      color: white;
+    }
+    
+    &:focus {
+      outline: none;
+      ring: 2px;
+      ring-color: #3b82f6;
+      border-color: transparent;
+    }
+  }
+  
+  &-textarea {
+    resize: none;
+    min-height: 120px;
+    
+    @include respond-to('xs') {
+      min-height: 100px;
+    }
+    
+    @include respond-to('md') {
+      min-height: 140px;
+    }
+  }
+} 

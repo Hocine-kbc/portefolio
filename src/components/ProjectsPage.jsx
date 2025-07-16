@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
 import projectsData from '../data/projects.json';
+import '../styles/ProjectsPage.scss';
 
 const ProjectsPage = () => {
   const { navigateTo } = useNavigation();

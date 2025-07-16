@@ -1,0 +1,140 @@
+
+@import './_mixins'; // ou '../styles/_mixins' selon l'emplacement
+
+.hero-creative {
+  // ... ton style ici
+
+
+.profile-pic-wrapper {
+  flex-shrink: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 100px;
+  margin-bottom: -90px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  width: 350px;
+  height: 350px;
+
+  @include respond-to('xs') {
+    margin-top: 70px ;
+    margin-bottom: -80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Effet de miroir sur les boutons
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  // Animation continue du miroir
+  &:hover {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      animation: mirrorEffect 1.5s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes mirrorEffect {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+// Suppression complète des bordures pour le bouton "Découvrir plus"
+.discover-more-btn {
+  outline: none !important;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  
+  &:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  
+  &:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  
+  &:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  
+  &:hover {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  
+  &:visited {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+}
+}

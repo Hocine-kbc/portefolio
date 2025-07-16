@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code, Laptop, Server, Database, GitBranch, Palette, Award, Download, Zap, Sparkles, Target, Heart } from 'lucide-react';
+import '../styles/About.scss';
 
 const About = () => {
   const skills = [
