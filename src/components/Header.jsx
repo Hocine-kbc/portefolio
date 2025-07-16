@@ -46,7 +46,6 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div 
-            className="font-bold text-2xl cursor-pointer group"
             className="font-bold text-responsive-lg cursor-pointer group"
             onClick={() => handleNavigation('home')}
           >
@@ -59,12 +58,14 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <div className="hidden lg:flex items-center space-x-10 xl:space-x-14">
             <button
               onClick={() => handleNavigation('home')}
-              className={`font-medium transition-all duration-300 hover:text-blue-600 flex items-center gap-2 text-responsive-sm ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
-              } ${currentPage === 'home' ? 'text-slate-600' : ''}`}
+              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
+                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+                ${currentPage === 'home' ? 'text-blue-700' : ''}
+                hover:text-blue-700
+                px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
               <Home className="w-4 h-4 sm:w-5 sm:h-5" />
               Accueil
@@ -72,9 +73,11 @@ const Header = () => {
             
             <button
               onClick={() => scrollToSection('a-propos')}
-              className={`font-medium transition-all duration-300 hover:text-blue-600 flex items-center gap-2 ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
-              }`}
+              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
+                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+                ${currentPage === 'about' ? 'text-blue-700' : ''}
+                hover:text-blue-700
+                px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
               <User size={18} />
               À propos
@@ -82,9 +85,11 @@ const Header = () => {
             
             <button
               onClick={() => handleNavigation('projects')}
-              className={`font-medium transition-all duration-300 hover:text-blue-600 flex items-center gap-2 ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
-              } ${currentPage === 'projects' ? 'text-slate-600' : ''}`}
+              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
+                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+                ${currentPage === 'projects' ? 'text-blue-700' : ''}
+                hover:text-blue-700
+                px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
               <FolderOpen size={18} />
               Projets
@@ -92,9 +97,11 @@ const Header = () => {
             
             <button
               onClick={() => scrollToSection('contact')}
-              className={`font-medium transition-all duration-300 hover:text-blue-600 flex items-center gap-2 ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
-              }`}
+              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
+                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+                ${currentPage === 'contact' ? 'text-blue-700' : ''}
+                hover:text-blue-700
+                px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
               <MessageCircle size={18} />
               Contact
@@ -202,9 +209,9 @@ const Header = () => {
               
               <div className="flex items-center space-x-4 pt-4 border-t border-gray-200 dark:border-gray-600">
                 {[
-                  { icon: Github, href: "https://github.com", label: "GitHub" },
-                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                  { icon: Mail, href: "mailto:contact@Hocine-dev.fr", label: "Email" }
+                  { icon: Github, href: "https://github.com/Hocine-kbc", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/hocine-kebci-8a1379375/", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:kebcihocine94@gmail.com", label: "Email" }
                 ].map(({ icon: Icon, href, label }, index) => (
                   <a
                     key={index}

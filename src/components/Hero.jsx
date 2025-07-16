@@ -72,7 +72,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
+          <div className="flex flex-col sm:flex-row gap-24 justify-center items-center mb-8 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
             <button
               onClick={() => navigateTo('projects')}
               className="btn-primary group"
@@ -87,34 +87,17 @@ const Hero = () => {
             <a
               href="/cv-Hocine-kebci.pdf"
               download
-              className="btn-secondary group"
+              className="btn-primary group"
             >
               <span className="flex items-center gap-3">
                 <Download size={24} />
                 Télécharger CV
+                <Sparkles size={20} className="group-hover:animate-rotate" />
               </span>
             </a>
           </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center space-x-6 mb-8 animate-fadeInUp" style={{ animationDelay: '0.6s' }}>
-            {[
-              { icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-gray-700" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-blue-600" },
-              { icon: Mail, href: "mailto:contact@Hocine-dev.fr", label: "Email", color: "hover:bg-green-600" }
-            ].map(({ icon: Icon, href, label, color }, index) => (
-              <a 
-                key={index}
-                href={href} 
-                target={href.startsWith('mailto') ? undefined : "_blank"}
-                rel={href.startsWith('mailto') ? undefined : "noopener noreferrer"}
-                className={`glass p-4 rounded-xl ${color} transform hover:scale-110 transition-all duration-300 text-white group`}
-                aria-label={label}
-              >
-                <Icon size={24} className="group-hover:animate-pulse" />
-              </a>
-            ))}
-          </div>
+          
 
           {/* Scroll Indicator supprimé pour compacité */}
         </div>
