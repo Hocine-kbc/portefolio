@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, Sun, Moon, Home, FolderOpen, User, MessageCircle } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useNavigation } from '../contexts/NavigationContext';
+import logo from '../images/logo_portfolio-hocine.svg';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,16 +46,16 @@ const Header = () => {
       <nav className="container mx-auto spacing-responsive-xs">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div 
-            className="font-bold text-responsive-lg cursor-pointer group"
+          <div
+            className="cursor-pointer group flex items-center"
             onClick={() => handleNavigation('home')}
           >
-            <span className={`transition-colors duration-300 ${
-              isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'
-            } group-hover:text-slate-600`}>
-              Hocine
-            </span>
-            <span className="bg-gradient-to-r from-slate-600 to-slate-500 bg-clip-text text-transparent font-semibold">.dev</span>
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+              style={{ maxHeight: '64px' }}
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -63,7 +64,7 @@ const Header = () => {
               onClick={() => handleNavigation('home')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
                 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
-                ${currentPage === 'home' ? 'text-blue-700' : ''}
+                ${currentPage === 'home' ? 'text-green-700' : ''}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -75,7 +76,7 @@ const Header = () => {
               onClick={() => scrollToSection('a-propos')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
                 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
-                ${currentPage === 'about' ? 'text-blue-700' : ''}
+                ${currentPage === 'about' ? 'text-green-700' : ''}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -87,7 +88,7 @@ const Header = () => {
               onClick={() => handleNavigation('projects')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
                 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
-                ${currentPage === 'projects' ? 'text-blue-700' : ''}
+                ${currentPage === 'projects' ? 'text-purple-700' : ''}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -99,7 +100,7 @@ const Header = () => {
               onClick={() => scrollToSection('contact')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
                 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
-                ${currentPage === 'contact' ? 'text-blue-700' : ''}
+                ${currentPage === 'contact' ? 'text-pink-700' : ''}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
