@@ -3,15 +3,21 @@ import { ArrowDown, Download, Code, Sparkles } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
 import '../styles/Hero.scss';
 import heroBg from '../images/heroimage.png';
-import profilePic from '../images/profile.jpg'; // Ajoute ta photo dans /images/
+import profilePic from '../images/profile.jpg';
 
 const Hero = () => {
+  // État pour le texte animé
   const [text, setText] = useState('');
+  // État pour savoir si on efface le texte
   const [isDeleting, setIsDeleting] = useState(false);
+  // Compteur pour boucler sur les mots
   const [loopNum, setLoopNum] = useState(0);
+  // Vitesse d'écriture
   const [typingSpeed, setTypingSpeed] = useState(150);
+  // Hook de navigation contextuelle
   const { navigateTo } = useNavigation();
 
+  // Liste des mots à afficher en animation
   const words = [
     'Développeur Full-Stack',
     "Créateur d'Interfaces",
@@ -19,115 +25,127 @@ const Hero = () => {
     'Innovateur Web',
   ];
 
+  // Effet pour gérer l'animation du texte tapé
   useEffect(() => {
     const handleTyping = () => {
-      const current = loopNum % words.length;
-      const fullText = words[current];
+      const current = loopNum % words.length; // Mot courant
+      const fullText = words[current]; // Texte complet du mot courant
 
+      // Ajoute ou retire une lettre selon l'état
       setText(
         isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
       );
 
+      // Vitesse plus rapide pour effacer
       setTypingSpeed(isDeleting ? 30 : 150);
 
+      // Si le mot est entièrement écrit, on attend puis on efface
       if (!isDeleting && text === fullText) {
         setTimeout(() => setIsDeleting(true), 500);
       } else if (isDeleting && text === '') {
         setIsDeleting(false);
-        setLoopNum(loopNum + 1);
+        setLoopNum(loopNum + 1); // Passe au mot suivant
       }
     };
 
+    // Lance le timer pour l'animation
     const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); // Nettoie le timer
   }, [text, isDeleting, loopNum, typingSpeed, words]);
 
+  // Fonction pour scroller vers une section donnée
   const scrollToSection = sectionId => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
+    // Section principale avec image de fond
     <section
       id="accueil"
-      className="hero-creative relative overflow-hidden"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: 'cover',
-            backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
+      className="hero-creative"
+      style={{ backgroundImage: `url(${heroBg})` }}
     >
-      <div className="absolute inset-0 bg-black/70 z-10" aria-hidden="true"></div>
+      {/* Overlay sombre pour lisibilité */}
+      <div className="hero-overlay" aria-hidden="true"></div>
 
-      <div className="container mx-auto px-6 relative z-20 py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Photo de profil à gauche */}
-          <div className="profile-pic-wrapper relative flex flex-col items-center">
+      {/* Conteneur principal */}
+      <div className="hero-container">
+        {/* Flex principal pour aligner la photo et le texte */}
+        <div className="hero-flex">
+          {/* Wrapper pour la photo de profil (permet de la déplacer facilement) */}
+          <div className="profile-pic-wrapper">
+            {/* Image de profil */}
             <img src={profilePic} alt="Hocine" className="profile-pic" />
-            <span
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] text-center text-white text-base font-semibold drop-shadow bg-black/50 pb-2 pt-1 rounded-b-full"
-              style={{ borderBottomLeftRadius: '9999px', borderBottomRightRadius: '9999px' }}
-            >
+            {/* Nom sous la photo */}
+            <span className="profile-name">
               Hocine KEBCI
             </span>
           </div>
 
-          {/* Textes et boutons à droite */}
-          <div className="text-center lg:text-center max-w-2xl mt-20">
-            <h1 className="text-responsive-4xl font-light text-white animate-fadeInUp tracking-wide leading-tight">
+          {/* Bloc de texte et boutons */}
+          <div className="hero-text-block">
+            {/* Titre principal */}
+            <h1 className="hero-title">
               <span className="font-light">Pixel par pixel,</span>
               <br />
-              <span className="font-bold bg-gradient-to-r from-slate-200 to-white bg-clip-text text-transparent">
+              <span className="hero-title-bold">
                 je façonne le web
               </span>
             </h1>
 
-            <h2 className="text-responsive-lg text-slate-200 font-light tracking-wide h-16 mb-6 flex items-center justify-center lg:justify-center">
-              {text}
-              <span className="animate-pulse text-slate-300">|</span>
-            </h2>
+           
 
-            <p className="text-responsive-base text-slate-200/90 mb-10 leading-relaxed font-light">
+            {/* Description */}
+            <p className="hero-desc">
               Développeur web passionné, je transforme vos idées en expériences numériques
-              <span className="text-slate-100"> exceptionnelles</span> avec créativité et expertise
+              <span className="desc-highlight"> exceptionnelles</span> avec créativité et expertise
               technique.
             </p>
+            
+             {/* Sous-titre animé */}
+             <h2 className="hero-typed">
+              {text}
+              <span className="typed-cursor">|</span>
+            </h2>
 
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-14 justify-center lg:justify-center items-center mb-12">
-              <button onClick={() => navigateTo('projects')} className="btn-primary group">
-                <span className="flex items-center gap-3">
+            {/* Boutons d'action */}
+            <div className="hero-btns">
+              {/* Bouton pour naviguer vers les projets */}
+              <button onClick={() => navigateTo('projects')} className="btn-primary">
+                <span className="btn-content">
                   <Code size={20} />
                   Découvrir mes projets
-                  <Sparkles size={16} className="group-hover:animate-rotate" />
+                  <Sparkles size={16} className="rotate-on-hover" />
                 </span>
               </button>
 
+              {/* Bouton pour télécharger le CV */}
               <a
                 href="src/public/CV_2025-07-16_KEBCI_HOCINE.pdf"
                 download
-                className="btn-primary group"
+                className="btn-primary"
               >
-                <span className="flex items-center gap-3">
+                <span className="btn-content">
                   <Download size={20} />
                   Télécharger CV
-                  <Sparkles size={16} className="group-hover:animate-rotate" />
+                  <Sparkles size={16} className="rotate-on-hover" />
                 </span>
               </a>
             </div>
           </div>
         </div>
-        {/* Bouton Découvrir plus, centré sur toute la largeur */}
+        {/* Bouton pour scroller vers la section "À propos" */}
         <button
           onClick={() => scrollToSection('a-propos')}
-          className="discover-more-btn block mx-auto mt-8 animate-bounce text-white/80 hover:text-white transition-colors group"
+          className="discover-more-btn"
         >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-sm font-medium">Découvrir plus</span>
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
+          <div className="discover-more-inner">
+            <span className="discover-more-label">Découvrir plus</span>
+            <div className="discover-more-border">
+              <div className="discover-more-dot"></div>
             </div>
-            <ArrowDown size={20} className="group-hover:animate-bounce" />
+            <ArrowDown size={20} className="arrow-bounce" />
           </div>
         </button>
       </div>

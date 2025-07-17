@@ -18,3 +18,27 @@
     padding: 0.25rem 0;
   }
 } 
+
+.header-btn-active {
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  box-shadow: none;
+}
+.header-btn-active * {
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+} 
+
+.header-btn-icon-active {
+  color: #6366f1 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+} 

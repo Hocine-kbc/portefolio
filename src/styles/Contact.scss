@@ -1,49 +1,574 @@
-@import '../index.scss';
-// Styles spécifiques au composant Contact 
-.form {
-  &-input, &-textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    background: white;
-    color: #1f2937;
+// ============================= // Début de la section Contact
+// Section Contact principale
+// =============================
+.contact-section { // Bloc principal de la section contact
+  // Positionnement général et overflow caché pour les décorations
+  position: relative; // Positionne la section relativement à ses enfants
+  overflow: hidden; // Cache le débordement des éléments décoratifs
+  padding: 5rem 0; // Ajoute un padding vertical important
+
+  // ============================= // Décorations animées (icônes)
+  // Décorations animées (icônes)
+  // =============================
+  .decoration { // Bloc pour les éléments décoratifs
+    position: absolute; // Positionne les décorations par rapport à la section
     
-    @include respond-to('xs') {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.875rem;
+    &.sparkle { // Décoration sparkle (étoile)
+      // Position et animation de l'icône sparkle
+      top: 5rem; // Décale du haut
+      right: 5rem; // Décale de la droite
+      animation: float 6s ease-in-out infinite; // Animation de flottement
+      
+      .sparkle-icon { // Style de l'icône sparkle
+        width: 1.5rem; // Largeur de base
+        height: 1.5rem; // Hauteur de base
+        color: #bfdbfe; // Couleur bleu clair
+        // Responsive : taille augmente selon la largeur d'écran
+        @media (min-width: 640px) { // Si écran >= 640px
+          width: 2rem; // Largeur augmentée
+          height: 2rem; // Hauteur augmentée
+        }
+        @media (min-width: 1024px) { // Si écran >= 1024px
+          width: 3rem; // Largeur encore plus grande
+          height: 3rem; // Hauteur encore plus grande
+        }
+      }
     }
     
-    @include respond-to('md') {
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
+    &.message { // Décoration message (bulle)
+      // Position et animation de l'icône message
+      bottom: 5rem; // Décale du bas
+      left: 5rem; // Décale de la gauche
+      animation: float 6s ease-in-out infinite; // Animation de flottement
+      animation-delay: 3s; // Décalage de l'animation
+      
+      .message-icon { // Style de l'icône message
+        width: 1.25rem; // Largeur de base
+        height: 1.25rem; // Hauteur de base
+        color: #d8b4fe; // Couleur violet clair
+        @media (min-width: 640px) { // Si écran >= 640px
+          width: 1.75rem; // Largeur augmentée
+          height: 1.75rem; // Hauteur augmentée
+        }
+        @media (min-width: 1024px) { // Si écran >= 1024px
+          width: 2.5rem; // Largeur encore plus grande
+          height: 2.5rem; // Hauteur encore plus grande
+        }
+      }
     }
-    
-    .dark & {
-      border-color: #4b5563;
-      background: #374151;
-      color: white;
+  }
+
+  // ============================= // Container principal (centrage, padding)
+  // Container principal (centrage, padding)
+  // =============================
+  .container { // Bloc de centrage du contenu
+    max-width: 1280px; // Largeur maximale du container
+    margin: 0 auto; // Centre horizontalement
+    padding: 0 1.5rem; // Padding horizontal
+    position: relative; // Position relative pour z-index
+    z-index: 10; // Place le container au-dessus des décorations
+
+    // ============================= // Header de la section (titre, divider, texte)
+    // Header de la section (titre, divider, texte)
+    // =============================
+    .header { // Bloc d'en-tête de la section
+      text-align: center; // Centre le texte
+      margin-bottom: 4rem; // Espace sous le header
+      
+      h2 { // Titre principal
+        font-size: 2.25rem; // Taille de police
+        font-weight: 700; // Gras
+        color: #111827; // Couleur du texte
+        margin-bottom: 1.5rem; // Espace sous le titre
+        // Effet de texte dégradé sur le span.highlight
+        .highlight { // Mot mis en avant
+          background-image: linear-gradient(to right, #475569, #64748b); // Dégradé
+          -webkit-background-clip: text; // Clip pour Webkit
+          background-clip: text; // Clip standard
+          color: transparent; // Texte transparent pour voir le dégradé
+        }
+        @media (min-width: 640px) { // Si écran >= 640px
+          font-size: 3rem; // Titre plus grand
+        }
+      }
+      .divider { // Barre de séparation
+        width: 6rem; // Largeur de la barre
+        height: 0.25rem; // Hauteur de la barre
+        background-image: linear-gradient(to right, #94a3b8, #64748b); // Dégradé
+        margin: 0 auto 2rem; // Centre et espace sous la barre
+      }
+      p { // Paragraphe de description
+        font-size: 1rem; // Taille de police
+        color: #4b5563; // Couleur du texte
+        max-width: 48rem; // Largeur max du paragraphe
+        margin: 0 auto; // Centre le texte
+        @media (min-width: 640px) { // Si écran >= 640px
+          font-size: 1.125rem; // Police plus grande
+        }
+      }
     }
-    
-    &:focus {
-      outline: none;
-      ring: 2px;
-      ring-color: #3b82f6;
-      border-color: transparent;
+
+    // ============================= // Grille responsive (formulaire + infos)
+    // Grille responsive (formulaire + infos)
+    // =============================
+    .grid { // Grille principale
+      display: grid; // Utilise CSS Grid
+      gap: 2rem; // Espace entre les colonnes/éléments
+      @media (min-width: 1024px) { // Si écran >= 1024px
+        grid-template-columns: repeat(2, 1fr); // Deux colonnes
+        gap: 3rem; // Espace plus grand
+        max-width: 72rem; // Largeur max de la grille
+        margin: 0 auto; // Centre la grille
+      }
+    }
+  }
+}
+
+// =============================
+// Styles des cartes (infos, formulaire)
+// =============================
+.card { // Bloc de carte générique
+  background: white; // Fond blanc
+  border-radius: 0.75rem; // Bords arrondis
+  padding: 2rem; // Padding interne
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); // Ombre portée
+  margin-bottom: 2rem; // Espace sous la carte
+  
+  h3, h4 { // Titres dans la carte
+    font-weight: 700; // Gras
+    color: #111827; // Couleur du texte
+    margin-bottom: 1.5rem; // Espace sous le titre
+    display: flex; // Affichage flex pour aligner l'icône
+    align-items: center; // Centre verticalement
+    gap: 0.75rem; // Espace entre icône et texte
+    .icon { // Icône du titre
+      width: 1.5rem; // Largeur icône
+      height: 1.5rem; // Hauteur icône
+      color: #2563eb; // Couleur bleue
     }
   }
   
-  &-textarea {
-    resize: none;
-    min-height: 120px;
-    
-    @include respond-to('xs') {
-      min-height: 100px;
+  &.contact-info { // Carte d'informations de contact
+    .description { // Paragraphe descriptif
+      color: #374151; // Couleur du texte
+      line-height: 1.75; // Hauteur de ligne
+      margin-bottom: 2rem; // Espace sous le texte
     }
     
-    @include respond-to('md') {
-      min-height: 140px;
+    .contact-details { // Bloc des détails de contact
+      .contact-item { // Élément individuel (mail, tel, etc.)
+        display: flex; // Affichage flex
+        align-items: center; // Centre verticalement
+        gap: 1rem; // Espace entre icône et texte
+        padding: 1rem; // Padding interne
+        border-radius: 0.5rem; // Bords arrondis
+        margin-bottom: 1rem; // Espace sous l'item
+        
+        .icon-container { // Conteneur de l'icône
+          padding: 0.5rem; // Padding autour de l'icône
+          border-radius: 0.5rem; // Bords arrondis
+          
+          .icon { // Icône de contact
+            width: 1rem; // Largeur icône
+            height: 1rem; // Hauteur icône
+            color: white; // Couleur blanche
+            
+            @media (min-width: 640px) { // Responsive
+              width: 1.25rem; // Plus grand
+              height: 1.25rem; // Plus grand
+            }
+          }
+        }
+        
+        h4 { // Titre de l'item (ex: Email)
+          font-weight: 600; // Semi-gras
+          color: #ffffff; // Couleur blanche
+          margin-bottom: 0.25rem; // Petit espace
+          font-size: 0.875rem; // Petite taille
+          
+          @media (min-width: 640px) { // Responsive
+            font-size: 1rem; // Plus grand
+          }
+        }
+        
+        a { // Lien de contact
+          color: #2563eb; // Couleur bleue
+          transition: color 0.3s; // Transition douce
+          font-size: 0.75rem; // Petite taille
+          
+          @media (min-width: 640px) { // Responsive
+            font-size: 0.875rem; // Plus grand
+          }
+          
+          &:hover { // Au survol
+            color: #1d4ed8; // Bleu plus foncé
+          }
+        }
+        
+        &.email { // Item email
+          background-color: #eff6ff; // Fond bleu très clair
+          
+          .icon-container { // Icône sur fond bleu
+            background-color: #2563eb; // Bleu
+          }
+          
+          a { // Lien email
+            color: #2563eb; // Bleu
+          }
+        }
+        
+        &.phone { // Item téléphone
+          background-color: #f5f3ff; // Fond violet très clair
+          
+          .icon-container { // Icône sur fond violet
+            background-color: #7c3aed; // Violet
+          }
+          
+          a { // Lien téléphone
+            color: #7c3aed; // Violet
+          }
+        }
+        
+        &.location { // Item localisation
+          background-color: #ecfdf5; // Fond vert très clair
+          
+          .icon-container { // Icône sur fond vert
+            background-color: #059669; // Vert
+          }
+          
+          a { // Lien localisation
+            color: #059669; // Vert
+          }
+        }
+      }
     }
   }
-} 
+  
+  &.social { // Carte des réseaux sociaux
+    .social-links { // Bloc des liens sociaux
+      display: flex; // Affichage flex
+      gap: 1rem; // Espace entre les liens
+      
+      .social-link { // Lien individuel
+        padding: 0.75rem; // Padding interne
+        border-radius: 0.5rem; // Bords arrondis
+        transition: all 0.3s; // Transition douce
+        color: #4b5563; // Couleur de base
+        
+        &:hover { // Au survol
+          transform: scale(1.1); // Zoom léger
+          color: #111827; // Couleur foncée
+        }
+        
+        .social-icon { // Icône du réseau
+          width: 1.5rem; // Largeur
+          height: 1.5rem; // Hauteur
+        }
+        
+        &:nth-child(1):hover { // Premier lien au survol
+          background-color: #f3f4f6; // Fond gris clair
+        }
+        
+        &:nth-child(2):hover { // Deuxième lien au survol
+          background-color: #dbeafe; // Fond bleu clair
+        }
+        
+        &:nth-child(3):hover { // Troisième lien au survol
+          background-color: #dcfce7; // Fond vert clair
+        }
+      }
+    }
+  }
+  
+  &.contact-form { // Carte du formulaire de contact
+    .success-message { // Message de succès
+      margin-bottom: 1.5rem; // Espace sous le message
+      padding: 1rem; // Padding interne
+      background-color: #ecfdf5; // Fond vert très clair
+      border: 1px solid #a7f3d0; // Bordure verte
+      border-radius: 0.5rem; // Bords arrondis
+      display: flex; // Affichage flex
+      align-items: center; // Centre verticalement
+      gap: 0.75rem; // Espace entre icône et texte
+      
+      .icon { // Icône de succès
+        width: 1.5rem; // Largeur
+        height: 1.5rem; // Hauteur
+        color: #059669; // Vert
+      }
+      
+      p { // Texte du message
+        color: #065f46;
+        font-weight: 500;
+      }
+    }
+    
+    .form {
+      .form-group {
+        margin-bottom: 1.5rem;
+        
+        label {
+          display: block;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: #4b5563;
+          margin-bottom: 0.5rem;
+        }
+        
+        input, textarea {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          border: 1px solid #d1d5db;
+          border-radius: 0.5rem;
+          transition: border-color 0.3s;
+          font-size: 0.875rem;
+          
+          &:focus {
+            outline: none;
+            border-color: #3b82f6;
+          }
+          
+          &::placeholder {
+            color: #9ca3af;
+          }
+        }
+        
+        textarea {
+          min-height: 8rem;
+          resize: vertical;
+        }
+      }
+      
+      .submit-btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        background-color: #2563eb;
+        color: white;
+        
+        &:hover:not(:disabled) {
+          background-color: #1d4ed8;
+        }
+        
+        &:disabled {
+          background-color: #9ca3af;
+          cursor: not-allowed;
+        }
+        
+        .icon {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+        
+        .sparkle {
+          width: 1rem;
+          height: 1rem;
+          animation: pulse 2s infinite;
+        }
+        
+        .spinner {
+          width: 1.25rem;
+          height: 1.25rem;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          border-top-color: white;
+          animation: spin 1s linear infinite;
+        }
+      }
+    }
+    
+    .response-time {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #f3f4f6;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      
+      .indicator {
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: #10b981;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Dark mode styles
+.dark {
+  .contact-section {
+    .header {
+      h2 {
+        color: white;
+      }
+      
+      p {
+        color: #9ca3af;
+      }
+    }
+    
+    .card {
+      background: #1f2937;
+      
+      h3, h4 {
+        color: white;
+      }
+      
+      &.contact-info {
+        .description {
+          color: #d1d5db;
+        }
+        
+        .contact-details {
+          .contact-item {
+            &.email {
+              background-color: rgba(30, 58, 138, 0.2);
+              
+              a {
+                color: #60a5fa;
+                
+                &:hover {
+                  color: #3b82f6;
+                }
+              }
+            }
+            
+            &.phone {
+              background-color: rgba(76, 29, 149, 0.2);
+              
+              a {
+                color: #a78bfa;
+                
+                &:hover {
+                  color: #8b5cf6;
+                }
+              }
+            }
+            
+            &.location {
+              background-color: rgba(5, 150, 105, 0.2);
+              
+              a {
+                color: #34d399;
+                
+                &:hover {
+                  color: #10b981;
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      &.social {
+        .social-links {
+          .social-link {
+            color: #d1d5db;
+            
+            &:hover {
+              color: white;
+            }
+            
+            &:nth-child(1):hover {
+              background-color: #374151;
+            }
+            
+            &:nth-child(2):hover {
+              background-color: rgba(29, 78, 216, 0.3);
+            }
+            
+            &:nth-child(3):hover {
+              background-color: rgba(16, 185, 129, 0.3);
+            }
+          }
+        }
+      }
+      
+      &.contact-form {
+        .success-message {
+          background-color: rgba(16, 185, 129, 0.2);
+          border-color: rgba(16, 185, 129, 0.5);
+          
+          p {
+            color: #a7f3d0;
+          }
+        }
+        
+        .form {
+          .form-group {
+            label {
+              color: #d1d5db;
+            }
+            
+            input, textarea {
+              background-color: #1f2937;
+              border-color: #374151;
+              color: white;
+              
+              &:focus {
+                border-color: #3b82f6;
+              }
+              
+              &::placeholder {
+                color: #6b7280;
+              }
+            }
+          }
+        }
+        
+        .response-time {
+          background-color: #374151;
+          color: #d1d5db;
+        }
+      }
+    }
+    
+    .decoration {
+      &.sparkle .sparkle-icon {
+        color: #1e40af;
+      }
+      
+      &.message .message-icon {
+        color: #5b21b6;
+      }
+    }
+  }
+}

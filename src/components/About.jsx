@@ -4,107 +4,82 @@ import '../styles/About.scss';
 
 const About = () => {
   const skills = [
-    // Frontend
-    { name: 'React', level: 'Expert', category: 'Frontend' },
-    { name: 'TypeScript', level: 'Avancé', category: 'Frontend' },
-    { name: 'Next.js', level: 'Avancé', category: 'Frontend' },
-    { name: 'Vue.js', level: 'Intermédiaire', category: 'Frontend' },
-    { name: 'Tailwind CSS', level: 'Expert', category: 'Frontend' },
-    { name: 'SASS/SCSS', level: 'Avancé', category: 'Frontend' },
-    
-    // Backend
-    { name: 'Node.js', level: 'Avancé', category: 'Backend' },
-    { name: 'Express.js', level: 'Avancé', category: 'Backend' },
-    { name: 'Python', level: 'Intermédiaire', category: 'Backend' },
-    { name: 'PHP', level: 'Intermédiaire', category: 'Backend' },
-    
-    // Database
-    { name: 'MongoDB', level: 'Avancé', category: 'Database' },
-    { name: 'PostgreSQL', level: 'Avancé', category: 'Database' },
-    { name: 'MySQL', level: 'Intermédiaire', category: 'Database' },
-    
-    // Tools
-    { name: 'Git', level: 'Expert', category: 'Tools' },
-    { name: 'Docker', level: 'Intermédiaire', category: 'Tools' },
-    { name: 'Figma', level: 'Avancé', category: 'Tools' },
-    { name: 'VS Code', level: 'Expert', category: 'Tools' },
+    // Développement Frontend
+    { name: 'HTML5 / CSS3 / SCSS (architecture modulaire, responsive design)', level: 'Expert', category: 'Frontend' },
+    { name: 'JavaScript', level: 'Intermédiaire', category: 'Frontend' },
+    { name: 'React (hooks, composants, React Router, Context API)', level: 'Avancé', category: 'Frontend' },
+    { name: 'Intégration Figma (pixel-perfect)', level: 'Débutant', category: 'Frontend' },
+
+    // Développement Backend
+    { name: 'Node.js / Express (API REST, middleware, sécurisation des routes)', level: 'Avancé', category: 'Backend' },
+    { name: 'MongoDB / Mongoose (modélisation, CRUD, validation)', level: 'Intermédiaire', category: 'Backend' },
+    { name: 'Authentification JWT, bcrypt (sécurité, ownership)', level: 'Expert', category: 'Backend' },
+
+    // Outils & Méthodes
+    { name: 'Git / GitHub (gestion de version)', level: 'Débutant', category: 'Outils' },
+    { name: 'Méthode Agile (Trello, Notion, Kanban)', level: 'Avancé', category: 'Outils' },
+    { name: 'Postman (tests d’API), Multer & Sharp (upload/optimisation images)', level: 'Intermédiaire', category: 'Outils' },
   ];
 
   const categories = [
     { name: 'Frontend', icon: Laptop, color: 'blue', gradient: 'gradient-primary' },
     { name: 'Backend', icon: Server, color: 'purple', gradient: 'gradient-secondary' },
-    { name: 'Database', icon: Database, color: 'green', gradient: 'gradient-success' },
-    { name: 'Tools', icon: GitBranch, color: 'orange', gradient: 'gradient-accent' },
+    { name: 'Outils', icon: GitBranch, color: 'orange', gradient: 'gradient-accent' },
   ];
 
   const getLevelColor = (level) => {
     switch (level) {
-      case 'Expert': return 'bg-green-500';
-      case 'Avancé': return 'bg-blue-500';
-      case 'Intermédiaire': return 'bg-yellow-500';
-      case 'Débutant': return 'bg-gray-500';
-      default: return 'bg-gray-500';
+      case 'Expert': return 'level-expert';
+      case 'Avancé': return 'level-advanced';
+      case 'Intermédiaire': return 'level-intermediate';
+      case 'Débutant': return 'level-beginner';
+      default: return 'level-beginner';
     }
   };
 
   const getLevelWidth = (level) => {
     switch (level) {
-      case 'Expert': return 'w-full';
-      case 'Avancé': return 'w-4/5';
-      case 'Intermédiaire': return 'w-3/5';
-      case 'Débutant': return 'w-2/5';
-      default: return 'w-2/5';
+      case 'Expert': return 'level-width-full';
+      case 'Avancé': return 'level-width-4-5';
+      case 'Intermédiaire': return 'level-width-3-5';
+      case 'Débutant': return 'level-width-2-5';
+      default: return 'level-width-2-5';
     }
   };
 
   return (
-    <section id="a-propos" className="spacing-responsive-lg section-bg-light relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-10 right-10 animate-float">
-        <Sparkles className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-blue-200 dark:text-blue-800" />
+    <section id="a-propos" className="about-section">
+      <div className="decoration sparkle">
+        <Sparkles className="sparkle-icon" />
       </div>
-      <div className="absolute bottom-20 left-10 animate-float" style={{ animationDelay: '2s' }}>
-        <Code className="w-6 h-6 sm:w-8 sm:h-8 lg:w-12 lg:h-12 text-purple-200 dark:text-purple-800" />
+      <div className="decoration code">
+        <Code className="code-icon" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-responsive-3xl font-bold text-gray-900 dark:text-white mb-6">
-            À propos de <span className="bg-gradient-to-r from-slate-600 to-slate-500 bg-clip-text text-transparent">moi</span>
+      <div className="container">
+        <div className="header">
+          <h2>
+            À propos de <span className="highlight">moi</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-slate-400 to-slate-500 mx-auto mb-8"></div>
-          <p className="text-responsive-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          Développeur web motivé, récemment formé, avec une première expérience concrète à travers plusieurs projets web complets et modernes.
+          <div className="divider"></div>
+          <p>
+            Développeur web motivé, récemment formé, avec une première expérience concrète à travers plusieurs projets web complets et modernes.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          {/* Story Section */}
-          <div className="space-y-8">
-            {/* Profile Image */}
-            <div className="flex justify-center lg:justify-start mb-8">
-              <div className="profile-creative">
-                <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl">
-                  <img 
-                    src="src/images/profile.jpg" 
-                    alt="Hocine kebci" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="creative-card spacing-responsive-sm">
-              <h3 className="text-responsive-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                <Award className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-blue-600" />
+        <div className="grid">
+          <div className="left-column">
+            <div className="card journey">
+              <h3>
+                <Award className="icon" />
                 Mon Parcours
               </h3>
               
-              <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
-                <div className="border-l-4 border-blue-500 pl-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-blue-600 dark:text-blue-400 font-semibold">Formation</span>
+              <div className="content">
+                <div className="block formation">
+                  <div className="block-header">
+                    <div className="dot"></div>
+                    <span>Formation</span>
                   </div>
                   <p>
                     Diplômé d'OpenClassrooms en développement web. Une formation intensive qui m'a 
@@ -112,21 +87,23 @@ const About = () => {
                   </p>
                 </div>
                 
-                <div className="border-l-4 border-purple-500 pl-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                    <span className="text-purple-600 dark:text-purple-400 font-semibold">Spécialisation</span>
+                <div className="block specialization">
+                  <div className="block-header">
+                    <div className="dot"></div>
+                    <span>Spécialisation</span>
                   </div>
                   <p>
-                    Expertise en React, Node.js et TypeScript. Je me concentre sur la création 
-                    d'applications web performantes et d'interfaces utilisateur intuitives.
+                  Développeur full-stack passionné, je conçois des applications web complètes, du front-end réactif (React, Sass) au back-end robuste (Node.js, Express, MongoDB).
+                   Mes projets m'ont permis de développer des plateformes dynamiques, sécurisées et performantes, en respectant les bonnes pratiques de développement et les exigences métiers. 
+                   Je maîtrise l'intégration de maquettes, la création d'API REST, la gestion d'utilisateurs, de bases de données et l'optimisation des performances. Mon objectif :
+                    livrer des solutions web efficaces, maintenables et orientées utilisateur.
                   </p>
                 </div>
                 
-                <div className="border-l-4 border-green-500 pl-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-green-600 dark:text-green-400 font-semibold">Passion</span>
+                <div className="block passion">
+                  <div className="block-header">
+                    <div className="dot"></div>
+                    <span>Passion</span>
                   </div>
                   <p>
                     Toujours en veille technologique, j'aime explorer de nouvelles technologies 
@@ -136,84 +113,67 @@ const About = () => {
               </div>
             </div>
 
-            <div className="creative-card p-8">
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                <Heart className="text-red-500 w-6 h-6" />
+            <div className="card philosophy">
+              <h4>
+                <Heart className="icon" />
                 Ma Philosophie
               </h4>
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-lg border-l-4 border-blue-500">
-                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+              <div className="philosophy-content">
+                <p className="quote">
                   "Le code propre n'est pas écrit en suivant un ensemble de règles. 
                   Vous savez que vous travaillez sur du code propre quand chaque routine 
                   que vous lisez est à peu près ce à quoi vous vous attendiez."
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center gap-2">
-                    <Code className="text-blue-600 w-5 h-5" />
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Code Clean</span>
+                <div className="badges">
+                  <div className="badge">
+                    <Code className="badge-icon" />
+                    <span>Code Clean</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Zap className="text-green-600 w-5 h-5" />
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Performance</span>
+                  <div className="badge">
+                    <Zap className="badge-icon" />
+                    <span>Performance</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Palette className="text-purple-600 w-5 h-5" />
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">UX/UI</span>
+                  <div className="badge">
+                    <Palette className="badge-icon" />
+                    <span>UX/UI</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Target className="text-orange-600 w-5 h-5" />
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Objectifs</span>
+                  <div className="badge">
+                    <Target className="badge-icon" />
+                    <span>Objectifs</span>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className="text-center">
-              <a
-                href="/cv-Hocine-kebci.pdf"
-                download
-                className="btn-primary inline-flex items-center gap-3"
-              >
-                <Download size={20} />
-                Télécharger mon CV
-                <Sparkles size={16} className="animate-pulse" />
-              </a>
-            </div>
           </div>
 
-          {/* Skills Section */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-              <Code className="text-blue-600 w-7 h-7" />
+          <div className="right-column">
+            <h3>
+              <Code className="icon" />
               Compétences Techniques
             </h3>
             
-            <div className="space-y-6">
+            <div className="skills-container">
               {categories.map((category) => (
-                <div key={category.name} className="creative-card p-6">
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                    <div className={`${category.gradient} p-2 rounded-lg`}>
-                      <category.icon className="w-6 h-6 text-white" />
+                <div key={category.name} className="card">
+                  <h4>
+                    <div className={`category-icon ${category.gradient}`}>
+                      <category.icon className="icon" />
                     </div>
                     {category.name}
                   </h4>
                   
-                  <div className="space-y-4">
+                  <div className="skills-list">
                     {skills
                       .filter(skill => skill.category === category.name)
                       .map((skill) => (
-                        <div key={skill.name} className="group">
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                              {skill.name}
-                            </span>
-                            <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                              {skill.level}
-                            </span>
+                        <div key={skill.name} className="skill">
+                          <div className="skill-header">
+                            <span className="skill-name">{skill.name}</span>
+                            <span className="skill-level">{skill.level}</span>
                           </div>
-                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+                          <div className="progress-bar">
                             <div 
-                              className={`h-full rounded-full transition-all duration-1000 ease-out ${getLevelColor(skill.level)} ${getLevelWidth(skill.level)} group-hover:animate-pulse`}
+                              className={`progress ${getLevelColor(skill.level)} ${getLevelWidth(skill.level)}`}
                             ></div>
                           </div>
                         </div>
