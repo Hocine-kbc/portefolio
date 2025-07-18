@@ -1,6 +1,7 @@
 
 @import './_mixins'; // Import des mixins pour les media queries
 
+
 // Section principale du Hero avec image de fond et overflow caché
 .hero-creative {
   position: relative; // Positionnement pour overlay et contenu
@@ -231,7 +232,7 @@
           background: rgba(255,255,255,0.7);
           border-radius: 9999px;
           margin-top: 0.5rem;
-          animation: bounce 0.7s infinite; // Animation permanente sur le trait
+          animation: bounce-dot 0.7s infinite; // Animation permanente sur le trait
         }
       }
     }
@@ -369,12 +370,36 @@
   }
 }
 
-// Animation de rebond pour le bouton "Découvrir plus"
-@keyframes bounce {
+// =========================
+// Animation du petit trait sous le bouton "Découvrir plus"
+// =========================
+@keyframes bounce-dot {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-3px); // Amplitude du saut du trait
   }
+}
+
+// =========================
+// Animation personnalisée de la flèche sous le bouton "Découvrir plus"
+// =========================
+@keyframes arrow-bounce-custom {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); } // Amplitude du saut de la flèche (modifie ici pour ajuster)
+}
+
+// Applique l'animation personnalisée au trait
+.discover-more-dot {
+  animation: bounce-dot 0.7s infinite;
+}
+
+// Applique l'animation personnalisée à la flèche uniquement au hover du bouton
+.arrow-bounce {
+  transition: transform 0.2s;
+  animation: none !important; // Désactive toute animation par défaut
+}
+.discover-more-btn:hover .arrow-bounce {
+  animation: arrow-bounce-custom 0.7s infinite !important; // Animation discrète au hover
 }

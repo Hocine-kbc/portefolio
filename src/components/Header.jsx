@@ -54,7 +54,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Logo"
-              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+              className={`h-14 w-auto transition-transform duration-300 group-hover:scale-105 ${!isDark ? 'logo-invert' : ''}`}
               style={{ maxHeight: '64px' }}
             />
           </div>

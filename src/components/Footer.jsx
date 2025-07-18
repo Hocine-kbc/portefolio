@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, Github, Linkedin, Mail, ArrowUp, Code, Sparkles } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
+import logo from '../images/logo_portfolio-hocine.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -34,9 +35,17 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <Code className="w-8 h-8 text-blue-400" />
-              <h3 className="text-2xl font-bold">
-                Hocine<span className="text-gradient">.dev</span>
-              </h3>
+              <div
+            className="cursor-pointer group flex items-center flex-shrink-0"
+            onClick={() => handleNavigation('home')}
+          >
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+              style={{ maxHeight: '64px' }}
+            />
+          </div>
             </div>
             <p className="text-gray-400 leading-relaxed">
               Développeur web passionné, créateur d'expériences numériques modernes 

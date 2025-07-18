@@ -42,3 +42,12 @@
   -webkit-background-clip: initial !important;
   -webkit-text-fill-color: initial !important;
 } 
+
+.logo-invert {
+  /* Filtre bleu vif pour logo sur fond clair */
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(7492%) hue-rotate(210deg) brightness(95%) contrast(101%);
+} 
+
+.dark .logo-invert {
+  filter: none !important;
+} 

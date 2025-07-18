@@ -67,6 +67,7 @@ const Hero = () => {
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       {/* Overlay sombre pour lisibilité */}
+      
       <div className="hero-overlay" aria-hidden="true"></div>
 
       {/* Conteneur principal */}

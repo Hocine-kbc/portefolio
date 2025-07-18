@@ -142,7 +142,7 @@ const ProjectsPage = () => {
                       </a>
                     )}
                   </div>
-                  <button className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium text-sm">
+                  <button className="btn-more text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium text-sm">
                     Voir plus →
                   </button>
                 </div>

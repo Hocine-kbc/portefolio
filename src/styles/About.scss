@@ -114,19 +114,21 @@
 
 // Cards styles
 .card {
-  background: white;
+  background: #fff;
   border-radius: 0.75rem;
   padding: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(60, 72, 88, 0.12), 0 1.5px 6px 0 rgba(60, 72, 88, 0.10);
+  border: 1.5px solid #e5e7eb;
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1);
-  transition: box-shadow 0.3s, transform 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
 
   &:hover {
-    transform: translateY(-14px); // montée plus visible, sans zoom
-    box-shadow: none;
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 16px 40px 0 rgba(60, 72, 88, 0.18), 0 3px 12px 0 rgba(60, 72, 88, 0.12);
+    border-color: #c7d2fe;
   }
 
   // Effet miroir/reflet au survol
@@ -334,6 +336,17 @@
       .skills-list {
         .skill {
           margin-bottom: 1rem;
+          position: relative;
+          
+          &:not(:last-child)::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, #e5e7eb, #f3f4f6 60%, #e5e7eb);
+            margin: 1rem 0 0.2rem 0;
+            opacity: 0.7;
+          }
           
           &:hover {
             .skill-name {
@@ -351,6 +364,23 @@
             align-items: center;
             margin-bottom: 0.5rem;
             
+            .skill-icon {
+              display: flex;
+              align-items: center;
+              gap: 0.4rem;
+              margin-right: 0.5rem;
+              font-size: 1.5rem;
+              color: #2563eb;
+              filter: drop-shadow(0 1px 2px rgba(59,130,246,0.10));
+              transition: color 0.3s, filter 0.3s;
+              
+              // Pour chaque icône à l'intérieur
+              & > * {
+                display: inline-block;
+                vertical-align: middle;
+              }
+            }
+            
             .skill-name {
               font-weight: 500;
               color: #374151;
@@ -367,26 +397,54 @@
           }
           
           .progress-bar {
-            width: 100%;
+            width: 80%;
             background-color: #e5e7eb;
             border-radius: 9999px;
-            height: 0.75rem;
+            height: 1.5rem;
+            min-height: 1.5rem;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             
             .progress {
-              height: 100%;
+              height: 70%;
+              min-height: 0.8rem;
               border-radius: 9999px;
-              transition: all 1s ease-out;
+              transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+              position: relative;
+              overflow: hidden;
+              
+              &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -40%;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 100%);
+                pointer-events: none;
+                animation: mirror-gloss 1.2s linear infinite;
+              }
               
               &.level-expert { background-color: #10b981; }
               &.level-advanced { background-color: #3b82f6; }
               &.level-intermediate { background-color: #f59e0b; }
               &.level-beginner { background-color: #6b7280; }
-              
-              &.level-width-full { width: 100%; }
-              &.level-width-4-5 { width: 80%; }
-              &.level-width-3-5 { width: 60%; }
-              &.level-width-2-5 { width: 40%; }
+            }
+            .skill-icon {
+              display: flex;
+              align-items: center;
+              gap: 0.4rem;
+              font-size: 1.5rem;
+              color: #2563eb;
+              filter: drop-shadow(0 1px 2px rgba(59,130,246,0.10));
+              transition: color 0.3s, filter 0.3s;
+              margin-right: 0.5rem;
+              & > * {
+                display: inline-block;
+                vertical-align: middle;
+              }
             }
           }
         }
@@ -428,6 +486,15 @@
   }
 }
 
+@keyframes mirror-gloss {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 // Dark mode styles
 .dark {
   .about-section {
@@ -443,6 +510,7 @@
     
     .card {
       background: #1f2937;
+      border: 1.5px solid #334155;
       
       h3, h4 {
         color: white;
@@ -495,6 +563,11 @@
           
           .progress-bar {
             background-color: #374151;
+            .skill-icon {
+              color: #60a5fa;
+              filter: drop-shadow(0 1px 2px rgba(96,165,250,0.15));
+              gap: 0.4rem;
+            }
           }
         }
       }
@@ -509,5 +582,17 @@
         color: #5b21b6;
       }
     }
+  }
+}
+
+.specialisation-list {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 0;
+  li {
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    color: #fff; // adapte selon le thème, ou remplace par une autre couleur si besoin
   }
 }
