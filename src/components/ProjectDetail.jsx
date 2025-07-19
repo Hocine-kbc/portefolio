@@ -177,7 +177,7 @@ const ProjectDetail = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Durée</span>
-                  <span className="text-gray-900 dark:text-white font-medium">3 mois</span>
+                  <span className="text-gray-900 dark:text-white font-medium">2 mois</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Équipe</span>
@@ -185,7 +185,7 @@ const ProjectDetail = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Année</span>
-                  <span className="text-gray-900 dark:text-white font-medium">2024</span>
+                  <span className="text-gray-900 dark:text-white font-medium">2025</span>
                 </div>
               </div>
             </div>

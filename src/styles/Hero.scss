@@ -6,9 +6,12 @@
 .hero-creative {
   position: relative; // Positionnement pour overlay et contenu
   overflow: hidden; // Cache le débordement de l'image de fond
+  background-image: url('../images/heroimage.png');
   background-size: cover; // L'image couvre toute la section
   background-position: center; // Centrage de l'image
-  background-attachment: fixed; // Effet de parallaxe sur desktop
+  background-repeat: no-repeat;
+  // Suppression du background-attachment: fixed et du will-change
+  // Suppression du ::before
 
   // Overlay sombre pour améliorer la lisibilité du texte
   .hero-overlay {

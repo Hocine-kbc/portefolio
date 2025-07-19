@@ -71,7 +71,6 @@ const Header = () => {
               <Home className={`w-4 h-4 sm:w-5 sm:h-5 ${currentPage === 'home' ? 'header-btn-icon-active' : ''}`} />
               <span className={currentPage === 'home' ? 'header-btn-active' : ''}>Accueil</span>
             </button>
-            
             <button
               onClick={() => scrollToSection('a-propos')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
@@ -82,7 +81,6 @@ const Header = () => {
               <User size={18} className={currentPage === 'about' ? 'header-btn-icon-active' : ''} />
               <span className={currentPage === 'about' ? 'header-btn-active' : ''}>À propos</span>
             </button>
-            
             <button
               onClick={() => handleNavigation('projects')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
@@ -93,7 +91,6 @@ const Header = () => {
               <FolderOpen size={18} className={currentPage === 'projects' ? 'header-btn-icon-active' : ''} />
               <span className={currentPage === 'projects' ? 'header-btn-active' : ''}>Projets</span>
             </button>
-            
             <button
               onClick={() => scrollToSection('contact')}
               className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
@@ -106,8 +103,8 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Theme Toggle & Social Links - Desktop */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Theme Toggle, Social Links */}
+          <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white transform hover:scale-110 ${

@@ -1,132 +1,129 @@
-import React, { useState } from 'react';
-import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter } from 'lucide-react';
-import { useNavigation } from '../contexts/NavigationContext';
-import projectsData from '../data/projects.json';
-import '../styles/ProjectsPage.scss';
+import React, { useState } from 'react'; // Importation de React et du hook useState
+import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter } from 'lucide-react'; // Importation des icônes
+import { useNavigation } from '../contexts/NavigationContext'; // Importation du contexte de navigation
+import projectsData from '../data/projects.json'; // Importation des données projets
+import '../styles/ProjectsPage.scss'; // Importation des styles spécifiques à la page projets
 
 const ProjectsPage = () => {
-  const { navigateTo } = useNavigation();
-  const [filter, setFilter] = useState('all');
+  const { navigateTo } = useNavigation(); // Hook pour naviguer entre les pages
+  const [filter, setFilter] = useState('all'); // État pour le filtre sélectionné
 
-  const projects = projectsData;
+  const projects = projectsData; // Liste des projets importée
 
-  const technologies = ['all', 'React', 'Node.js', 'TypeScript', 'MongoDB', 'Socket.io', 'PWA'];
+  // Liste des technologies pour le filtre
+  const technologies = ['all', 'HTML5/CSS3', 'React', 'Node.js', 'MongoDB'];
 
+  // Filtrage des projets selon la technologie sélectionnée
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.technologies.includes(filter));
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 sm:pt-20">
-      <div className="container mx-auto px-6 spacing-responsive-md">
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
+    <div className="projects-page"> {/* Conteneur principal de la page projets */}
+      <div className="container"> {/* Conteneur centré pour le contenu */}
+        {/* Header de la page */}
+        <div className="header"> {/* Section du bouton retour */}
           <button
-            onClick={() => navigateTo('home')}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors font-medium text-responsive-sm"
+            onClick={() => navigateTo('home')} // Clique pour revenir à l'accueil
+            className="back-button"
           >
-            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            Retour à l'accueil
+            <ArrowLeft className="icon" /> {/* Icône flèche */}
+            Retour à l'accueil {/* Texte du bouton */}
           </button>
         </div>
 
-        <div className="text-center mb-12">
-          <h1 className="text-responsive-3xl font-bold text-gray-900 dark:text-white mb-6">
-            Mes <span className="text-gradient">Projets</span>
+        <div className="intro"> {/* Introduction de la page */}
+          <h1 className="title"> {/* Titre principal */}
+            Mes <span className="highlight">Projets</span>
           </h1>
-          <p className="text-responsive-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="description"> {/* Description sous le titre */}
             Découvrez mes réalisations récentes, des projets qui démontrent mes compétences 
             techniques et ma passion pour le développement web moderne.
           </p>
         </div>
 
-        {/* Filter */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
-          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mr-2 sm:mr-4 mb-2">
-            <Filter className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="font-medium text-responsive-xs">Filtrer par :</span>
+        {/* Section de filtre */}
+        <div className="filter-container"> {/* Conteneur du filtre */}
+          <div className="filter-label"> {/* Label du filtre */}
+            <Filter className="icon" /> {/* Icône filtre */}
+            <span>Filtrer par :</span>
           </div>
           {technologies.map((tech) => (
             <button
-              key={tech}
-              onClick={() => setFilter(tech)}
-              className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full font-medium transition-all duration-300 text-responsive-xs ${
-                filter === tech
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
-              }`}
+              key={tech} // Clé unique pour chaque bouton
+              onClick={() => setFilter(tech)} // Clique pour changer le filtre
+              className={`filter-button ${filter === tech ? 'active' : ''}`}
             >
-              {tech === 'all' ? 'Tous' : tech}
+              {tech === 'all' ? 'Tous' : tech} {/* Affichage du nom de la techno */}
             </button>
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid-responsive">
+        {/* Grille des projets */}
+        <div className="projects-grid"> {/* Conteneur de la grille de projets */}
           {filteredProjects.map((project, index) => (
             <div
-              key={project.id}
-              className="creative-card group cursor-pointer animate-fadeInUp"
-              onClick={() => navigateTo('project-detail', project.id)}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={project.id} // Clé unique pour chaque projet
+              className="project-card" // Classe de la carte projet
+              onClick={() => navigateTo('project-detail', project.id)} // Clique pour voir le détail du projet
+              style={{ animationDelay: `${index * 0.1}s` }} // Animation décalée pour chaque carte
             >
-              <div className="relative overflow-hidden rounded-t-2xl">
+              <div className="card-image-container"> {/* Conteneur de l'image du projet */}
                 <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-full h-32 sm:h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  src={project.imageUrl} // Image du projet
+                  alt={project.title} // Texte alternatif
+                  className="card-image"
                 />
-                <div className="absolute top-4 right-4 flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-white text-xs bg-black/50 px-1 sm:px-2 py-1 rounded">Actif</span>
+                <div className="status-badge"> {/* Badge d'état du projet */}
+                  <div className="status-indicator"></div> {/* Indicateur visuel (ex: rond vert) */}
+                  <span>Actif</span> {/* Texte d'état */}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="image-overlay"></div> {/* Overlay sur l'image */}
               </div>
               
-              <div className="spacing-responsive-xs">
-                <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>2024</span>
-                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2" />
-                  <span>3 mois</span>
-                  <Star className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 text-yellow-500" />
-                  <span>Featured</span>
+              <div className="card-content"> {/* Contenu de la carte projet */}
+                <div className="project-meta"> {/* Métadonnées du projet */}
+                  <Calendar className="meta-icon" /> {/* Icône calendrier */}
+                  <span>{project.year}</span> {/* Année propre à chaque projet */}
+                  <Clock className="meta-icon" /> {/* Icône horloge */}
+                  <span>{project.duration}</span> {/* Durée propre à chaque projet */}
+                  {/* Suppression de l'étoile et du texte Featured */}
                 </div>
                 
-                <h3 className="text-responsive-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">
+                <h3 className="project-title"> {/* Titre du projet */}
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-responsive-sm">
+                <p className="project-description"> {/* Description du projet */}
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="tech-tags"> {/* Liste des technologies */}
                   {project.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded-full font-medium"
+                      className="tech-tag"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-sm rounded-full font-medium">
+                    <span className="more-tech-tag">
                       +{project.technologies.length - 3}
                     </span>
                   )}
                 </div>
                 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                <div className="card-footer"> {/* Pied de la carte projet */}
+                  <div className="project-links"> {/* Liens vers le code et la démo */}
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                      className="github-link"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Github size={18} />
+                      <Github className="link-icon" /> {/* Icône GitHub */}
                       Code
                     </a>
                     {project.demoUrl && (
@@ -134,15 +131,15 @@ const ProjectsPage = () => {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium"
+                        className="demo-link"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <ExternalLink size={18} />
+                        <ExternalLink className="link-icon" /> {/* Icône démo */}
                         Demo
                       </a>
                     )}
                   </div>
-                  <button className="btn-more text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium text-sm">
+                  <button className="see-more"> {/* Bouton voir plus */}
                     Voir plus →
                   </button>
                 </div>
@@ -151,11 +148,10 @@ const ProjectsPage = () => {
           ))}
         </div>
 
+        {/* Message si aucun projet */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
-              Aucun projet trouvé pour cette technologie.
-            </p>
+          <div className="no-projects"> {/* Message d'absence de projet */}
+            <p>Aucun projet trouvé pour cette technologie.</p>
           </div>
         )}
       </div>
@@ -163,4 +159,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default ProjectsPage; // Export du composant

@@ -8,9 +8,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectsPage from './components/ProjectsPage';
 import ProjectDetail from './components/ProjectDetail';
+import { useLocation } from 'react-router-dom';
 
 const AppContent = () => {
   const { currentPage } = useNavigation();
+  const location = useLocation();
 
   useEffect(() => {
     // Update document title and meta description for SEO
@@ -65,7 +67,7 @@ const AppContent = () => {
       default:
         return (
           <main>
-            <Hero />
+            <Hero key={location.pathname} />
             <About />
             <Contact />
           </main>

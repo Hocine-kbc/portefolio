@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, User, MessageSquare, Sparkles } from 'lucide-react';
 import '../styles/Contact.scss';
-<<<<<<< HEAD
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = 'service_wnsf7qn';
@@ -13,21 +12,12 @@ const Contact = () => {
     nom: '',
     prenom: '',
     societe: '',
-=======
-
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
->>>>>>> b04078019df7dade303a0ed1bd22b0a610808f39
     email: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-<<<<<<< HEAD
   const [error, setError] = useState('');
-=======
->>>>>>> b04078019df7dade303a0ed1bd22b0a610808f39
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +30,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-<<<<<<< HEAD
     setError('');
     
     // Préparation des variables pour EmailJS
@@ -62,16 +51,6 @@ const Contact = () => {
       setIsSubmitting(false);
       setError("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou me contacter directement par email.");
     }
-=======
-    
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    
-    setTimeout(() => setIsSubmitted(false), 5000);
->>>>>>> b04078019df7dade303a0ed1bd22b0a610808f39
   };
 
   return (
@@ -196,7 +175,6 @@ const Contact = () => {
               )}
 
               <form onSubmit={handleSubmit} className="form">
-<<<<<<< HEAD
                 {error && (
                   <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>
                     {error}
@@ -211,23 +189,11 @@ const Contact = () => {
                     id="nom"
                     name="nom"
                     value={formData.nom}
-=======
-                <div className="form-group">
-                  <label htmlFor="name">
-                    Nom complet *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
->>>>>>> b04078019df7dade303a0ed1bd22b0a610808f39
                     onChange={handleInputChange}
                     required
                     placeholder="Votre nom"
                   />
                 </div>
-<<<<<<< HEAD
                 <div className="form-group">
                   <label htmlFor="prenom">
                     Prénom *
@@ -255,8 +221,6 @@ const Contact = () => {
                     placeholder="Nom de votre société (optionnel)"
                   />
                 </div>
-=======
->>>>>>> b04078019df7dade303a0ed1bd22b0a610808f39
 
                 <div className="form-group">
                   <label htmlFor="email">
