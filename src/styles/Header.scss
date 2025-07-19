@@ -1,0 +1,53 @@
+@import '../index.scss';
+
+.header-creative {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  
+  .dark & {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.98) 0%, rgba(51, 65, 85, 0.95) 100%);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  }
+  
+  @include respond-to('xs') {
+    padding: 0rem 0;
+  }
+  
+  @include respond-to('md') {
+    padding: 0.25rem 0;
+  }
+} 
+
+.header-btn-active {
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  box-shadow: none;
+}
+.header-btn-active * {
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+} 
+
+.header-btn-icon-active {
+  color: #6366f1 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+} 
+
+.logo-invert {
+  /* Filtre bleu vif pour logo sur fond clair */
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(7492%) hue-rotate(210deg) brightness(95%) contrast(101%);
+} 
+
+.dark .logo-invert {
+  filter: none !important;
+} 

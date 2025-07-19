@@ -1,0 +1,23 @@
+@import '../index.scss';
+
+.project-card {
+  @extend .modern-card;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:hover .project-image {
+    transform: scale(1.05);
+  }
+  
+  .project-image {
+    transition: transform 0.5s ease;
+    
+    @include respond-to('xs') {
+      height: 12rem;
+    }
+    
+    @include respond-to('md') {
+      height: 16rem;
+    }
+  }
+} 
