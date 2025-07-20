@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Github, ExternalLink, Code, Lightbulb, Wrench, Calendar, Clock, Star, Users } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
+import '../styles/ProjectDetail.scss';
 import projectsData from '../data/projects.json';
 
 const ProjectDetail = () => {
@@ -27,49 +28,47 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
+    <div className="project-detail">
       {/* Hero Section */}
-      <div className="relative h-96 overflow-hidden">
+      <div className="project-detail__hero">
         <img
           src={project.imageUrl}
           alt={project.title}
-          className="w-full h-full object-cover"
+          className="project-detail__hero-image"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
-        <div className="absolute inset-0 flex items-center">
+        <div className="project-detail__hero-overlay"></div>
+        <div className="project-detail__hero-content">
           <div className="container mx-auto px-6">
-            <button
-              onClick={() => navigateTo('projects')}
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium mb-6"
-            >
-              <ArrowLeft size={20} />
-              Retour aux projets
+            <button className="project-detail__back-btn" onClick={() => navigateTo('projects')} aria-label="Retour aux projets">
+              <ArrowLeft size={24} className="back-btn__icon" />
+              <span className="back-btn__text">Retour aux projets</span>
             </button>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            <h1 className="project-detail__title">
               {project.title}
             </h1>
             
-            <div className="flex items-center gap-6 text-white/80 mb-6">
-              <div className="flex items-center gap-2">
+            <div className="project-detail__meta">
+              {/* Année du projet (dynamique depuis le JSON) */}
+              <div className="project-detail__meta-item">
                 <Calendar size={18} />
-                <span>2024</span>
+                <span>{project.year}</span>
               </div>
-              <div className="flex items-center gap-2">
+              {/* Durée du projet (dynamique depuis le JSON) */}
+              <div className="project-detail__meta-item">
                 <Clock size={18} />
-                <span>3 mois</span>
+                <span>{project.duration}</span>
               </div>
-              <div className="flex items-center gap-2">
+              {/* Équipe du projet (dynamique depuis le JSON) */}
+              <div className="project-detail__meta-item">
                 <Users size={18} />
-                <span>Projet solo</span>
+                <span>{project.team}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Star size={18} className="text-yellow-400" />
-                <span>Featured</span>
-              </div>
+              {/* Statut Featured (actuellement statique) */}
+            
             </div>
             
-            <div className="flex items-center gap-6">
+            <div className="project-detail__actions">
               <a
                 href={project.githubUrl}
                 target="_blank"
@@ -99,137 +98,147 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 project-detail__content">
         {/* Project Overview */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-16">
-          <div className="lg:col-span-2">
-            <div className="modern-card p-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        <div className="project-detail__grid">
+          <div className="project-detail__overview">
+            <div className="modern-card">
+              <h2 className="project-detail__overview-title">
                 À propos du projet
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
+              <p className="project-detail__overview-description">
                 {project.longDescription}
               </p>
               
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="creative-card p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+              <div className="project-detail__overview-challenges-solutions">
+                <div className="project-detail__challenge-card">
+                  <div className="creative-card">
+                    <h3 className="project-detail__challenge-card-title">
                     <Lightbulb className="w-6 h-6 text-yellow-500" />
                     Défis Rencontrés
                   </h3>
-                  <ul className="space-y-3">
+                    <ul className="project-detail__challenge-card-list">
                     {project.challenges.map((challenge, index) => (
-                      <li key={index} className="text-gray-700 dark:text-gray-300 flex items-start gap-3">
-                        <span className="text-red-500 mt-1 font-bold">•</span>
+                        <li key={index}>
+                          <span className="challenge-bullet">•</span>
                         {challenge}
                       </li>
                     ))}
                   </ul>
+                  </div>
                 </div>
                 
-                <div className="creative-card p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                <div className="project-detail__solution-card">
+                  <div className="creative-card">
+                    <h3 className="project-detail__solution-card-title">
                     <Wrench className="w-6 h-6 text-green-500" />
                     Solutions Apportées
                   </h3>
-                  <ul className="space-y-3">
+                    <ul className="project-detail__solution-card-list">
                     {project.solutions.map((solution, index) => (
-                      <li key={index} className="text-gray-700 dark:text-gray-300 flex items-start gap-3">
-                        <span className="text-green-500 mt-1 font-bold">✓</span>
+                        <li key={index}>
+                          <span className="solution-bullet">✓</span>
                         {solution}
                       </li>
                     ))}
                   </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="space-y-6">
-            <div className="modern-card p-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+          <div className="project-detail__sidebar">
+            <div className="project-detail__tech-card">
+              <div className="modern-card">
+                <h3 className="project-detail__tech-card-title">
                 <Code className="w-6 h-6 text-blue-500" />
                 Technologies
               </h3>
-              <div className="flex flex-wrap gap-3">
+                <div className="project-detail__tech-card-list">
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                      className="project-detail__tech-card-tag"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-            </div>
-            
-            <div className="modern-card p-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                Informations du projet
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Statut</span>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-600 dark:text-green-400 font-medium">Actif</span>
-                  </div>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Durée</span>
-                  <span className="text-gray-900 dark:text-white font-medium">2 mois</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Équipe</span>
-                  <span className="text-gray-900 dark:text-white font-medium">Solo</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Année</span>
-                  <span className="text-gray-900 dark:text-white font-medium">2025</span>
-                </div>
               </div>
             </div>
             
-            <div className="modern-card p-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <div className="project-detail__info-card">
+              <div className="modern-card">
+                <h3 className="project-detail__info-card-title">
+                Informations du projet
+              </h3>
+              <div className="project-detail__info-card-list">
+  <div className="project-detail__info-card-item">
+    <span className="project-detail__info-card-label">Statut</span>
+    <div className="project-detail__info-card-value--status">
+      <div className="status-dot"></div>
+      <span>Actif</span>
+    </div>
+  </div>
+  <div className="project-detail__info-card-item">
+    <span className="project-detail__info-card-label">Durée</span>
+    <span className="project-detail__info-card-value">{project.duration}</span>
+  </div>
+  <div className="project-detail__info-card-item">
+    <span className="project-detail__info-card-label">Équipe</span>
+    <span className="project-detail__info-card-value">Solo</span>
+  </div>
+  <div className="project-detail__info-card-item">
+    <span className="project-detail__info-card-label">Année</span>
+    <span className="project-detail__info-card-value">{project.year}</span>
+  </div>
+</div>
+              </div>
+            </div>
+            
+            <div className="project-detail__links-card">
+              <div className="modern-card">
+                <h3 className="project-detail__links-card-title">
                 Liens du projet
               </h3>
-              <div className="space-y-3">
+                <div className="project-detail__links-card-list">
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                    className="project-detail__links-card-item"
                 >
-                  <Github size={20} className="text-gray-700 dark:text-gray-300" />
-                  <span className="text-gray-900 dark:text-white font-medium">Code source</span>
+                    <Github size={20} className="icon" />
+                    <span className="text">Code source</span>
                 </a>
                 {project.demoUrl && (
                   <a
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      className="project-detail__links-card-item"
                   >
-                    <ExternalLink size={20} className="text-gray-700 dark:text-gray-300" />
-                    <span className="text-gray-900 dark:text-white font-medium">Démo en ligne</span>
+                      <ExternalLink size={20} className="icon" />
+                      <span className="text">Démo en ligne</span>
                   </a>
                 )}
+              </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
-          <div className="modern-card p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="project-detail__cta">
+          <div className="modern-card">
+            <h3 className="project-detail__cta-title">
               Intéressé par ce projet ?
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <p className="project-detail__cta-description">
               N'hésitez pas à me contacter pour discuter de projets similaires ou pour toute question technique.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="project-detail__cta-actions">
               <button
                 onClick={() => {
                   navigateTo('home');

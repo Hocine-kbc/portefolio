@@ -23,12 +23,9 @@ const ProjectsPage = () => {
       <div className="container"> {/* Conteneur centré pour le contenu */}
         {/* Header de la page */}
         <div className="header"> {/* Section du bouton retour */}
-          <button
-            onClick={() => navigateTo('home')} // Clique pour revenir à l'accueil
-            className="back-button"
-          >
-            <ArrowLeft className="icon" /> {/* Icône flèche */}
-            Retour à l'accueil {/* Texte du bouton */}
+          <button className="project-detail__back-btn projects-back-btn" onClick={() => navigateTo('home')} aria-label="Retour à l'accueil" style={{ marginTop: '2rem' }}>
+            <ArrowLeft size={24} className="back-btn__icon" />
+            <span className="back-btn__text">Retour à l'accueil</span>
           </button>
         </div>
 

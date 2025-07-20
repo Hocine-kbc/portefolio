@@ -95,3 +95,25 @@
     padding: 0.2rem 0.5rem;
   }
 } 
+
+.header-creative.transparent, .header-creative.isScrolled, .header-creative.scrolled {
+  color: #22223b;
+  .icon, svg {
+    color: #22223b !important;
+  }
+  .header-btn-active, .header-btn-icon-active {
+    color: #2563eb !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+  }
+  .header {
+    color: #22223b;
+    .back-button, .project-detail__back-btn, button {
+      color: #22223b;
+      svg {
+        color: #22223b !important;
+      }
+    }
+  }
+} 

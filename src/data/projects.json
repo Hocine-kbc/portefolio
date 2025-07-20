@@ -1,72 +1,77 @@
 [
-    {
-      "id": "1",
-      "title": "Booki",
-      "description": "Site de réservation d’hébergements et d’activités",
-      "longDescription": "Création d’un site responsive en HTML et CSS permettant aux utilisateurs de rechercher des hébergements et activités à partir d’une maquette Figma. Le projet met l’accent sur la structure sémantique du HTML, la mise en page en Flexbox et Grid, et la compatibilité multi-écrans.",
-      "challenges": [
-        "Reproduction fidèle de la maquette Figma",
-        "Responsive design sur toutes tailles d’écran",
-        "Utilisation correcte de la sémantique HTML",
-        "Structure CSS claire et maintenable"
-      ],
-      "solutions": [
-        "Organisation du code en sections réutilisables",
-        "Utilisation de Flexbox et Grid pour la mise en page",
-        "Balises HTML5 adaptées pour l’accessibilité",
-        "Commentaires et indentation pour faciliter la lecture du code"
-      ],
-      "technologies": ["HTML5/CSS3", "Figma"],
-      "githubUrl": "https://github.com/Hocine-kbc/booki",
-      "imageUrl": "src/images/booki.png",
-      "year": 2023,
-      "duration": "2 semaines"
-    },
-    {
-      "id": "2",
-      "title": "Kasa",
-      "description": "Application de location d’appartements en React",
-      "longDescription": "Refonte d’un site de location avec React, incluant la navigation entre pages, l’affichage dynamique des logements via un fichier JSON, et la gestion de composants comme les carrousels, collapses et système de routing. Le projet utilise Sass pour le style et respecte les bonnes pratiques de React.",
-      "challenges": [
-        "Architecture du projet React",
-        "Navigation dynamique via React Router",
-        "Animations des composants UI (carrousel, collapse)",
-        "Gestion des erreurs de routes"
-      ],
-      "solutions": [
-        "Création de composants modulaires et réutilisables",
-        "Utilisation de React Router DOM pour la navigation",
-        "Mise en place de transitions fluides avec CSS",
-        "Page 404 personnalisée pour les routes invalides"
-      ],
-      "technologies": ["React", "Sass", "React Router", "JSON"],
-      "githubUrl": "https://github.com/Hocine-kbc/Cr-ez_une_application_web_de_location_immobili-re_avec_React",
-      "imageUrl": "src/images/kasaa.png",
-      "year": 2025,
-      "duration": "1 mois"
-    },
-    {
-      "id": "3",
-      "title": "Mon Vieux Grimoire",
-      "description": "API sécurisée de gestion et notation de livres",
-      "longDescription": "Développement complet du backend d’un site de référencement de livres avec Node.js, Express et MongoDB. L’API permet de créer, modifier, supprimer et noter des livres, avec système d’authentification sécurisé, gestion d’images, et calcul des moyennes des notes.",
-      "challenges": [
-        "Authentification et sécurisation des routes",
-        "Gestion des fichiers (images de couverture)",
-        "Mise en place des règles d’ownership",
-        "Calcul dynamique des moyennes de notation"
-      ],
-      "solutions": [
-        "JWT pour sécuriser les accès utilisateurs",
-        "Multer et Sharp pour l’upload et l’optimisation des images",
-        "Middleware personnalisé pour vérifier l’ownership",
-        "Algorithme de calcul de moyenne après chaque notation"
-      ],
-      "technologies": ["Node.js", "Express", "MongoDB", "JWT", "Multer", "Sharp"],
-      "githubUrl": "https://github.com/Hocine-kbc/D-veloppez-le-back-end-d-un-site-de-notation-de-livres",
-      "imageUrl": "src/images/MVG.png",
-      "year": 2025,
-      "duration": "3 semaines"
-    }
-  ]
-  
+  {
+    "id": "1",
+    "title": "Booki",
+    "description": "Site de réservation d’hébergements et d’activités",
+    "longDescription": "Création d’un site responsive en HTML et CSS permettant aux utilisateurs de rechercher des hébergements et activités à partir d’une maquette Figma. Le projet met l’accent sur la structure sémantique du HTML, la mise en page en Flexbox et Grid, et la compatibilité multi-écrans.",
+    "challenges": [
+      "Reproduction fidèle de la maquette Figma",
+      "Responsive design sur toutes tailles d’écran",
+      "Utilisation correcte de la sémantique HTML",
+      "Structure CSS claire et maintenable"
+    ],
+    "solutions": [
+      "Organisation du code en sections réutilisables",
+      "Utilisation de Flexbox et Grid pour la mise en page",
+      "Balises HTML5 adaptées pour l’accessibilité",
+      "Commentaires et indentation pour faciliter la lecture du code"
+    ],
+    "technologies": ["HTML5/CSS3", "Figma"],
+    "githubUrl": "https://github.com/Hocine-kbc/booki",
+    "imageUrl": "src/images/booki.png",
+    "year": 2025,
+    "duration": "2 semaines",
+    "status": "Actif",
+    "team": "Solo"
+  },
+  {
+    "id": "2",
+    "title": "Kasa",
+    "description": "Application de location d’appartements en React",
+    "longDescription": "Refonte d’un site de location avec React, incluant la navigation entre pages, l’affichage dynamique des logements via un fichier JSON, et la gestion de composants comme les carrousels, collapses et système de routing. Le projet utilise Sass pour le style et respecte les bonnes pratiques de React.",
+    "challenges": [
+      "Architecture du projet React",
+      "Navigation dynamique via React Router",
+      "Animations des composants UI (carrousel, collapse)",
+      "Gestion des erreurs de routes"
+    ],
+    "solutions": [
+      "Création de composants modulaires et réutilisables",
+      "Utilisation de React Router DOM pour la navigation",
+      "Mise en place de transitions fluides avec CSS",
+      "Page 404 personnalisée pour les routes invalides"
+    ],
+    "technologies": ["React", "Sass", "React Router", "JSON"],
+    "githubUrl": "https://github.com/Hocine-kbc/Cr-ez_une_application_web_de_location_immobili-re_avec_React",
+    "imageUrl": "src/images/kasaa.png",
+    "year": 2025,
+    "duration": "1 mois",
+    "status": "Actif",
+    "team": "Solo"
+  },
+  {
+    "id": "3",
+    "title": "Mon Vieux Grimoire",
+    "description": "API sécurisée de gestion et notation de livres",
+    "longDescription": "Développement complet du backend d’un site de référencement de livres avec Node.js, Express et MongoDB. L’API permet de créer, modifier, supprimer et noter des livres, avec système d’authentification sécurisé, gestion d’images, et calcul des moyennes des notes.",
+    "challenges": [
+      "Authentification et sécurisation des routes",
+      "Gestion des fichiers (images de couverture)",
+      "Mise en place des règles d’ownership",
+      "Calcul dynamique des moyennes de notation"
+    ],
+    "solutions": [
+      "JWT pour sécuriser les accès utilisateurs",
+      "Multer et Sharp pour l’upload et l’optimisation des images",
+      "Middleware personnalisé pour vérifier l’ownership",
+      "Algorithme de calcul de moyenne après chaque notation"
+    ],
+    "technologies": ["Node.js", "Express", "MongoDB", "JWT", "Multer", "Sharp"],
+    "githubUrl": "https://github.com/Hocine-kbc/D-veloppez-le-back-end-d-un-site-de-notation-de-livres",
+    "imageUrl": "src/images/MVG.png",
+    "year": 2025,
+    "duration": "3 semaines",
+    "status": "Actif",
+    "team": "Solo"
+  }
+]
