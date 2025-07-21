@@ -73,5 +73,32 @@
     "duration": "3 semaines",
     "status": "Actif",
     "team": "Solo"
+  },
+
+  {
+    "id": "4",
+    "title": "Sophie Bluel",
+    "description": "Portfolio dynamique d'une architecte d'intérieur",
+    "longDescription": "Refonte complète du portfolio d’une architecte d’intérieur avec une interface d’administration permettant de gérer dynamiquement les projets. Le site consomme une API REST sécurisée, avec authentification, modale d’édition, et upload d’images.",
+    "challenges": [
+      "Consommer une API REST sécurisée",
+      "Gérer l’authentification avec JWT",
+      "Créer une modale fonctionnelle pour l’administration",
+      "Uploader dynamiquement des images de projets"
+    ],
+    "solutions": [
+      "Utilisation de fetch pour les appels API",
+      "Gestion du token JWT via localStorage",
+      "Création d’une modale responsive avec gestion DOM",
+      "Upload d’images via FormData et validation en front"
+    ],
+    "technologies": ["HTML5/CSS3", "JavaScript", "JWT", "Fetch", "API REST"],
+    "githubUrl": "https://github.com/Hocine-kbc/Cr-ez-une-page-web-dynamique-avec-JavaScript",
+    "imageUrl": "src/images/sophie.png",
+    "year": 2025,
+    "duration": "3 semaines",
+    "status": "Terminé",
+    "team": "Solo"
   }
+  
 ]

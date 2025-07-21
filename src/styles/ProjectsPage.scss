@@ -105,11 +105,31 @@
 }
 
 .filter-button { // Bouton de filtre
+  position: relative;
+  overflow: hidden;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-weight: 500;
   transition: all 0.3s;
   border: 1px solid #e5e7eb;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 100%);
+    pointer-events: none;
+    transition: none;
+    z-index: 2;
+  }
+  &:hover::before, &:focus::before {
+    animation: mirror-gloss-btn 0.3s linear;
+  }
 
   &:not(.active) { // Style bouton inactif
     background-color: white;
@@ -125,6 +145,12 @@
     color: white;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
+}
+
+.filter-button:focus, .filter-button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
 
 .projects-grid { // Grille des projets
@@ -277,24 +303,65 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .project-links {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.github-link, .demo-link {
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #185557;
+  color: #fff !important;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1.25rem;
+  font-weight: 600;
+  font-size: 0.90rem;
+  box-shadow: 0 2px 8px rgba(16,185,129,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background: #059669;
+    color: #fff !important;
+    box-shadow: 0 4px 16px rgba(16,185,129,0.18);
+    transform: translateY(-2px) scale(1.04);
+    outline: none;
+  }
+  svg {
+    color: #fff !important;
+  }
+}
+
+.github-link svg {
+  width: 18px !important;
+  height: 18px !important;
+  color: #fff !important;
+}
+
+.demo-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: #4b5563;
   font-weight: 500;
   transition: color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   &:hover {
     color: #2563eb;
+    transform: scale(1.05);
+
   }
 
   .link-icon {
@@ -308,13 +375,33 @@
 }
 
 .see-more {
-  color: #2563eb;
-  font-weight: 500;
-  font-size: 0.875rem;
-  transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #323997;
+  color: #fff !important;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1.25rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
 
-  &:hover {
-    color: #1d4ed8;
+  &:hover, &:focus {
+    background: #4049ca;
+    color: #fff !important;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.18);
+    transform: translateY(-2px) scale(1.04);
+    outline: none;
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+    color: #fff !important;
   }
 }
 
@@ -347,6 +434,23 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes mirror-gloss-btn {
+  0% {
+    left: -60%;
+    opacity: 0.1;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.25;
+  }
+  100% {
+    left: 110%;
+    opacity: 0;
   }
 }
 
@@ -406,6 +510,8 @@
 
   .github-link, .demo-link {
     color: #9ca3af;
+    border-radius: 2rem;
+  
 
     &:hover {
       color: #60a5fa;
@@ -422,6 +528,10 @@
     &:hover {
       color: #93c5fd;
     }
+  }
+
+  .filter-button {
+    box-shadow: none;
   }
 }
 
@@ -467,4 +577,29 @@
   .card-image-container {
     height: 12rem;
   }
+}
+
+.filter-button.active.filter-html5css3 {
+  background-color: #f59e42;
+  color: #fff;
+}
+.filter-button.active.filter-react {
+  background-color: #61dafb;
+  color: #22223b;
+}
+.filter-button.active.filter-nodejs {
+  background-color: #3c873a;
+  color: #fff;
+}
+.filter-button.active.filter-mongodb {
+  background-color: #13aa52;
+  color: #fff;
+}
+.filter-button.active.filter-all {
+  background-color: #2563eb;
+  color: #fff;
+}
+.filter-button.active.filter-javascript {
+  background-color: #f7df1e;
+  color: #22223b;
 }

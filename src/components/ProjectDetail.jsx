@@ -179,8 +179,8 @@ const ProjectDetail = () => {
     <div className="project-detail__info-card-value--status">
       <div className="status-dot"></div>
       <span>Actif</span>
-    </div>
-  </div>
+                  </div>
+                </div>
   <div className="project-detail__info-card-item">
     <span className="project-detail__info-card-label">Durée</span>
     <span className="project-detail__info-card-value">{project.duration}</span>
@@ -188,12 +188,12 @@ const ProjectDetail = () => {
   <div className="project-detail__info-card-item">
     <span className="project-detail__info-card-label">Équipe</span>
     <span className="project-detail__info-card-value">Solo</span>
-  </div>
+                </div>
   <div className="project-detail__info-card-item">
     <span className="project-detail__info-card-label">Année</span>
     <span className="project-detail__info-card-value">{project.year}</span>
-  </div>
-</div>
+                </div>
+                </div>
               </div>
             </div>
             

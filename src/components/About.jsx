@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigation } from '../contexts/NavigationContext';
-import { Code, Laptop, Server, Database, GitBranch, Palette, Award, Download, Zap, Sparkles, Target, Heart } from 'lucide-react';
+import { Code, Laptop, Server, Database, GitBranch, Palette, Award, Download, Zap, Sparkles, Target, Heart, Lightbulb, Coffee, Users } from 'lucide-react';
 import { SiHtml5, SiCss3, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiGit, SiGithub, SiFigma, SiPostman, SiTrello, SiNotion, SiExpress, SiJsonwebtokens } from 'react-icons/si';
 import { FaLock, FaFileUpload, FaCog, FaDatabase } from 'react-icons/fa';
 import '../styles/About.scss';
@@ -95,6 +95,23 @@ const About = () => {
     };
   }, [skills.length]);
 
+  const philosophyRef = useRef();
+
+  const handleMouseEnter = () => {
+    const el = philosophyRef.current;
+    if (!el) return;
+    el.classList.remove('animate-mirror-out');
+    void el.offsetWidth;
+    el.classList.add('animate-mirror-in');
+  };
+  const handleMouseLeave = () => {
+    const el = philosophyRef.current;
+    if (!el) return;
+    el.classList.remove('animate-mirror-in');
+    void el.offsetWidth;
+    el.classList.add('animate-mirror-out');
+  };
+
   return (
     <section id="a-propos" className="about-section">
       <div className="decoration sparkle">
@@ -115,93 +132,80 @@ const About = () => {
           </p>
         </div>
 
+        {/* Mon Parcours en grille, AVANT la section Compétences Techniques */}
+        <div className="parcours-grid">
+          <div className="parcours-card parcours-card--blue">
+            <div className="parcours-card__icon"><Lightbulb size={28} /></div>
+            <h4>Formation</h4>
+            <p>
+              Issu d’une formation d’ingénieur en Génie des Systèmes Automatisés, j’ai complété mon parcours par une spécialisation intensive en développement web chez OpenClassrooms. Cette double formation me permet d’allier rigueur d’ingénieur et agilité de développeur dans la conception de solutions web modernes et performantes.
+            </p>
+          </div>
+          <div className="parcours-card parcours-card--purple">
+            <div className="parcours-card__icon"><Award size={28} /></div>
+            <h4>Spécialisation</h4>
+            <p>
+              Développeur full-stack passionné, je conçois des applications web complètes, robustes et évolutives, du front-end dynamique (React, Sass) au back-end structuré (Node.js, Express, MongoDB).
+            </p>
+            <ul className="specialisation-list">
+              <li>Intégration de maquettes responsives et pixel-perfect</li>
+              <li>Création et sécurisation d’API REST</li>
+              <li>Gestion des utilisateurs, des données et de l’authentification</li>
+              <li>Optimisation des performances, accessibilité et SEO</li>
+            </ul>
+            <p>
+              J’accorde une grande importance à la qualité du code, à la maintenabilité et à la satisfaction utilisateur.
+            </p>
+          </div>
+          <div className="parcours-card parcours-card--green">
+            <div className="parcours-card__icon"><Sparkles size={28} /></div>
+            <h4>Passion</h4>
+            <p>
+              Toujours en veille technologique, je reste attentif aux évolutions du web pour enrichir mes compétences, adopter les meilleures pratiques et proposer des solutions innovantes, fiables et adaptées aux besoins métiers.
+            </p>
+          </div>
+        </div>
+
+        {/* Philosophy Section */}
+        <div
+          className="philosophy-section"
+          ref={philosophyRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="philosophy-header">
+            <Coffee className="philosophy-header-icon" />
+            <h3 className="philosophy-title">Ma Philosophie</h3>
+          </div>
+          <div className="philosophy-quote-block">
+            <blockquote className="philosophy-quote">
+              "Le code propre n'est pas écrit en suivant un ensemble de règles. Vous savez que vous travaillez sur du code propre quand chaque routine que vous lisez est à peu près ce à quoi vous vous attendiez."
+            </blockquote>
+            <div className="philosophy-badges">
+              <div className="philosophy-badge philosophy-badge-blue">
+                <Code className="philosophy-badge-icon" />
+                <span className="philosophy-badge-label">Code Clean</span>
+              </div>
+              <div className="philosophy-badge philosophy-badge-green">
+                <Zap className="philosophy-badge-icon" />
+                <span className="philosophy-badge-label">Performance</span>
+              </div>
+              <div className="philosophy-badge philosophy-badge-purple">
+                <Users className="philosophy-badge-icon" />
+                <span className="philosophy-badge-label">UX/UI</span>
+              </div>
+              <div className="philosophy-badge philosophy-badge-orange">
+                <Target className="philosophy-badge-icon" />
+                <span className="philosophy-badge-label">Objectifs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid">
           <div className="left-column">
-            <div className="card journey">
-              <h3>
-                <Award className="icon" />
-                Mon Parcours
-              </h3>
-              
-              <div className="content">
-                <div className="block formation">
-                  <div className="block-header">
-                    <div className="dot"></div>
-                    <span>Formation</span>
-                  </div>
-                  <p>
-                  Issu d’une formation d’ingénieur en Génie des Systèmes Automatisés, 
-                  j’ai complété mon parcours par une spécialisation intensive en 
-                  développement web chez OpenClassrooms. Cette double formation me permet 
-                  d’allier rigueur d’ingénieur et agilité de développeur dans la
-                   conception de solutions web modernes et performantes.
-                  </p>
-                </div>
-                
-                <div className="block specialization">
-                  <div className="block-header">
-                    <div className="dot"></div>
-                    <span>Spécialisation</span>
-                  </div>
-                  <p>
-                    Développeur full-stack passionné, je conçois des applications web complètes, robustes et évolutives, du front-end dynamique (React, Sass) au back-end structuré (Node.js, Express, MongoDB).
-                  </p>
-                  <ul className="specialisation-list">
-                    <li>Intégration de maquettes responsives et pixel-perfect</li>
-                    <li>Création et sécurisation d’API REST</li>
-                    <li>Gestion des utilisateurs, des données et de l’authentification</li>
-                    <li>Optimisation des performances, accessibilité et SEO</li>
-                  </ul>
-                  <p>
-                    J’accorde une grande importance à la qualité du code, à la maintenabilité et à la satisfaction utilisateur.
-                  </p>
-                </div>
-                
-                <div className="block passion">
-                  <div className="block-header">
-                    <div className="dot"></div>
-                    <span>Passion</span>
-                  </div>
-                  <p>
-                  Toujours en veille technologique, je reste attentif aux évolutions du web pour 
-                  enrichir mes compétences, adopter les meilleures pratiques et proposer des solutions 
-                  innovantes, fiables et adaptées aux besoins métiers.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="card philosophy">
-              <h4>
-                <Heart className="icon" />
-                Ma Philosophie
-              </h4>
-              <div className="philosophy-content">
-                <p className="quote">
-                  "Le code propre n'est pas écrit en suivant un ensemble de règles. 
-                  Vous savez que vous travaillez sur du code propre quand chaque routine 
-                  que vous lisez est à peu près ce à quoi vous vous attendiez."
-                </p>
-                <div className="badges">
-                  <div className="badge">
-                    <Code className="badge-icon" />
-                    <span>Code Clean</span>
-                  </div>
-                  <div className="badge">
-                    <Zap className="badge-icon" />
-                    <span>Performance</span>
-                  </div>
-                  <div className="badge">
-                    <Palette className="badge-icon" />
-                    <span>UX/UI</span>
-                  </div>
-                  <div className="badge">
-                    <Target className="badge-icon" />
-                    <span>Objectifs</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Philosophy Section */}
+            {/* The philosophy-section div was moved outside the grid */}
           </div>
 
           <div className="right-column">

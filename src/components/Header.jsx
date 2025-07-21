@@ -38,6 +38,8 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const isHeaderLight = isScrolled || currentPage === 'projects' || currentPage === 'project-detail';
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -63,8 +65,8 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <button
               onClick={() => handleNavigation('home')}
-              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
-                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+              className={`font-medium transition-none flex items-center gap-2 text-responsive-sm
+                ${isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -73,8 +75,8 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('a-propos')}
-              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
-                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+              className={`font-medium transition-none flex items-center gap-2 text-responsive-sm
+                ${isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -83,8 +85,8 @@ const Header = () => {
             </button>
             <button
               onClick={() => handleNavigation('projects')}
-              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
-                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+              className={`font-medium transition-none flex items-center gap-2 text-responsive-sm
+                ${isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -93,8 +95,8 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className={`font-medium transition-all duration-300 flex items-center gap-2 text-responsive-sm
-                ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}
+              className={`font-medium transition-none flex items-center gap-2 text-responsive-sm
+                ${isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'}
                 hover:text-blue-700
                 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`}
             >
@@ -108,7 +110,7 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white transform hover:scale-110 ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
               }`}
               aria-label="Toggle theme"
             >
@@ -125,7 +127,7 @@ const Header = () => {
                 target={href.startsWith('mailto') ? undefined : "_blank"}
                 rel={href.startsWith('mailto') ? undefined : "noopener noreferrer"}
                 className={`p-2 rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white transform hover:scale-110 ${
-                  isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                  isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
                 }`}
                 aria-label={label}
               >
@@ -139,7 +141,7 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors duration-300 ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
               }`}
               aria-label="Toggle theme"
             >
@@ -156,7 +158,7 @@ const Header = () => {
                 target={href.startsWith('mailto') ? undefined : "_blank"}
                 rel={href.startsWith('mailto') ? undefined : "noopener noreferrer"}
                 className={`p-2 rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white transform hover:scale-110 ${
-                  isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                  isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
                 }`}
                 aria-label={label}
               >
@@ -166,7 +168,7 @@ const Header = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`transition-colors duration-300 ${
-                isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
               }`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -183,7 +185,7 @@ const Header = () => {
                 className={`text-left py-2 transition-colors flex items-center gap-3 ${
                   currentPage === 'home' 
                     ? 'text-blue-600 font-semibold' 
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'
+                    : 'text-gray-700 dark:text-white hover:text-blue-600'
                 }`}
               >
                 <Home size={18} />
@@ -192,7 +194,7 @@ const Header = () => {
               
               <button
                 onClick={() => scrollToSection('a-propos')}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors text-left py-2 flex items-center gap-3"
+                className="text-gray-700 dark:text-white hover:text-blue-600 transition-colors text-left py-2 flex items-center gap-3"
               >
                 <User size={18} />
                 À propos
@@ -203,7 +205,7 @@ const Header = () => {
                 className={`text-left py-2 transition-colors flex items-center gap-3 ${
                   currentPage === 'projects' 
                     ? 'text-blue-600 font-semibold' 
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'
+                    : 'text-gray-700 dark:text-white hover:text-blue-600'
                 }`}
               >
                 <FolderOpen size={18} />
@@ -212,7 +214,7 @@ const Header = () => {
               
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors text-left py-2 flex items-center gap-3"
+                className="text-gray-700 dark:text-white hover:text-blue-600 transition-colors text-left py-2 flex items-center gap-3"
               >
                 <MessageCircle size={18} />
                 Contact

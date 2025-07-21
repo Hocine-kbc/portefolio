@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; // Importation de React et du hook useState
-import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter } from 'lucide-react'; // Importation des icônes
+import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter, ArrowRight } from 'lucide-react'; // Importation des icônes
 import { useNavigation } from '../contexts/NavigationContext'; // Importation du contexte de navigation
 import projectsData from '../data/projects.json'; // Importation des données projets
 import '../styles/ProjectsPage.scss'; // Importation des styles spécifiques à la page projets
@@ -11,7 +11,7 @@ const ProjectsPage = () => {
   const projects = projectsData; // Liste des projets importée
 
   // Liste des technologies pour le filtre
-  const technologies = ['all', 'HTML5/CSS3', 'React', 'Node.js', 'MongoDB'];
+  const technologies = ['all', 'HTML5/CSS3', 'React', 'Node.js', 'MongoDB', 'JavaScript'];
 
   // Filtrage des projets selon la technologie sélectionnée
   const filteredProjects = filter === 'all' 
@@ -49,7 +49,7 @@ const ProjectsPage = () => {
             <button
               key={tech} // Clé unique pour chaque bouton
               onClick={() => setFilter(tech)} // Clique pour changer le filtre
-              className={`filter-button ${filter === tech ? 'active' : ''}`}
+              className={`filter-button filter-${tech.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()} ${filter === tech ? 'active' : ''}`}
             >
               {tech === 'all' ? 'Tous' : tech} {/* Affichage du nom de la techno */}
             </button>
@@ -137,7 +137,8 @@ const ProjectsPage = () => {
                     )}
                   </div>
                   <button className="see-more"> {/* Bouton voir plus */}
-                    Voir plus →
+                    Voir plus&nbsp;
+                    <ArrowRight size={16} />
                   </button>
                 </div>
               </div>
