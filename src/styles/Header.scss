@@ -1,151 +1,136 @@
-@import '../index.scss';
+// Import des fichiers de style globaux
+@import '../index.scss'; // Styles principaux
+@import '_mixins'; // Mixins pour les media queries
 
+// =======================
+// HEADER CRÉATIF - STYLES DE BASE
+// =======================
 .header-creative {
+  // Fond dégradé pour le thème clair
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
-  backdrop-filter: blur(20px);
-  border-bottom: none !important;
+  backdrop-filter: blur(20px); // Effet de flou
+  border-bottom: none; // Suppression de la bordure par défaut
+  height: 80px; // Hauteur fixe
+  min-height: 80px; // Hauteur minimale
+  max-height: 80px; // Hauteur maximale
+  padding: 0; // Pas de padding
 
+  // Styles pour le thème sombre
   .dark & {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.98) 0%, rgba(51, 65, 85, 0.95) 100%);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1); // Bordure subtile en mode sombre
   }
 
-  @include respond-to('xs') {
-    padding: 0rem 0;
-  }
-
-  @include respond-to('md') {
-    padding: 0.25rem 0;
+  // Version mobile
+  @media (max-width: 640px) {
+    height: 64px; // Hauteur réduite
+    min-height: 64px;
+    max-height: 64px;
   }
 }
 
+// =======================
+// BOUTONS DE NAVIGATION
+// =======================
+.nav-button {
+  // Base
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+
+  // Couleurs
+  &--light {
+    color: #374151; // text-gray-700
+    &:hover {
+      color: #1d4ed8; // hover:text-blue-700
+    }
+  }
+
+  &--dark {
+    color: white;
+    &:hover {
+      color: #1d4ed8;
+    }
+  }
+
+  // Icônes
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+// =======================
+// BOUTONS ACTIFS
+// =======================
 .header-btn-active {
-  background: linear-gradient(90deg, #6366f1, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-  box-shadow: none;
-}
-.header-btn-active * {
-  background: inherit;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  background: linear-gradient(90deg, #6366f1, #818cf8); // Dégradé pour le texte
+  -webkit-background-clip: text; // Clip du texte pour le dégradé
+  -webkit-text-fill-color: transparent; // Rend le texte transparent
+  background-clip: text; // Support standard
+  color: transparent; // Fallback
+  font-weight: 700; // Texte en gras
 }
 
 .header-btn-icon-active {
-  color: #6366f1 !important;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  -webkit-text-fill-color: initial !important;
+  color: #6366f1; // Couleur indigo fixe
+  background: none; // Pas de fond
+  -webkit-background-clip: initial; // Reset du clip
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
+// =======================
+// LOGO
+// =======================
 .logo-invert {
-  /* Filtre bleu vif pour logo sur fond clair */
+  // Filtre pour le logo sur fond clair
   filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(7492%) hue-rotate(210deg)
     brightness(95%) contrast(101%);
-}
 
-.dark .logo-invert {
-  filter: none !important;
-}
-
-.language-select {
-  display: flex;
-  align-items: center;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  background: white;
-  border: 1px solid #d1d5db;
-  color: #111827;
-  font-size: 0.95rem;
-  font-weight: 500;
-  min-width: 110px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
-  margin-left: 0.5rem;
-  cursor: pointer;
-  &:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px #3b82f6;
-  }
-  option {
-    color: #111827;
-    background: white;
-    font-size: 1rem;
+  // Reset du filtre en mode sombre
+  .dark & {
+    filter: none;
   }
 }
 
-.dark .language-select {
-  background: #1f2937;
-  border: 1px solid #374151;
-  color: #f3f4f6;
-  option {
-    background: #1f2937;
-    color: #f3f4f6;
+// =======================
+// RESPONSIVE
+// =======================
+@include respond-to('tablette') {
+  .header__nav {
+    gap: 0.5rem; // Espacement réduit entre les boutons
   }
-}
 
-@media (max-width: 1024px) {
-  .language-select {
-    min-width: 90px;
-    font-size: 0.9rem;
-    padding: 0.2rem 0.5rem;
-  }
-}
+  .nav-button {
+    padding: 0.5rem 0.75rem; // Padding réduit
+    font-size: 0.875rem; // Texte légèrement plus petit
+    gap: 0.375rem;
 
-.header-creative.transparent,
-.header-creative.isScrolled,
-.header-creative.scrolled {
-  color: #22223b;
-  .icon,
-  svg {
-    color: #22223b !important;
-  }
-  .header-btn-active,
-  .header-btn-icon-active {
-    color: #2563eb !important;
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
-    -webkit-text-fill-color: initial !important;
-  }
-  .header {
-    color: #22223b;
-    .back-button,
-    .project-detail__back-btn,
-    button {
-      color: #22223b;
-      svg {
-        color: #22223b !important;
-      }
+    svg {
+      width: 1rem; // Icônes plus petites
+      height: 1rem;
     }
   }
 }
 
-.header-creative,
-.header-creative.isScrolled,
-.header-creative.scrolled {
-  height: 80px;
-  min-height: 80px;
-  max-height: 80px;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  transition: none !important;
-}
+@include respond-to('desktop') {
+  .header__nav {
+    gap: 1.5rem; // Retour à l'espacement normal
+  }
 
-@media (max-width: 640px) {
-  .header-creative,
-  .header-creative.isScrolled,
-  .header-creative.scrolled {
-    height: 64px;
-    min-height: 64px;
-    max-height: 64px;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+  .nav-button {
+    padding: 0.5rem 1rem; // Padding normal
+    font-size: 1rem; // Taille normale du texte
+    gap: 0.5rem;
+
+    svg {
+      width: 1.25rem; // Taille normale des icônes
+      height: 1.25rem;
+    }
   }
 }

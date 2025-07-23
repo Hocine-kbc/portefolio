@@ -3,8 +3,12 @@
 // Définition des breakpoints simplifiés
 $breakpoints: (
   mobile: 480px,
+  // Pour les petits mobiles
   tablette: 768px,
-  desktop: 1024px
+  // Pour les tablettes
+  desktop: 1024px,
+  // Pour les ordinateurs
+  large: 1280px // Pour les grands écrans (optionnel),
 );
 
 // Mixin pour les media queries (mobile-first)

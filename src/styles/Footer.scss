@@ -122,6 +122,7 @@
     flex-direction: column; // Colonne verticale
     gap: 0.75rem; // Espacement entre les liens
     text-align: left; // Aligne le texte à gauche
+    padding-left: 9rem;
   }
 
   &__link {
@@ -160,6 +161,7 @@
     justify-content: flex-start; // Aligne à gauche par défaut
     gap: 1rem; // Espacement entre les icônes
     margin-bottom: 1rem; // Marge en bas
+    margin-right: 7rem; // Ajoute un décalage vers la droite
 
     @media (min-width: 768px) {
       justify-content: flex-end; // Aligne à droite sur desktop
@@ -202,6 +204,7 @@
     text-transform: uppercase; // Majuscules
     color: #9ca3af; // Couleur grise
     transition: color 0.3s ease; // Animation douce
+    margin-right: 7rem;
 
     &:hover {
       color: #60a5fa; // Passe en bleu au survol
