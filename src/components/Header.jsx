@@ -164,33 +164,6 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-2">
             <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors duration-300 ${
-                isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
-              }`}
-              aria-label="Toggle theme"
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            {[
-              { icon: Github, href: 'https://github.com', label: 'GitHub' },
-              { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-              { icon: Mail, href: 'mailto:contact@Hocine-dev.fr', label: 'Email' },
-            ].map(({ icon: Icon, href, label }, index) => (
-              <a
-                key={index}
-                href={href}
-                target={href.startsWith('mailto') ? undefined : '_blank'}
-                rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                className={`p-2 rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white transform hover:scale-110 ${
-                  isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
-                }`}
-                aria-label={label}
-              >
-                <Icon size={20} />
-              </a>
-            ))}
-            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`transition-colors duration-300 ${
                 isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'

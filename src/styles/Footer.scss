@@ -1,1 +1,330 @@
-// Styles spécifiques au composant Footer 
+.footer {
+  background-color: #000000; // Couleur de fond noire
+  color: white; // Couleur du texte en blanc
+  padding: 3rem 1.5rem; // Padding haut/bas et gauche/droite
+  position: relative; // Position relative pour les éléments enfants positionnés
+  overflow: hidden; // Cache le débordement des éléments enfants
+
+  // =======================
+  // ICÔNES DE FOND
+  // =======================
+  &__bg-icons {
+    position: absolute; // Positionne les icônes en absolu dans le footer
+    width: 100%; // Largeur totale du footer
+    height: 100%; // Hauteur totale du footer
+    pointer-events: none; // Les icônes ne capturent pas les événements souris
+
+    .footer__icon-sparkles {
+      position: absolute; // Position absolue pour l'icône sparkles
+      top: 2rem; // Décalage du haut
+      right: 2rem; // Décalage de la droite
+      color: rgba(96, 165, 250, 0.3); // Couleur bleue transparente
+      animation: float 6s ease-in-out infinite; // Animation de flottement
+    }
+
+    .footer__icon-code {
+      // position: absolute; // Position absolue pour l'icône code
+      bottom: 2rem; // Décalage du bas
+      left: 2rem; // Décalage de la gauche
+      color: rgba(192, 132, 252, 0.3); // Couleur violette transparente
+      animation: float 6s ease-in-out infinite; // Animation de flottement
+      animation-delay: 2s; // Décalage de l'animation
+    }
+  }
+
+  // =======================
+  // CONTAINER CENTRAL
+  // =======================
+  &__container {
+    position: relative; // Position relative pour le contenu principal
+    z-index: 1; // Place le contenu au-dessus des icônes de fond
+    max-width: 1200px; // Largeur maximale du container
+    margin: auto; // Centre le container horizontalement
+  }
+
+  // =======================
+  // GRILLE DU FOOTER
+  // =======================
+  &__grid {
+    display: grid; // Utilise la grille CSS pour la disposition
+    grid-template-columns: 1fr; // Une colonne par défaut (mobile)
+    gap: 3rem; // Espacement entre les colonnes
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr); // 3 colonnes sur desktop
+    }
+
+    @media (max-width: 767px) {
+      display: flex !important; // Passe en flex sur mobile
+      flex-direction: column !important; // Colonne sur mobile
+      align-items: center !important; // Centre les éléments horizontalement
+      justify-content: center !important; // Centre les éléments verticalement
+      gap: 2rem !important; // Espacement réduit sur mobile
+      text-align: center !important; // Centre le texte sur mobile
+    }
+  }
+
+  // =======================
+  // SECTION MARQUE ET LOGO
+  // =======================
+  &__brand {
+    text-align: left; // Aligne le texte à gauche (desktop)
+  }
+
+  &__logo-group {
+    display: flex; // Affiche les logos en ligne
+    align-items: center; // Centre verticalement les logos
+    gap: 1rem; // Espacement entre les logos
+    cursor: pointer; // Curseur pointeur au survol
+    margin-bottom: 1rem; // Marge en bas
+  }
+
+  &__logo {
+    height: 3rem; // Hauteur du logo
+
+    @media (min-width: 768px) {
+      height: 3.5rem; // Hauteur plus grande sur desktop
+    }
+
+    transition: transform 0.3s ease; // Animation douce au survol
+    &:hover {
+      transform: scale(1.05); // Agrandit le logo au survol
+    }
+  }
+
+  // =======================
+  // DESCRIPTION ET TITRE
+  // =======================
+  &__description {
+    color: #9ca3af; // Couleur de texte grise
+    font-size: 0.95rem; // Taille de police
+    line-height: 1.6; // Hauteur de ligne
+  }
+
+  &__title {
+    font-weight: 600; // Texte en gras
+    margin-bottom: 1rem; // Marge en bas
+    text-transform: uppercase; // Majuscules
+    letter-spacing: 1px; // Espacement des lettres
+    font-size: 0.95rem; // Taille de police
+    text-align: left; // Aligne à gauche par défaut
+
+    @media (min-width: 768px) {
+      text-align: center; // Centre le titre sur desktop
+    }
+  }
+
+  // =======================
+  // LIENS DE NAVIGATION
+  // =======================
+  &__links {
+    display: flex; // Affiche les liens en colonne
+    flex-direction: column; // Colonne verticale
+    gap: 0.75rem; // Espacement entre les liens
+    text-align: left; // Aligne le texte à gauche
+  }
+
+  &__link {
+    background: none; // Pas de fond
+    border: none; // Pas de bordure
+    color: #9ca3af; // Couleur de texte grise
+    text-align: left; // Aligne le texte à gauche
+    cursor: pointer; // Curseur pointeur
+    transition: all 0.3s ease; // Animation douce
+    font-size: 0.95rem; // Taille de police
+
+    &:hover {
+      color: #60a5fa; // Couleur bleue au survol
+      transform: translateX(8px); // Décale le lien vers la droite au survol
+    }
+
+    &-arrow {
+      color: #60a5fa; // Couleur bleue pour la flèche
+      margin-right: 0.5rem; // Espacement à droite de la flèche
+    }
+  }
+
+  // =======================
+  // RÉSEAUX SOCIAUX ET ICÔNES
+  // =======================
+  &__socials {
+    text-align: left; // Aligne à gauche par défaut
+
+    @media (min-width: 768px) {
+      text-align: right; // Aligne à droite sur desktop
+    }
+  }
+
+  &__icons {
+    display: flex; // Affiche les icônes en ligne
+    justify-content: flex-start; // Aligne à gauche par défaut
+    gap: 1rem; // Espacement entre les icônes
+    margin-bottom: 1rem; // Marge en bas
+
+    @media (min-width: 768px) {
+      justify-content: flex-end; // Aligne à droite sur desktop
+    }
+  }
+
+  &__icon {
+    padding: 0.6rem; // Espacement interne
+    border-radius: 0.5rem; // Coins arrondis
+    transition: all 0.3s ease; // Animation douce
+    color: #9ca3af; // Couleur grise
+
+    &:hover {
+      transform: scale(1.1); // Agrandit l'icône au survol
+      color: white; // Passe en blanc au survol
+    }
+
+    &.github:hover {
+      background-color: #374151; // Fond gris foncé au survol GitHub
+    }
+
+    &.linkedin:hover {
+      background-color: #2563eb; // Fond bleu LinkedIn au survol
+    }
+
+    &.mail:hover {
+      background-color: #059669; // Fond vert au survol mail
+    }
+  }
+
+  // =======================
+  // BOUTON REMONTER EN HAUT
+  // =======================
+  &__back-top {
+    display: inline-flex; // Affiche en ligne et flex
+    align-items: center; // Centre verticalement
+    gap: 0.5rem; // Espacement entre les éléments
+    font-size: 0.85rem; // Taille de police
+    margin-top: 1rem; // Marge en haut
+    text-transform: uppercase; // Majuscules
+    color: #9ca3af; // Couleur grise
+    transition: color 0.3s ease; // Animation douce
+
+    &:hover {
+      color: #60a5fa; // Passe en bleu au survol
+    }
+  }
+
+  // =======================
+  // BAS DE PAGE ET CRÉDITS
+  // =======================
+  &__bottom {
+    border-top: 1px solid #1f2937; // Ligne de séparation en haut
+    margin-top: 3rem; // Marge en haut
+    padding-top: 2rem; // Padding en haut
+    text-align: center; // Centre le texte
+  }
+
+  &__credit {
+    display: flex; // Affiche en flex
+    flex-direction: column; // Colonne par défaut
+    align-items: center; // Centre horizontalement
+    gap: 0.5rem; // Espacement entre les éléments
+    color: #ccc; // Couleur grise claire
+    font-size: 0.9rem; // Taille de police
+    margin-bottom: 1rem; // Marge en bas
+
+    @media (min-width: 768px) {
+      flex-direction: row; // Affiche sur une ligne sur desktop
+      justify-content: center; // Centre horizontalement
+    }
+
+    .heart {
+      color: #ef4444; // Rouge pour le cœur
+      animation: pulse 1.5s infinite; // Animation de battement
+    }
+
+    .coffee {
+      color: #facc15; // Jaune pour la tasse de café
+    }
+  }
+
+  // =======================
+  // MÉTA-INFOS (statut, etc.)
+  // =======================
+  &__meta {
+    display: flex; // Affiche en flex
+    flex-wrap: wrap; // Retour à la ligne si besoin
+    justify-content: center; // Centre horizontalement
+    gap: 1rem; // Espacement entre les éléments
+    font-size: 0.85rem; // Taille de police
+    color: #6b7280; // Couleur grise
+
+    .dot {
+      width: 0.5rem; // Taille du point
+      height: 0.5rem;
+      background-color: #10b981; // Vert
+      border-radius: 50%; // Rond
+      animation: pulse 2s infinite; // Animation de pulsation
+    }
+
+    .online {
+      display: flex; // Affiche en flex
+      align-items: center; // Centre verticalement
+      gap: 0.4rem; // Espacement entre les éléments
+    }
+  }
+
+  // =======================
+  // RESPONSIVE MOBILE : tout centré, sauf __credit qui reste sur une ligne
+  // =======================
+  @media (max-width: 767px) {
+    &__brand,
+    &__logo-group,
+    &__description,
+    &__title,
+    &__links,
+    &__link,
+    &__socials,
+    &__icons,
+    &__bottom,
+    &__credit,
+    &__meta {
+      align-items: center !important; // Centre horizontalement
+      justify-content: center !important; // Centre verticalement
+      text-align: center !important; // Centre le texte
+      margin-left: auto !important; // Centre le bloc
+      margin-right: auto !important;
+      width: 100%; // Prend toute la largeur
+    }
+    // Exception : garde le crédit sur une seule ligne
+    &__credit {
+      flex-direction: row !important; // Reste sur une ligne
+      justify-content: center !important; // Centre horizontalement
+      align-items: center !important; // Centre verticalement
+      gap: 0.5rem !important; // Espacement entre les éléments
+      text-align: center !important; // Centre le texte
+      width: 100%;
+      flex-wrap: nowrap !important; // Empêche le retour à la ligne
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// =======================
+// ANIMATIONS
+// =======================
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0); // Position de départ et de fin
+  }
+  50% {
+    transform: translateY(-8px); // Monte l'élément à mi-animation
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1); // Taille normale
+    opacity: 0.9; // Opacité normale
+  }
+  50% {
+    transform: scale(1.2); // Grossit à mi-animation
+    opacity: 1;
+  }
+}
