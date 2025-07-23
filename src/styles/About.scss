@@ -1,49 +1,51 @@
+// Styles principaux de la section À propos
 .about-section {
-  position: relative;
-  overflow: hidden;
-  padding: 5rem 0;
+  position: relative; // Positionnement pour les décorations flottantes
+  overflow: hidden; // Cache les débordements décoratifs
+  padding: 5rem 0; // Espacement vertical principal
 
+  // Décorations animées (icônes flottantes)
   .decoration {
     position: absolute;
-    
+
     &.sparkle {
       top: 40px;
       right: 40px;
       animation: float 6s ease-in-out infinite;
-      
+
       .sparkle-icon {
         width: 2rem;
         height: 2rem;
         color: #bfdbfe;
-        
+
         @media (min-width: 640px) {
           width: 3rem;
           height: 3rem;
         }
-        
+
         @media (min-width: 1024px) {
           width: 4rem;
           height: 4rem;
         }
       }
     }
-    
+
     &.code {
       bottom: 80px;
       left: 40px;
       animation: float 6s ease-in-out infinite;
       animation-delay: 2s;
-      
+
       .code-icon {
         width: 1.5rem;
         height: 1.5rem;
         color: #d8b4fe;
-        
+
         @media (min-width: 640px) {
           width: 2rem;
           height: 2rem;
         }
-        
+
         @media (min-width: 1024px) {
           width: 3rem;
           height: 3rem;
@@ -52,78 +54,81 @@
     }
   }
 
+  // Conteneur principal centré
   .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    max-width: 1280px; // Largeur maximale du contenu
+    margin: 0 auto; // Centre le contenu horizontalement
+    padding: 0 1.5rem; // Espacement latéral
     position: relative;
     z-index: 10;
 
+    // En-tête de la section
     .header {
       text-align: center;
       margin-bottom: 4rem;
-      
+
       h2 {
         font-size: 2.25rem;
         font-weight: 700;
         color: #111827;
         margin-bottom: 1.5rem;
-        
+
         .highlight {
           background-image: linear-gradient(to right, #475569, #64748b);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         }
-        
+
         @media (min-width: 640px) {
           font-size: 3rem;
         }
       }
-      
+
       .divider {
         width: 6rem;
         height: 0.25rem;
         background-image: linear-gradient(to right, #94a3b8, #64748b);
         margin: 0 auto 2rem;
       }
-      
+
       p {
         font-size: 1rem;
         color: #4b5563;
         max-width: 48rem;
         margin: 0 auto;
-        
+
         @media (min-width: 640px) {
           font-size: 1.125rem;
         }
       }
     }
 
+    // Grille principale pour le layout (parcours à gauche, compétences à droite)
     .grid {
-      display: grid;
-      gap: 2rem;
-     
-      
+      display: grid; // Active la grille CSS
+
+      gap: 2rem; // Espacement entre les colonnes
+
       @media (min-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); // 2 colonnes sur desktop
         gap: 4rem;
       }
     }
   }
 }
 
-// Cards styles
+// Styles des cartes génériques (utilisées partout)
 .card {
   background: #fff;
   border-radius: 0.75rem;
   padding: 2rem;
-  box-shadow: 0 8px 32px 0 rgba(60, 72, 88, 0.12), 0 1.5px 6px 0 rgba(60, 72, 88, 0.10);
+  box-shadow: 0 8px 32px 0 rgba(60, 72, 88, 0.12), 0 1.5px 6px 0 rgba(60, 72, 88, 0.1);
   border: 1.5px solid #e5e7eb;
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
-  animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
 
   &:hover {
@@ -143,7 +148,8 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.10), // opacité encore plus faible
+      rgba(255, 255, 255, 0.1),
+      // opacité encore plus faible
       transparent
     );
     transition: left 0.5s ease;
@@ -153,81 +159,82 @@
     left: 100%;
   }
 
-  h3, h4 {
+  h3,
+  h4 {
     font-weight: 700;
     color: #111827;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    
+
     .icon {
       width: 1.5rem;
       height: 1.5rem;
       color: #2563eb;
     }
   }
-  
+
   &.journey {
     .content {
       .block {
         border-left: 4px solid;
         padding-left: 1.5rem;
         margin-bottom: 1.5rem;
-        
+
         .block-header {
           display: flex;
           align-items: center;
           gap: 0.5rem;
           margin-bottom: 0.5rem;
-          
+
           .dot {
             width: 0.75rem;
             height: 0.75rem;
             border-radius: 9999px;
           }
-          
+
           span {
             font-weight: 600;
           }
         }
-        
+
         p {
           color: #374151;
           line-height: 1.75;
         }
-        
+
         &.formation {
           border-color: #3b82f6;
-          
+
           .dot {
             background-color: #3b82f6;
           }
-          
+
           span {
             color: #2563eb;
           }
         }
-        
+
         &.specialization {
           border-color: #8b5cf6;
-          
+
           .dot {
             background-color: #8b5cf6;
           }
-          
+
           span {
             color: #7c3aed;
           }
         }
-        
+
         &.passion {
           border-color: #10b981;
-          
+
           .dot {
             background-color: #10b981;
           }
-          
+
           span {
             color: #059669;
           }
@@ -235,40 +242,48 @@
       }
     }
   }
-  
+
   &.philosophy {
     .philosophy-content {
       background: linear-gradient(to right, #eff6ff, #f5f3ff);
       padding: 1.5rem;
       border-radius: 0.5rem;
       border-left: 4px solid #3b82f6;
-      
+
       .quote {
         color: #374151;
         font-style: italic;
         margin-bottom: 1rem;
       }
-      
+
       .badges {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        
+
         .badge {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          
+
           .badge-icon {
             width: 1.25rem;
             height: 1.25rem;
           }
-          
-          &:nth-child(1) .badge-icon { color: #2563eb; }
-          &:nth-child(2) .badge-icon { color: #059669; }
-          &:nth-child(3) .badge-icon { color: #7c3aed; }
-          &:nth-child(4) .badge-icon { color: #ea580c; }
-          
+
+          &:nth-child(1) .badge-icon {
+            color: #2563eb;
+          }
+          &:nth-child(2) .badge-icon {
+            color: #059669;
+          }
+          &:nth-child(3) .badge-icon {
+            color: #7c3aed;
+          }
+          &:nth-child(4) .badge-icon {
+            color: #ea580c;
+          }
+
           span {
             font-size: 0.875rem;
             font-weight: 500;
@@ -280,7 +295,7 @@
   }
 }
 
-// Skills section
+// Section compétences (cartes dans la colonne de droite)
 .right-column {
   h3 {
     font-size: 1.5rem;
@@ -290,42 +305,52 @@
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 2rem;
-    
+
     .icon {
       width: 1.75rem;
       height: 1.75rem;
       color: #2563eb;
     }
   }
-  
+
+  // Conteneur des cartes de compétences
   .skills-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
     .card {
       h4 {
         font-size: 1.25rem;
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        
+
+        ////// les icone descarte de competances////////////////////
         .category-icon {
-          padding: 0.5rem;
-          border-radius: 0.5rem;
-          
+          padding: 0.7rem;
+          border-radius: 2rem;
+
           &.gradient-primary {
             background: linear-gradient(to right, #3b82f6, #6366f1);
           }
-          
+
           &.gradient-secondary {
             background: linear-gradient(to right, #8b5cf6, #d946ef);
           }
-          
-          &.gradient-success {
-            background: linear-gradient(to right, #10b981, #14b8a6);
+
+          &.gradient-gray {
+            background: linear-gradient(to right, #10b981, #098b7c);
           }
-          
+
           &.gradient-accent {
             background: linear-gradient(to right, #f97316, #f59e0b);
           }
-          
+
           .icon {
             width: 1.5rem;
             height: 1.5rem;
@@ -333,12 +358,12 @@
           }
         }
       }
-      
+
       .skills-list {
         .skill {
           margin-bottom: 1rem;
           position: relative;
-          
+
           &:not(:last-child)::after {
             content: '';
             display: block;
@@ -348,23 +373,23 @@
             margin: 1rem 0 0.2rem 0;
             opacity: 0.7;
           }
-          
+
           &:hover {
             .skill-name {
               color: #111827;
             }
-            
+
             .progress {
               animation: pulse 2s infinite;
             }
           }
-          
+
           .skill-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.5rem;
-            
+
             .skill-icon {
               display: flex;
               align-items: center;
@@ -372,22 +397,22 @@
               margin-right: 0.5rem;
               font-size: 1.5rem;
               color: #2563eb;
-              filter: drop-shadow(0 1px 2px rgba(59,130,246,0.10));
+              filter: drop-shadow(0 1px 2px rgba(59, 130, 246, 0.1));
               transition: color 0.3s, filter 0.3s;
-              
+
               // Pour chaque icône à l'intérieur
               & > * {
                 display: inline-block;
                 vertical-align: middle;
               }
             }
-            
+
             .skill-name {
               font-weight: 500;
               color: #374151;
               transition: color 0.3s;
             }
-            
+
             .skill-level {
               font-size: 0.875rem;
               color: #6b7280;
@@ -396,7 +421,7 @@
               border-radius: 0.25rem;
             }
           }
-          
+
           .progress-bar {
             width: 80%;
             background-color: #e5e7eb;
@@ -407,15 +432,15 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            
+
             .progress {
               height: 70%;
               min-height: 0.8rem;
               border-radius: 9999px;
-              transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+              transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
               position: relative;
               overflow: hidden;
-              
+
               &::after {
                 content: '';
                 position: absolute;
@@ -423,15 +448,28 @@
                 left: -40%;
                 width: 40%;
                 height: 100%;
-                background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 100%);
+                background: linear-gradient(
+                  120deg,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.5) 50%,
+                  rgba(255, 255, 255, 0) 100%
+                );
                 pointer-events: none;
                 animation: mirror-gloss 1.2s linear infinite;
               }
-              
-              &.level-expert { background-color: #10b981; }
-              &.level-advanced { background-color: #3b82f6; }
-              &.level-intermediate { background-color: #f59e0b; }
-              &.level-beginner { background-color: #6b7280; }
+
+              &.level-expert {
+                background-color: #10b981;
+              }
+              &.level-advanced {
+                background-color: #3b82f6;
+              }
+              &.level-intermediate {
+                background-color: #f59e0b;
+              }
+              &.level-beginner {
+                background-color: #6b7280;
+              }
             }
             .skill-icon {
               display: flex;
@@ -439,7 +477,7 @@
               gap: 0.4rem;
               font-size: 1.5rem;
               color: #2563eb;
-              filter: drop-shadow(0 1px 2px rgba(59,130,246,0.10));
+              filter: drop-shadow(0 1px 2px rgba(59, 130, 246, 0.1));
               transition: color 0.3s, filter 0.3s;
               margin-right: 0.5rem;
               & > * {
@@ -456,7 +494,8 @@
 
 // Animations
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -496,6 +535,15 @@
   }
 }
 
+@keyframes stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 32px 0;
+  }
+}
+
 // Dark mode styles
 .dark {
   .about-section {
@@ -503,20 +551,22 @@
       h2 {
         color: white;
       }
-      
+
       p {
         color: #9ca3af;
       }
     }
-    
+
     .card {
       background: #1f2937;
       border: 1.5px solid #334155;
-      
-      h3, h4 {
+      border-radius: 2rem;
+
+      h3,
+      h4 {
         color: white;
       }
-      
+
       .content {
         .block {
           p {
@@ -524,61 +574,62 @@
           }
         }
       }
-      
+
       &.philosophy {
         .philosophy-content {
           background: linear-gradient(to right, rgba(30, 58, 138, 0.2), rgba(76, 29, 149, 0.2));
-          
+
           .quote {
             color: #d1d5db;
           }
-          
+
           .badge span {
             color: #9ca3af;
           }
         }
       }
     }
-    
+
     .right-column {
       h3 {
         color: white;
       }
-      
+
       .skills-container {
         .skill {
           .skill-header {
             .skill-name {
               color: #d1d5db;
-              
+
               &:hover {
                 color: white;
               }
             }
-            
+
             .skill-level {
               color: #9ca3af;
               background-color: #374151;
+              border-radius: 2rem;
             }
           }
-          
+
           .progress-bar {
             background-color: #374151;
             .skill-icon {
               color: #60a5fa;
-              filter: drop-shadow(0 1px 2px rgba(96,165,250,0.15));
+              filter: drop-shadow(0 1px 2px rgba(96, 165, 250, 0.15));
               gap: 0.4rem;
             }
           }
         }
       }
     }
-    
+
     .decoration {
       &.sparkle .sparkle-icon {
         color: #1e40af;
       }
-      
+
       &.code .code-icon {
         color: #5b21b6;
       }
@@ -610,43 +661,62 @@
   border-radius: 2rem;
   padding: 2.5rem 2rem 2rem 2rem;
   color: #fff;
-  box-shadow: 0 4px 32px 0 rgba(30,41,59,0.18);
-  border: 2px solid transparent;
+  box-shadow: 0 4px 32px 0 rgba(30, 41, 59, 0.18);
+  border: 2px solid #343d4e;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: box-shadow 0.3s, border 0.3s;
+  transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
   position: relative;
+  &:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 16px 40px 0 rgba(60, 72, 88, 0.18), 0 3px 12px 0 rgba(60, 72, 88, 0.12);
+  }
 }
 
 .parcours-card__icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 2rem;
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
   background: #3b82f6; // Couleur par défaut, écrasée par variantes
   color: #fff;
 }
 
-.parcours-card--blue .parcours-card__icon { background: #3b82f6 !important; }
-.parcours-card--purple .parcours-card__icon { background: #a78bfa !important; }
-.parcours-card--green .parcours-card__icon { background: #22c55e !important; }
+.parcours-card--blue .parcours-card__icon {
+  background: #3b82f6 !important;
+}
+.parcours-card--purple .parcours-card__icon {
+  background: #a78bfa !important;
+}
+.parcours-card--green .parcours-card__icon {
+  background: #22c55e !important;
+}
 
 .parcours-card h4 {
+  text-align: center;
+  width: 100%;
   font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 1.1rem;
+  margin-bottom: 2rem;
   color: #fff;
 }
 
-.parcours-card p, .parcours-card ul, .parcours-card li {
+.parcours-card p,
+.parcours-card ul,
+.parcours-card li {
   font-size: 1.08rem;
   color: #e5e7eb;
   margin: 0;
+}
+.parcours-card li {
+  margin-left: 1.5rem;
 }
 
 html:not(.dark) .parcours-card,
@@ -658,9 +728,18 @@ html:not(.dark) .parcours-card span {
   color: #22223b !important;
 }
 
-html:not(.dark) .parcours-card--blue   { background: #f1f5fd; border-color: #3b82f6; }
-html:not(.dark) .parcours-card--purple { background: #f5f3ff; border-color: #a78bfa; }
-html:not(.dark) .parcours-card--green  { background: #ecfdf5; border-color: #22c55e; }
+html:not(.dark) .parcours-card--blue {
+  background: #f1f5fd;
+  border-color: #3b82f6;
+}
+html:not(.dark) .parcours-card--purple {
+  background: #f5f3ff;
+  border-color: #a78bfa;
+}
+html:not(.dark) .parcours-card--green {
+  background: #ecfdf5;
+  border-color: #22c55e;
+}
 
 @media (max-width: 900px) {
   .parcours-grid {
@@ -669,24 +748,24 @@ html:not(.dark) .parcours-card--green  { background: #ecfdf5; border-color: #22c
   }
 }
 
-
 /////////////////////////////SECTION MA PHILOSOPHIE//////////////////////////////
 
 .philosophy-section {
   background: #fff;
   color: #22223b !important;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   padding: 2.5rem 2rem 2rem 2rem;
   margin: 2.5rem auto 2.5rem auto;
   max-width: 100%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1.5px solid #e5e7eb;
   transition: background 0.3s, color 0.3s, border 0.3s, box-shadow 0.2s, transform 0.2s;
   position: relative;
   overflow: hidden;
 }
-.philosophy-section:hover, .philosophy-section:focus {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+.philosophy-section:hover,
+.philosophy-section:focus {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   transform: translateY(-3px) scale(1.02);
 }
 .philosophy-section::before {
@@ -696,7 +775,12 @@ html:not(.dark) .parcours-card--green  { background: #ecfdf5; border-color: #22c
   left: -60%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.0) 100%);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
   pointer-events: none;
   transition: none;
   z-index: 2;
@@ -709,16 +793,36 @@ html:not(.dark) .parcours-card--green  { background: #ecfdf5; border-color: #22c
   animation: mirror-gloss-btn-out 0.2s linear;
 }
 @keyframes mirror-gloss-btn-in {
-  0%   { left: -60%; opacity: 0.1; }
-  40%  { opacity: 0.25; }
-  60%  { opacity: 0.25; }
-  100% { left: 110%; opacity: 0; }
+  0% {
+    left: -60%;
+    opacity: 0.1;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.25;
+  }
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
 }
 @keyframes mirror-gloss-btn-out {
-  0%   { left: 110%; opacity: 0.1; }
-  40%  { opacity: 0.25; }
-  60%  { opacity: 0.25; }
-  100% { left: -60%; opacity: 0; }
+  0% {
+    left: 110%;
+    opacity: 0.1;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.25;
+  }
+  100% {
+    left: -60%;
+    opacity: 0;
+  }
 }
 
 .philosophy-section .philosophy-title,
@@ -751,7 +855,7 @@ html.dark .philosophy-section .philosophy-quote {
 
 .philosophy-header {
   display: flex;
-   align-items: center;
+  align-items: center;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 1.5rem;
@@ -760,20 +864,16 @@ html.dark .philosophy-section .philosophy-quote {
   width: 2.5rem;
   height: 2.5rem;
   color: #64748b;
-  
 }
 .philosophy-title {
   font-size: 2rem;
   font-weight: 700;
   color: #fff;
- 
 }
 .philosophy-quote-block {
   max-width: 90%;
   margin: 0 auto 2rem auto;
   text-align: center;
-  
- 
 }
 .philosophy-quote {
   font-size: 1.25rem;
@@ -783,16 +883,12 @@ html.dark .philosophy-section .philosophy-quote {
   margin-top: 0.5rem;
   line-height: 1.6;
   margin-bottom: 3rem;
-  
- 
-  
 }
 .philosophy-badges {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 1.5rem;
-  
 }
 .philosophy-badge {
   display: flex;
@@ -800,7 +896,6 @@ html.dark .philosophy-section .philosophy-quote {
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  
 }
 
 .philosophy-badge-icon {
@@ -809,7 +904,7 @@ html.dark .philosophy-section .philosophy-quote {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1rem;
+  border-radius: 2rem;
   background: #6366f1; // Couleur par défaut, sera écrasée par les variantes
   color: #fff !important;
   font-size: 1rem;
@@ -817,10 +912,18 @@ html.dark .philosophy-section .philosophy-quote {
   padding: 10px;
 }
 
-.philosophy-badge-blue   .philosophy-badge-icon { background: #4f6cf6; }
-.philosophy-badge-green  .philosophy-badge-icon { background: #4ade80; }
-.philosophy-badge-purple .philosophy-badge-icon { background: #a78bfa; }
-.philosophy-badge-orange .philosophy-badge-icon { background: #ea6a2b; }
+.philosophy-badge-blue .philosophy-badge-icon {
+  background: #4f6cf6;
+}
+.philosophy-badge-green .philosophy-badge-icon {
+  background: #4ade80;
+}
+.philosophy-badge-purple .philosophy-badge-icon {
+  background: #a78bfa;
+}
+.philosophy-badge-orange .philosophy-badge-icon {
+  background: #ea6a2b;
+}
 
 .philosophy-badge-label {
   margin-top: 0.5rem;
@@ -828,7 +931,6 @@ html.dark .philosophy-section .philosophy-quote {
   color: #e5e7eb;
   font-weight: 600;
   letter-spacing: 0.01em;
-  
 }
 @media (max-width: 900px) {
   .philosophy-section {
@@ -838,4 +940,55 @@ html.dark .philosophy-section .philosophy-quote {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+}
+
+// Responsive : sur mobile/tablette, la grille passe en une colonne
+@media (max-width: 900px) {
+  .about-section .container .grid {
+    grid-template-columns: 1fr !important; // Force une seule colonne
+  }
+  .right-column {
+    width: 100% !important; // Prend toute la largeur
+    max-width: 100% !important;
+  }
+  .skills-container {
+    grid-template-columns: 1fr !important; // Les cartes de compétences l'une sous l'autre
+  }
+}
+
+.github-icon-mode {
+  color: #24292e; // noir en mode clair
+}
+html.dark .github-icon-mode {
+  color: #fff; // blanc en mode sombre
+}
+
+.progress.in-progress {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #d1d5db 0px,
+    #d1d5db 16px,
+    #f3f4f6 16px,
+    #f3f4f6 32px
+  ) !important;
+  background-size: 32px 100%;
+  background-color: transparent !important;
+  animation: stripes 1.2s linear infinite;
+  position: relative;
+  overflow: hidden;
+  height: 70%;
+  min-height: 0.8rem;
+  border-radius: 9999px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #dddddd; // Bordure bleue pleine en mode clair pour "à développer"
+}
+html.dark .progress.in-progress {
+  border: none; // Pas de bordure en mode sombre
+}
+
+.skill-percent {
+  color: #6b7280; // gris en mode clair
+}
+html.dark .skill-percent {
+  color: #fff;
 }
