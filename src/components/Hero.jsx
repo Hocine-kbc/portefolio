@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { ArrowDown, Download, Code, Sparkles } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
 import '../styles/Hero.scss';
-import profilePic from '../images/profile.jpg';
 
 const Hero = () => {
   // État pour le texte animé
@@ -52,7 +51,7 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-flex">
           <div className="profile-pic-wrapper">
-            <img src={profilePic} alt="Hocine" className="profile-pic" />
+            <img src="/profile.jpg" alt="Hocine" className="profile-pic" />
             <span className="profile-name">Hocine KEBCI</span>
           </div>
           <div className="hero-text-block">
@@ -78,11 +77,7 @@ const Hero = () => {
                   <Sparkles size={16} className="rotate-on-hover" />
                 </span>
               </button>
-              <a
-                href="src/public/CV_2025-07-16_KEBCI_HOCINE.pdf"
-                download
-                className="btn-primary"
-              >
+              <a href="/CV_2025-07-16_KEBCI_HOCINE.pdf" download className="btn-primary">
                 <span className="btn-content">
                   <Download size={20} />
                   Télécharger CV
@@ -92,10 +87,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <button
-          onClick={() => scrollToSection('a-propos')}
-          className="discover-more-btn"
-        >
+        <button onClick={() => scrollToSection('a-propos')} className="discover-more-btn">
           <div className="discover-more-inner">
             <span className="discover-more-label">Découvrir plus</span>
             <div className="discover-more-border">

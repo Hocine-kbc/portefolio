@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useNavigation } from '../contexts/NavigationContext';
-import logo from '../images/logo_portfolio-hocine.svg';
 import '../styles/Header.scss';
 
 const Header = () => {
@@ -89,7 +88,7 @@ const Header = () => {
             onClick={() => handleNavigation('home')}
           >
             <img
-              src={logo}
+              src="/logo_portfolio-hocine.svg"
               alt="Logo"
               className={`h-14 w-auto transition-transform duration-300 group-hover:scale-105 ${
                 !isDark ? 'logo-invert' : ''

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Heart, Github, Linkedin, Mail, ArrowUp, Code, Sparkles } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
-import logo from '../images/logo_portfolio-hocine.svg';
 import '../styles/Footer.scss'; // <- Nouveau
 
 const Footer = () => {
@@ -32,7 +31,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer__brand">
             <div className="footer__logo-group" onClick={() => navigateTo('home')}>
-              <img src={logo} alt="Logo" className="footer__logo" />
+              <img src="/logo_portfolio-hocine.svg" alt="Logo" className="footer__logo" />
             </div>
             <p className="footer__description">
               Développeur web passionné, créateur d'expériences numériques modernes et performantes
