@@ -2,7 +2,7 @@ import React from 'react';
 import { Heart, Github, Linkedin, Mail, ArrowUp, Code, Sparkles } from 'lucide-react';
 import { useNavigation } from '../contexts/NavigationContext';
 import logo from '../images/logo_portfolio-hocine.svg';
-import '../styles/footer.scss'; // <- Nouveau
+import '../styles/Footer.scss'; // <- Nouveau
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

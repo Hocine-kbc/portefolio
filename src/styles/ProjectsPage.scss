@@ -1,50 +1,59 @@
 @import '../index.scss'; // Import des styles globaux
 
-.project-card { // Carte projet principale
+.project-card {
+  // Carte projet principale
   @extend .modern-card; // Hérite des styles de .modern-card
   overflow: hidden; // Cache le débordement
   cursor: pointer; // Curseur main sur la carte
-  
-  &:hover .project-image { // Effet au survol sur l'image
+
+  &:hover .project-image {
+    // Effet au survol sur l'image
     transform: scale(1.05); // Zoom léger
-    
   }
-  
-  .project-image { // Image du projet
+
+  .project-image {
+    // Image du projet
     transition: transform 0.5s ease; // Animation de zoom
-    
-    @include respond-to('xs') { // Responsive XS
+
+    @include respond-to('xs') {
+      // Responsive XS
       height: 12rem;
     }
-    
-    @include respond-to('md') { // Responsive MD
+
+    @include respond-to('md') {
+      // Responsive MD
       height: 16rem;
     }
   }
-} 
+}
 
-.projects-page { // Conteneur principal de la page projets
+.projects-page {
+  // Conteneur principal de la page projets
   min-height: 100vh; // Hauteur minimum écran
   background-color: #f9fafb; // Couleur de fond claire
   padding-top: 4rem; // Espace en haut
 
-  &.dark { // Mode sombre
+  &.dark {
+    // Mode sombre
     background-color: #111827;
   }
 }
 
-.container { // Conteneur centré
+.container {
+  // Conteneur centré
   width: 100%;
   max-width: 1200px; // Largeur max
   margin: 0 auto; // Centrage horizontal
   padding: 0 1.5rem; // Padding horizontal
 }
 
-.header { // En-tête de la page
+.header {
+  // En-tête de la page
   margin-bottom: 2rem; // Espace sous le header
 }
 
-.back-button { // Bouton retour
+.back-button {
+  // Bouton retour
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -62,17 +71,20 @@
   }
 }
 
-.intro { // Bloc d'intro
+.intro {
+  // Bloc d'intro
   text-align: center;
   margin-bottom: 3rem;
 
-  .title { // Titre principal
+  .title {
+    // Titre principal
     font-size: 2.25rem;
     font-weight: 700;
     color: #111827;
     margin-bottom: 1.5rem;
 
-    .highlight { // Mot en couleur
+    .highlight {
+      // Mot en couleur
       background: linear-gradient(90deg, #3b82f6, #8b5cf6);
       -webkit-background-clip: text;
       background-clip: text;
@@ -80,14 +92,16 @@
     }
   }
 
-  .description { // Description sous le titre
+  .description {
+    // Description sous le titre
     color: #4b5563;
     max-width: 48rem;
     margin: 0 auto;
   }
 }
 
-.filter-container { // Conteneur du filtre
+.filter-container {
+  // Conteneur du filtre
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -95,7 +109,8 @@
   margin-bottom: 3rem;
 }
 
-.filter-label { // Label du filtre
+.filter-label {
+  // Label du filtre
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -104,7 +119,8 @@
   margin-right: 1rem;
 }
 
-.filter-button { // Bouton de filtre
+.filter-button {
+  // Bouton de filtre
   position: relative;
   overflow: hidden;
   padding: 0.25rem 0.75rem;
@@ -113,7 +129,7 @@
   transition: all 0.3s;
   border: 1px solid #e5e7eb;
   border-color: transparent;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   &::before {
     content: '';
@@ -122,16 +138,23 @@
     left: -60%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 100%);
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
     pointer-events: none;
     transition: none;
     z-index: 2;
   }
-  &:hover::before, &:focus::before {
+  &:hover::before,
+  &:focus::before {
     animation: mirror-gloss-btn 0.3s linear;
   }
 
-  &:not(.active) { // Style bouton inactif
+  &:not(.active) {
+    // Style bouton inactif
     background-color: white;
     color: #374151;
 
@@ -140,26 +163,30 @@
     }
   }
 
-  &.active { // Style bouton actif
+  &.active {
+    // Style bouton actif
     background-color: #2563eb;
     color: white;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
 }
 
-.filter-button:focus, .filter-button:active {
+.filter-button:focus,
+.filter-button:active {
   outline: none !important;
   box-shadow: none !important;
   border-color: transparent !important;
 }
 
-.projects-grid { // Grille des projets
+.projects-grid {
+  // Grille des projets
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Colonnes responsives
   gap: 2rem; // Espace entre les cartes
 }
 
-.project-card { // Carte projet
+.project-card {
+  // Carte projet
   background-color: white;
   border-radius: 2rem;
   overflow: hidden;
@@ -168,7 +195,6 @@
   animation: fadeInUp 0.5s ease-out forwards;
   opacity: 0;
   margin-bottom: 4rem; // Espace sous chaque carte
- 
 
   &:hover {
     transform: translateY(-0.5rem); // Légère élévation
@@ -188,14 +214,16 @@
   }
 }
 
-.card-image-container { // Conteneur image projet
+.card-image-container {
+  // Conteneur image projet
   position: relative;
   overflow: hidden;
   height: 8rem;
   border-radius: 1rem; // Ajout du border-radius au conteneur
 }
 
-.card-image { // Image projet
+.card-image {
+  // Image projet
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -203,7 +231,8 @@
   border-radius: 1rem;
 }
 
-.status-badge { // Badge d'état
+.status-badge {
+  // Badge d'état
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -217,7 +246,8 @@
   font-size: 0.75rem;
 }
 
-.status-indicator { // Indicateur rond vert
+.status-indicator {
+  // Indicateur rond vert
   width: 0.75rem;
   height: 0.75rem;
   background-color: #10b981;
@@ -225,21 +255,22 @@
   animation: pulse 2s infinite;
 }
 
-.image-overlay { // Overlay foncé sur image
+.image-overlay {
+  // Overlay foncé sur image
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
   opacity: 0;
   transition: opacity 0.3s;
-  
 }
 
-.card-content { // Contenu de la carte
+.card-content {
+  // Contenu de la carte
   padding: 1rem;
-  
 }
 
-.project-meta { // Métadonnées projet
+.project-meta {
+  // Métadonnées projet
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -257,7 +288,8 @@
   }
 }
 
-.project-title { // Titre projet
+.project-title {
+  // Titre projet
   font-size: 1.125rem;
   font-weight: 700;
   color: #111827;
@@ -265,7 +297,8 @@
   transition: color 0.3s;
 }
 
-.project-description { // Description projet
+.project-description {
+  // Description projet
   color: #4b5563;
   margin-bottom: 1rem;
   display: -webkit-box;
@@ -275,7 +308,8 @@
   overflow: hidden;
 }
 
-.tech-tags { // Liste des technos
+.tech-tags {
+  // Liste des technos
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -322,17 +356,18 @@
   padding: 0.25rem 0.6rem;
   border-radius: 1.25rem;
   font-weight: 600;
-  font-size: 0.90rem;
-  box-shadow: 0 2px 8px rgba(16,185,129,0.10);
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
   border: none;
   text-decoration: none;
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: #059669;
     color: #fff !important;
-    box-shadow: 0 4px 16px rgba(16,185,129,0.18);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.18);
     transform: translateY(-2px) scale(1.04);
     outline: none;
   }
@@ -354,7 +389,7 @@
   color: #4b5563;
   font-weight: 500;
   transition: color 0.3s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -362,7 +397,6 @@
   &:hover {
     color: #2563eb;
     transform: scale(1.05);
-
   }
 
   .link-icon {
@@ -385,17 +419,18 @@
   border-radius: 1.25rem;
   font-weight: 600;
   font-size: 0.85rem;
-  box-shadow: 0 2px 8px rgba(124,58,237,0.10);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1);
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
   border: none;
   text-decoration: none;
   cursor: pointer;
   margin-top: 0.5rem;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: #4049ca;
     color: #fff !important;
-    box-shadow: 0 4px 16px rgba(124,58,237,0.18);
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.18);
     transform: translateY(-2px) scale(1.04);
     outline: none;
   }
@@ -509,10 +544,10 @@
     color: #9ca3af;
   }
 
-  .github-link, .demo-link {
+  .github-link,
+  .demo-link {
     color: #9ca3af;
     border-radius: 2rem;
-  
 
     &:hover {
       color: #60a5fa;
@@ -577,6 +612,19 @@
 @media (min-width: 768px) {
   .card-image-container {
     height: 12rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-image-container {
+    height: 10.5rem; // 168px, plus grand que la valeur par défaut
+  }
+  .card-image,
+  .project-image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 1rem;
   }
 }
 
