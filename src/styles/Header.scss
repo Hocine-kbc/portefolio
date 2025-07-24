@@ -18,7 +18,7 @@
   // Styles pour le thème sombre
   .dark & {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.98) 0%, rgba(51, 65, 85, 0.95) 100%);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1); // Bordure subtile en mode sombre
+    border-bottom: none; // Pas de bordure non plus en mode sombre
   }
 
   // Version mobile
@@ -27,6 +27,13 @@
     min-height: 64px;
     max-height: 64px;
   }
+}
+
+// =======================
+// HEADER TRANSPARENT - SUPPRESSION DE LA BORDURE
+// =======================
+.bg-transparent {
+  border-bottom: none !important;
 }
 
 // =======================
