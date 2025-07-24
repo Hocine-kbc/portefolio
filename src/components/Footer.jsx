@@ -78,8 +78,8 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <button onClick={scrollToTop} className="footer__back-top">
-              <ArrowUp size={16} />
+            <button onClick={scrollToTop} className="footer__back-top-btn">
+              <ArrowUp size={18} className="footer__back-top-icon" />
               Retour en haut
             </button>
           </div>

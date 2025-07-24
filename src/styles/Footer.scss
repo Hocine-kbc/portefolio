@@ -195,20 +195,42 @@
   // =======================
   // BOUTON REMONTER EN HAUT
   // =======================
-  &__back-top {
-    display: inline-flex; // Affiche en ligne et flex
-    align-items: center; // Centre verticalement
-    gap: 0.5rem; // Espacement entre les éléments
-    font-size: 0.85rem; // Taille de police
-    margin-top: 1rem; // Marge en haut
-    text-transform: uppercase; // Majuscules
-    color: #9ca3af; // Couleur grise
-    transition: color 0.3s ease; // Animation douce
-    margin-right: 7rem;
+  &__back-top-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-right: 5rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 2rem;
+    background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px 0 rgba(96, 165, 250, 0.15);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 
     &:hover {
-      color: #60a5fa; // Passe en bleu au survol
+      background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 32px 0 rgba(96, 165, 250, 0.25);
     }
+  }
+
+  &__back-top-icon {
+    transition: transform 0.3s;
+    margin-right: 0.3rem;
+  }
+  &__back-top-btn:hover .footer__back-top-icon {
+    transform: translateY(-4px) scale(1.2) rotate(-15deg);
   }
 
   // =======================
@@ -329,5 +351,20 @@
   50% {
     transform: scale(1.2); // Grossit à mi-animation
     opacity: 1;
+  }
+}
+
+@keyframes bounce-footer-btn {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-8px) scale(1.08);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.07);
+  }
+  100% {
+    transform: translateY(0) scale(1);
   }
 }
