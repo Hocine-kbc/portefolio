@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, User, MessageSquare, Sparkles } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Send,
+  CheckCircle,
+  User,
+  MessageSquare,
+  Sparkles,
+} from 'lucide-react';
 import '../styles/Contact.scss';
 import emailjs from '@emailjs/browser';
 
@@ -13,32 +24,32 @@ const Contact = () => {
     prenom: '',
     societe: '',
     email: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
-    
+
     // Préparation des variables pour EmailJS
     const templateParams = {
       nom: formData.nom,
       prenom: formData.prenom,
       societe: formData.societe,
       email: formData.email,
-      message: formData.message
+      message: formData.message,
     };
 
     try {
@@ -49,7 +60,9 @@ const Contact = () => {
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       setIsSubmitting(false);
-      setError("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou me contacter directement par email.");
+      setError(
+        "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou me contacter directement par email."
+      );
     }
   };
 
@@ -69,9 +82,7 @@ const Contact = () => {
             Contactez<span className="highlight">-moi</span>
           </h2>
           <div className="divider"></div>
-          <p>
-            Vous avez un projet en tête ? N'hésitez pas à me contacter pour en discuter !
-          </p>
+          <p>Vous avez un projet en tête ? N'hésitez pas à me contacter pour en discuter !</p>
         </div>
 
         <div className="grid">
@@ -83,11 +94,11 @@ const Contact = () => {
                 Parlons de votre projet
               </h3>
               <p className="description">
-                Que vous soyez une entreprise, une startup ou un particulier, je suis disponible 
-                pour discuter de vos besoins en développement web. Ensemble, nous pouvons créer 
+                Que vous soyez une entreprise, une startup ou un particulier, je suis disponible
+                pour discuter de vos besoins en développement web. Ensemble, nous pouvons créer
                 quelque chose d'exceptionnel !
               </p>
-              
+
               <div className="contact-details">
                 <div className="contact-item email">
                   <div className="icon-container">
@@ -95,24 +106,20 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4>Email</h4>
-                    <a href="mailto:kebcihocine94@gmail.com">
-                      kebcihocine94@gmail.com
-                    </a>
+                    <a href="mailto:kebcihocine94@gmail.com">kebcihocine94@gmail.com</a>
                   </div>
                 </div>
-                
+
                 <div className="contact-item phone">
                   <div className="icon-container">
                     <Phone className="icon" />
                   </div>
                   <div>
                     <h4>Téléphone</h4>
-                    <a href="tel:+33123456789">
-                      +33 6 03 54 35 24
-                    </a>
+                    <a href="tel:+33123456789">+33 6 03 54 35 24</a>
                   </div>
                 </div>
-                
+
                 <div className="contact-item location">
                   <div className="icon-container">
                     <MapPin className="icon" />
@@ -138,15 +145,15 @@ const Contact = () => {
               </h4>
               <div className="social-links">
                 {[
-                  { icon: Github, href: "https://github.com", label: "GitHub" },
-                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                  { icon: Mail, href: "mailto:kebcihocine94@gmail.com", label: "Email" }
+                  { icon: Github, href: 'https://github.com', label: 'GitHub' },
+                  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+                  { icon: Mail, href: 'mailto:kebcihocine94@gmail.com', label: 'Email' },
                 ].map(({ icon: Icon, href, label }, index) => (
                   <a
                     key={index}
                     href={href}
-                    target={href.startsWith('mailto') ? undefined : "_blank"}
-                    rel={href.startsWith('mailto') ? undefined : "noopener noreferrer"}
+                    target={href.startsWith('mailto') ? undefined : '_blank'}
+                    rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
                     className="social-link"
                     aria-label={label}
                   >
@@ -164,13 +171,11 @@ const Contact = () => {
                 <Send className="icon" />
                 Envoyez-moi un message
               </h3>
-              
+
               {isSubmitted && (
                 <div className="success-message">
                   <CheckCircle className="icon" />
-                  <p>
-                    Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
-                  </p>
+                  <p>Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</p>
                 </div>
               )}
 
@@ -181,9 +186,7 @@ const Contact = () => {
                   </div>
                 )}
                 <div className="form-group">
-                  <label htmlFor="nom">
-                    Nom *
-                  </label>
+                  <label htmlFor="nom">Nom *</label>
                   <input
                     type="text"
                     id="nom"
@@ -195,9 +198,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="prenom">
-                    Prénom *
-                  </label>
+                  <label htmlFor="prenom">Prénom *</label>
                   <input
                     type="text"
                     id="prenom"
@@ -209,9 +210,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="societe">
-                    Société
-                  </label>
+                  <label htmlFor="societe">Société</label>
                   <input
                     type="text"
                     id="societe"
@@ -223,9 +222,7 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">
-                    Adresse email *
-                  </label>
+                  <label htmlFor="email">Adresse email *</label>
                   <input
                     type="email"
                     id="email"
@@ -238,9 +235,7 @@ const Contact = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message">
-                    Message *
-                  </label>
+                  <label htmlFor="message">Message *</label>
                   <textarea
                     id="message"
                     name="message"
@@ -260,7 +255,7 @@ const Contact = () => {
                   {isSubmitting ? (
                     <>
                       <div className="spinner"></div>
-                      Envoi en cours...
+                      Envoi À développer...
                     </>
                   ) : (
                     <>

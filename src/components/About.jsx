@@ -154,7 +154,7 @@ const About = () => {
       icon: <SiReact style={{ color: '#f44250' }} />,
     },
 
-    // Compétences à développer (4ème carte)
+    // Compétences À développer (4ème carte)
     {
       name: 'Utiliser TypeScript avec React',
       level: 'À développer',
@@ -477,7 +477,7 @@ const About = () => {
                                     whiteSpace: 'nowrap',
                                   }}
                                 >
-                                  🚧 En cours
+                                  🚧 À développer
                                 </span>
                               ) : (
                                 <span
