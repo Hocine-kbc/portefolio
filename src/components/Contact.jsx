@@ -63,6 +63,7 @@ const Contact = () => {
       setError(
         "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou me contacter directement par email."
       );
+      console.error('Erreur EmailJS :', err);
     }
   };
 
