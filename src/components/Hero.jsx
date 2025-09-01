@@ -51,7 +51,7 @@ const Hero = () => {
       <div className="hero-container">
         <div className="hero-flex">
           <div className="profile-pic-wrapper">
-            <img src="/profile.jpg" alt="Hocine" className="profile-pic" />
+            <img src="/profile22.jpeg" alt="Hocine" className="profile-pic" />
             <span className="profile-name">Hocine KEBCI</span>
           </div>
           <div className="hero-text-block">
