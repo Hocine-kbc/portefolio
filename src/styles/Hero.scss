@@ -1,6 +1,4 @@
-
 @import './_mixins'; // Import des mixins pour les media queries
-
 
 // Section principale du Hero avec image de fond et overflow caché
 .hero-creative {
@@ -17,7 +15,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.7); // Fond noir semi-transparent
+    background: rgba(0, 0, 0, 0.7); // Fond noir semi-transparent
     z-index: 10;
   }
 
@@ -59,7 +57,6 @@
     position: relative;
     transform: translateY(-52px); // Décale la photo vers le haut (desktop)
 
-    
     .profile-pic {
       width: 100%;
       height: 100%;
@@ -69,10 +66,10 @@
       &:hover {
         transform: scale(1.05); // Zoom léger au survol
       }
-      }
+    }
 
-    @include respond-to ('tablette') {
-      transform: translateY(50px)!important; // Décalage vertical sur mobile
+    @include respond-to('tablette') {
+      transform: translateY(50px) !important; // Décalage vertical sur mobile
     }
 
     .profile-name {
@@ -85,8 +82,8 @@
       color: #fff;
       font-size: 1rem;
       font-weight: 600;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3); // Légère ombre sous le texte
-      background: rgba(0,0,0,0.5); // Fond noir semi-transparent
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); // Légère ombre sous le texte
+      background: rgba(0, 0, 0, 0.5); // Fond noir semi-transparent
       padding-bottom: 0.8rem;
       padding-top: 0.25rem;
       border-bottom-left-radius: 9999px;
@@ -99,12 +96,10 @@
     text-align: center;
     max-width: 42rem;
     margin-top: 5rem;
-    
+
     @include respond-to('desktop') {
       text-align: left;
       margin-top: 5rem;
-      
-
     }
   }
 
@@ -126,14 +121,13 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      
     }
   }
 
-   // Description sous le titre
-   .hero-desc {
+  // Description sous le titre
+  .hero-desc {
     font-size: 1rem; // text-base
-    color: rgba(226,232,240,0.9);
+    color: rgba(226, 232, 240, 0.9);
     margin-bottom: 2.5rem;
     line-height: 1.7;
     font-weight: 500;
@@ -147,7 +141,6 @@
       font-weight: 800;
       font-style: italic;
     }
-   
   }
 
   // Sous-titre animé
@@ -172,8 +165,6 @@
       color: #cbd5e1;
     }
   }
-
- 
 
   // Bloc des boutons
   .hero-btns {
@@ -203,8 +194,8 @@
   // Bouton "Découvrir plus"
   .discover-more-btn {
     display: block;
-    margin: 2rem auto 0 auto; 
-    color: rgba(255,255,255,0.8);
+    margin: 2rem auto 0 auto;
+    color: rgba(255, 255, 255, 0.8);
     transition: color 0.2s;
     animation: none;
     &:hover {
@@ -213,7 +204,7 @@
         animation: bounce 0.7s infinite; // <-- boucle continue
       }
     }
-    
+
     .discover-more-inner {
       display: flex;
       flex-direction: column;
@@ -226,14 +217,14 @@
       .discover-more-border {
         width: 1.5rem;
         height: 2.5rem;
-        border: 2px solid rgba(255,255,255,0.5);
+        border: 2px solid rgba(255, 255, 255, 0.5);
         border-radius: 9999px;
         display: flex;
         justify-content: center;
         .discover-more-dot {
           width: 0.25rem;
           height: 0.75rem;
-          background: rgba(255,255,255,0.7);
+          background: rgba(255, 255, 255, 0.7);
           border-radius: 9999px;
           margin-top: 0.5rem;
           animation: bounce-dot 0.7s infinite; // Animation permanente sur le trait
@@ -250,12 +241,10 @@
 // Responsive mobile : déplace la photo de profil vers le bas sur petits écrans
 @include respond-to-max('mobile') {
   .profile-pic-wrapper {
-    transform: translateY(20px)!important; // Décalage vertical sur mobile
+    transform: translateY(20px) !important; // Décalage vertical sur mobile
     margin-bottom: -50px;
   }
-  
 }
-
 
 // Animation de reflet sur les boutons principaux
 .btn-primary {
@@ -268,12 +257,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: left 0.5s ease;
   }
   &:hover::before {
@@ -287,12 +271,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       animation: mirrorEffect 1.5s ease-in-out infinite;
     }
   }
@@ -366,7 +345,8 @@
 
 // Animation du curseur tapant
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -378,7 +358,8 @@
 // Animation du petit trait sous le bouton "Découvrir plus"
 // =========================
 @keyframes bounce-dot {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -390,8 +371,13 @@
 // Animation personnalisée de la flèche sous le bouton "Découvrir plus"
 // =========================
 @keyframes arrow-bounce-custom {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); } // Amplitude du saut de la flèche (modifie ici pour ajuster)
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  } // Amplitude du saut de la flèche (modifie ici pour ajuster)
 }
 
 // Applique l'animation personnalisée au trait
