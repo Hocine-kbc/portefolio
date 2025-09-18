@@ -241,7 +241,19 @@ body {
     &:hover {
       background: rgba(148, 163, 184, 0.1);
       border-color: rgba(148, 163, 184, 0.5);
-      color: white;
+      color: #374151; // Couleur foncée pour le mode clair
+    }
+    
+    // Mode sombre
+    .dark & {
+      border-color: rgba(148, 163, 184, 0.5);
+      color: rgba(148, 163, 184, 0.9);
+      
+      &:hover {
+        background: rgba(148, 163, 184, 0.2);
+        border-color: rgba(148, 163, 184, 0.7);
+        color: white; // Blanc pour le mode sombre
+      }
     }
   }
   
