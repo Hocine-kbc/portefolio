@@ -77,8 +77,14 @@ const AppContent = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+      {/* Skip link for keyboard users */}
+      <a href="#main-content" className="skip-link">
+        Aller au contenu principal
+      </a>
       <Header />
-      {renderPage()}
+      <main id="main-content">
+        {renderPage()}
+      </main>
       <Footer />
     </div>
   );

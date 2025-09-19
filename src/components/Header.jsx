@@ -98,20 +98,21 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
+          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4" role="navigation" aria-label="Menu principal">
             {navLinks.map(({ id, label, icon: Icon, action }) => (
               <button
                 key={id}
                 onClick={action}
-                className={`${navButtonClasses} ${
+                className={`${navButtonClasses} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset ${
                   isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
                 }`}
+                aria-current={currentPage === id ? 'page' : undefined}
               >
-                <Icon size={18} className={currentPage === id ? 'header-btn-icon-active' : ''} />
+                <Icon size={18} className={currentPage === id ? 'header-btn-icon-active' : ''} aria-hidden="true" />
                 <span className={currentPage === id ? 'header-btn-active' : ''}>{label}</span>
               </button>
             ))}
-          </div>
+          </nav>
 
           {/* Theme Toggle, Social Links */}
           <div className="flex items-center space-x-4">
@@ -166,6 +167,9 @@ const Header = () => {
               className={`transition-colors duration-300 ${
                 isHeaderLight ? 'text-gray-700 dark:text-white' : 'text-white'
               }`}
+              aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -174,19 +178,25 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+          <div 
+            id="mobile-menu"
+            className="lg:hidden mt-4 py-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
+            role="navigation"
+            aria-label="Menu de navigation mobile"
+          >
             <div className="flex flex-col space-y-4 px-4">
               {navLinks.map(({ id, label, icon: Icon, action }) => (
                 <button
                   key={id}
                   onClick={action}
-                  className={`text-left py-2 transition-colors flex items-center gap-3 ${
+                  className={`text-left py-2 transition-colors flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-lg px-2 ${
                     currentPage === id
                       ? 'text-blue-600 font-semibold'
                       : 'text-gray-700 dark:text-white hover:text-blue-600'
                   }`}
+                  aria-current={currentPage === id ? 'page' : undefined}
                 >
-                  <Icon size={18} />
+                  <Icon size={18} aria-hidden="true" />
                   {label}
                 </button>
               ))}

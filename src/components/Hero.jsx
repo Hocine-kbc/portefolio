@@ -65,35 +65,48 @@ const Hero = () => {
               <span className="desc-highlight"> exceptionnelles</span> avec créativité et expertise
               technique.
             </p>
-            <h2 className="hero-typed">
+            <p className="hero-typed" role="status" aria-live="polite">
               {text}
-              <span className="typed-cursor">|</span>
-            </h2>
+              <span className="typed-cursor" aria-hidden="true">|</span>
+            </p>
             <div className="hero-btns">
-              <button onClick={() => navigateTo('projects')} className="btn-primary">
+              <button 
+                onClick={() => navigateTo('projects')} 
+                className="btn-primary"
+                aria-label="Voir mes projets de développement web"
+              >
                 <span className="btn-content">
-                  <Code size={20} />
+                  <Code size={20} aria-hidden="true" />
                   Découvrir mes projets
-                  <Sparkles size={16} className="rotate-on-hover" />
+                  <Sparkles size={16} className="rotate-on-hover" aria-hidden="true" />
                 </span>
               </button>
-              <a href="/CV_2025-07-16_KEBCI_HOCINE.pdf" download className="btn-primary">
+              <a 
+                href="/CV_2025-07-16_KEBCI_HOCINE.pdf" 
+                download 
+                className="btn-primary"
+                aria-label="Télécharger le CV de Hocine KEBCI au format PDF"
+              >
                 <span className="btn-content">
-                  <Download size={20} />
+                  <Download size={20} aria-hidden="true" />
                   Télécharger CV
-                  <Sparkles size={16} className="rotate-on-hover" />
+                  <Sparkles size={16} className="rotate-on-hover" aria-hidden="true" />
                 </span>
               </a>
             </div>
           </div>
         </div>
-        <button onClick={() => scrollToSection('a-propos')} className="discover-more-btn">
+        <button 
+          onClick={() => scrollToSection('a-propos')} 
+          className="discover-more-btn"
+          aria-label="Faire défiler vers la section À propos"
+        >
           <div className="discover-more-inner">
             <span className="discover-more-label">Découvrir plus</span>
-            <div className="discover-more-border">
+            <div className="discover-more-border" aria-hidden="true">
               <div className="discover-more-dot"></div>
             </div>
-            <ArrowDown size={20} className="arrow-bounce" />
+            <ArrowDown size={20} className="arrow-bounce" aria-hidden="true" />
           </div>
         </button>
       </div>
