@@ -1,5 +1,8 @@
+// Importation de React et des hooks nécessaires
 import React, { useEffect, useState, useRef } from 'react';
+// Importation du contexte de navigation pour la gestion des pages
 import { useNavigation } from '../contexts/NavigationContext';
+// Importation des icônes Lucide React pour l'interface utilisateur
 import {
   Code,
   Laptop,
@@ -18,6 +21,7 @@ import {
   Users,
   GraduationCap,
 } from 'lucide-react';
+// Importation des icônes Simple Icons pour les technologies
 import {
   SiHtml5,
   SiCss3,
@@ -35,10 +39,19 @@ import {
   SiJsonwebtokens,
   SiLightning,
 } from 'react-icons/si';
+// Importation des icônes Font Awesome pour les technologies spécifiques
 import { FaLock, FaFileUpload, FaCog, FaDatabase } from 'react-icons/fa';
+// Importation des styles spécifiques au composant About
 import '../styles/About.scss';
 
+/**
+ * Composant About - Section "À propos" du portfolio
+ * Affiche les compétences techniques, le parcours et la philosophie du développeur
+ * Inclut des animations au scroll et des interactions utilisateur
+ * @returns {JSX.Element} La section About complète
+ */
 const About = () => {
+  // Tableau des compétences techniques organisées par catégorie
   const skills = [
     // Développement Frontend
     {
@@ -187,13 +200,19 @@ const About = () => {
     },
   ];
 
+  // Configuration des catégories de compétences avec leurs icônes et styles
   const categories = [
     { name: 'Frontend', icon: Laptop, color: 'blue', gradient: 'gradient-primary' },
     { name: 'Backend', icon: Server, color: 'purple', gradient: 'gradient-secondary' },
     { name: 'Outils', icon: GitBranch, color: 'orange', gradient: 'gradient-accent' },
-    { name: 'À développer', icon: Lightbulb, color: 'gray', gradient: 'gradient-gray' }, // nouvelle catégorie
+    { name: 'À développer', icon: Lightbulb, color: 'gray', gradient: 'gradient-gray' }, // Catégorie pour les compétences futures
   ];
 
+  /**
+   * Fonction utilitaire pour obtenir la classe CSS de couleur selon le niveau de compétence
+   * @param {string} level - Le niveau de compétence (Expert, Avancé, Intermédiaire, Débutant)
+   * @returns {string} La classe CSS correspondante
+   */
   const getLevelColor = level => {
     switch (level) {
       case 'Expert':
@@ -209,6 +228,11 @@ const About = () => {
     }
   };
 
+  /**
+   * Fonction utilitaire pour obtenir la classe CSS de largeur selon le niveau de compétence
+   * @param {string} level - Le niveau de compétence
+   * @returns {string} La classe CSS de largeur correspondante
+   */
   const getLevelWidth = level => {
     switch (level) {
       case 'Expert':
@@ -224,6 +248,11 @@ const About = () => {
     }
   };
 
+  /**
+   * Fonction utilitaire pour obtenir le pourcentage selon le niveau de compétence
+   * @param {string} level - Le niveau de compétence
+   * @returns {number} Le pourcentage correspondant (0-100)
+   */
   const getLevelPercent = level => {
     switch (level) {
       case 'Expert':
@@ -239,20 +268,29 @@ const About = () => {
     }
   };
 
-  // Animation individuelle de chaque barre au scroll
+  // Références pour les animations des barres de compétences
   const skillRefs = useRef([]);
+  // État pour contrôler l'animation de chaque barre individuellement
   const [animateBars, setAnimateBars] = useState(() => skills.map(() => false));
+  
+  /**
+   * Effet pour gérer les animations des barres de compétences au scroll
+   * Utilise Intersection Observer pour déclencher les animations quand les éléments sont visibles
+   */
   useEffect(() => {
+    // Création d'un observer pour chaque compétence
     const observers = skills.map((_, i) => {
       return new window.IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
+            // Animation d'entrée : démarre l'animation de la barre
             setAnimateBars(prev => {
               const copy = [...prev];
               copy[i] = true;
               return copy;
             });
           } else {
+            // Animation de sortie : arrête l'animation de la barre
             setAnimateBars(prev => {
               const copy = [...prev];
               copy[i] = false;
@@ -260,12 +298,16 @@ const About = () => {
             });
           }
         },
-        { threshold: 0.3 }
+        { threshold: 0.3 } // Déclenche quand 30% de l'élément est visible
       );
     });
+    
+    // Association des observers avec les références des éléments
     skillRefs.current.forEach((ref, i) => {
       if (ref) observers[i].observe(ref);
     });
+    
+    // Nettoyage : arrêt de l'observation lors du démontage
     return () => {
       observers.forEach((observer, i) => {
         if (skillRefs.current[i]) observer.unobserve(skillRefs.current[i]);
@@ -274,20 +316,36 @@ const About = () => {
     };
   }, [skills.length]);
 
+  // Référence pour la section philosophie
   const philosophyRef = useRef();
 
+  /**
+   * Gestionnaire d'événement pour l'entrée de la souris sur la section philosophie
+   * Déclenche l'animation d'entrée avec effet miroir
+   */
   const handleMouseEnter = () => {
     const el = philosophyRef.current;
     if (!el) return;
+    // Suppression de l'animation de sortie
     el.classList.remove('animate-mirror-out');
+    // Force le reflow pour redémarrer l'animation
     void el.offsetWidth;
+    // Ajout de l'animation d'entrée
     el.classList.add('animate-mirror-in');
   };
+  
+  /**
+   * Gestionnaire d'événement pour la sortie de la souris de la section philosophie
+   * Déclenche l'animation de sortie avec effet miroir
+   */
   const handleMouseLeave = () => {
     const el = philosophyRef.current;
     if (!el) return;
+    // Suppression de l'animation d'entrée
     el.classList.remove('animate-mirror-in');
+    // Force le reflow pour redémarrer l'animation
     void el.offsetWidth;
+    // Ajout de l'animation de sortie
     el.classList.add('animate-mirror-out');
   };
 

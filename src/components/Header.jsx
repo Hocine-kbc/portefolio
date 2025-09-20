@@ -1,4 +1,6 @@
+// Importation de React et des hooks nécessaires
 import React, { useState, useEffect } from 'react';
+// Importation des icônes Lucide React pour l'interface utilisateur
 import {
   Menu,
   X,
@@ -12,51 +14,83 @@ import {
   User,
   MessageCircle,
 } from 'lucide-react';
+// Importation des contextes pour la gestion du thème et de la navigation
 import { useTheme } from '../contexts/ThemeContext';
 import { useNavigation } from '../contexts/NavigationContext';
+// Importation des styles spécifiques au composant Header
 import '../styles/Header.scss';
 
+/**
+ * Composant Header - En-tête de navigation du portfolio
+ * Gère la navigation, le thème, les réseaux sociaux et le menu mobile
+ * @returns {JSX.Element} L'en-tête de navigation complet
+ */
 const Header = () => {
+  // État pour contrôler l'ouverture/fermeture du menu mobile
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // État pour détecter si la page a été scrollée (pour changer l'apparence du header)
   const [isScrolled, setIsScrolled] = useState(false);
+  // Récupération des fonctions et états du contexte thème
   const { isDark, toggleTheme } = useTheme();
+  // Récupération des fonctions et états du contexte navigation
   const { currentPage, navigateTo } = useNavigation();
 
+  /**
+   * Effet pour détecter le scroll et changer l'apparence du header
+   * Ajoute une ombre et change le style quand l'utilisateur scroll
+   */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+    // Ajout de l'écouteur d'événement de scroll
     window.addEventListener('scroll', handleScroll);
+    // Nettoyage : suppression de l'écouteur lors du démontage
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /**
+   * Fonction pour faire défiler vers une section spécifique
+   * Gère la navigation vers la page d'accueil si nécessaire avant le scroll
+   * @param {string} sectionId - L'ID de la section vers laquelle faire défiler
+   */
   const scrollToSection = sectionId => {
     if (currentPage !== 'home') {
+      // Si on n'est pas sur la page d'accueil, naviguer d'abord vers home
       navigateTo('home');
+      // Attendre que la navigation soit terminée avant de faire défiler
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         element?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
+      // Si on est déjà sur la page d'accueil, faire défiler directement
       const element = document.getElementById(sectionId);
       element?.scrollIntoView({ behavior: 'smooth' });
     }
+    // Fermer le menu mobile après navigation
     setIsMenuOpen(false);
   };
 
+  /**
+   * Fonction pour gérer la navigation vers une page spécifique
+   * @param {string} page - Le nom de la page vers laquelle naviguer
+   */
   const handleNavigation = page => {
     navigateTo(page);
+    // Fermer le menu mobile après navigation
     setIsMenuOpen(false);
   };
 
+  // Détermine si le header doit avoir un style clair (avec fond) ou transparent
   const isHeaderLight =
     isScrolled || currentPage === 'projects' || currentPage === 'project-detail';
 
-  // 1. Créer une constante pour les classes communes des boutons de navigation
+  // Classes CSS communes pour tous les boutons de navigation
   const navButtonClasses = `font-medium transition-none flex items-center gap-2 text-responsive-sm
     hover:text-blue-700 px-4 py-2 rounded-lg focus:outline-none focus:ring-0 focus:border-transparent`;
 
-  // 2. Créer un tableau pour les liens de navigation
+  // Configuration des liens de navigation avec leurs icônes et actions
   const navLinks = [
     { id: 'home', label: 'Accueil', icon: Home, action: () => handleNavigation('home') },
     { id: 'a-propos', label: 'À propos', icon: User, action: () => scrollToSection('a-propos') },

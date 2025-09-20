@@ -1,16 +1,30 @@
+// Importation de React
 import React from 'react';
+// Importation des icônes Lucide React pour l'interface utilisateur
 import { ArrowLeft, Github, ExternalLink, Code, Lightbulb, Wrench, Calendar, Clock, Star, Users } from 'lucide-react';
+// Importation du contexte de navigation pour la gestion des pages
 import { useNavigation } from '../contexts/NavigationContext';
+// Importation des styles spécifiques au composant ProjectDetail
 import '../styles/ProjectDetail.scss';
+// Importation des données des projets depuis le fichier JSON
 import projectsData from '../data/projects.json';
 
+/**
+ * Composant ProjectDetail - Page de détail d'un projet spécifique
+ * Affiche les informations détaillées d'un projet sélectionné
+ * @returns {JSX.Element} La page de détail du projet ou un message d'erreur
+ */
 const ProjectDetail = () => {
+  // Récupération de l'ID du projet sélectionné et de la fonction de navigation
   const { selectedProjectId, navigateTo } = useNavigation();
 
+  // Récupération des données des projets
   const projects = projectsData;
 
+  // Recherche du projet correspondant à l'ID sélectionné
   const project = projects.find(p => p.id === selectedProjectId);
 
+  // Affichage d'un message d'erreur si le projet n'est pas trouvé
   if (!project) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 flex items-center justify-center">

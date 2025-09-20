@@ -1,16 +1,27 @@
+// Importation de React et des hooks nécessaires
 import React, { useEffect, useState } from 'react';
+// Importation des icônes Lucide React pour l'interface utilisateur
 import { ArrowDown, Download, Code, Sparkles } from 'lucide-react';
+// Importation du contexte de navigation pour la gestion des pages
 import { useNavigation } from '../contexts/NavigationContext';
+// Importation des styles spécifiques au composant Hero
 import '../styles/Hero.scss';
 
+/**
+ * Composant Hero - Section d'accueil principale du portfolio
+ * Affiche une présentation avec animation de texte et boutons d'action
+ * @returns {JSX.Element} La section Hero complète
+ */
 const Hero = () => {
-  // État pour le texte animé
-  const [text, setText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  // États pour gérer l'animation de frappe du texte
+  const [text, setText] = useState(''); // Texte actuellement affiché
+  const [isDeleting, setIsDeleting] = useState(false); // Indique si on est en mode suppression
+  const [loopNum, setLoopNum] = useState(0); // Numéro de la boucle d'animation
+  const [typingSpeed, setTypingSpeed] = useState(150); // Vitesse de frappe en ms
+  // Récupération de la fonction de navigation depuis le contexte
   const { navigateTo } = useNavigation();
 
+  // Tableau des mots à afficher dans l'animation de frappe
   const words = [
     'Développeur Full-Stack',
     "Créateur d'Interfaces",
@@ -18,28 +29,44 @@ const Hero = () => {
     'Innovateur Web',
   ];
 
+  /**
+   * Effet pour gérer l'animation de frappe du texte
+   * Simule une machine à écrire avec effet de suppression
+   */
   useEffect(() => {
     const handleTyping = () => {
+      // Calcul du mot actuel dans la boucle
       const current = loopNum % words.length;
       const fullText = words[current];
 
+      // Mise à jour du texte affiché (ajout ou suppression de caractères)
       setText(
         isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
       );
+      // Ajustement de la vitesse (plus rapide en mode suppression)
       setTypingSpeed(isDeleting ? 30 : 150);
 
+      // Logique de transition entre les modes
       if (!isDeleting && text === fullText) {
+        // Pause avant de commencer la suppression
         setTimeout(() => setIsDeleting(true), 500);
       } else if (isDeleting && text === '') {
+        // Passage au mot suivant après suppression complète
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
       }
     };
 
+    // Programmation du prochain caractère
     const timer = setTimeout(handleTyping, typingSpeed);
+    // Nettoyage du timer lors du démontage
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum, typingSpeed, words]);
 
+  /**
+   * Fonction pour faire défiler vers une section spécifique
+   * @param {string} sectionId - L'ID de la section vers laquelle faire défiler
+   */
   const scrollToSection = sectionId => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });

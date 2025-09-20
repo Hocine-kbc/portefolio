@@ -1,16 +1,36 @@
+// Importation de React
 import React from 'react';
+// Importation des icônes Lucide React pour l'interface utilisateur
 import { Heart, Github, Linkedin, Mail, ArrowUp, Code, Sparkles } from 'lucide-react';
+// Importation du contexte de navigation pour la gestion des pages
 import { useNavigation } from '../contexts/NavigationContext';
-import '../styles/Footer.scss'; // <- Nouveau
+// Importation des styles spécifiques au composant Footer
+import '../styles/Footer.scss';
 
+/**
+ * Composant Footer - Pied de page du portfolio
+ * Affiche les informations de contact, la navigation et les réseaux sociaux
+ * @returns {JSX.Element} Le pied de page complet
+ */
 const Footer = () => {
+  // Récupération de l'année courante pour le copyright
   const currentYear = new Date().getFullYear();
+  // Récupération de la fonction de navigation depuis le contexte
   const { navigateTo } = useNavigation();
 
+  /**
+   * Fonction pour faire défiler vers le haut de la page
+   * Utilisée par le bouton "Retour en haut"
+   */
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  /**
+   * Fonction pour faire défiler vers une section spécifique
+   * Navigue d'abord vers la page d'accueil puis vers la section
+   * @param {string} sectionId - L'ID de la section vers laquelle faire défiler
+   */
   const scrollToSection = sectionId => {
     navigateTo('home');
     setTimeout(() => {

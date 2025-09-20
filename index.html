@@ -1,43 +1,50 @@
 <!doctype html>
 <html lang="fr">
   <head>
+    <!-- Configuration de base du document HTML -->
     <meta charset="UTF-8" />
+    <!-- Icône du site (favicon) -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Configuration responsive pour les appareils mobiles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Meta tags pour le SEO -->
     <meta name="description" content="Portfolio d'Hocine kebci, développeur web full-stack spécialisé en React, Node.js et technologies modernes. Découvrez mes projets et compétences.">
     <meta name="keywords" content="développeur web, full-stack, React, Node.js, JavaScript, TypeScript, portfolio, Hocine kebci">
     <meta name="author" content="Hocine kebci">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph meta tags for social media -->
+    <!-- Meta tags Open Graph pour le partage sur les réseaux sociaux -->
     <meta property="og:title" content="Hocine kebci - Développeur Web Full-Stack">
     <meta property="og:description" content="Portfolio d'Hocine kebci, développeur web passionné spécialisé en technologies modernes">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://Hocine-dev.fr">
     
-    <!-- Twitter Card meta tags -->
+    <!-- Meta tags Twitter Card pour le partage sur Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hocine kebci - Développeur Web Full-Stack">
     <meta name="twitter:description" content="Portfolio d'Hocine kebci, développeur web passionné spécialisé en technologies modernes">
     
-    <!-- Favicon and app icons -->
+    <!-- Icônes pour différents appareils et tailles -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
-    <!-- Preconnect to external domains for performance -->
+    <!-- Préconnexion aux domaines externes pour améliorer les performances -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.pexels.com">
     
-    <!-- Theme color for mobile browsers -->
+    <!-- Couleur de thème pour les navigateurs mobiles -->
     <meta name="theme-color" content="#3B82F6">
     <meta name="msapplication-TileColor" content="#3B82F6">
     
+    <!-- Titre de la page affiché dans l'onglet du navigateur -->
     <title>Hocine kebci - Développeur Web Full-Stack | Portfolio</title>
     
+    <!-- Styles CSS intégrés pour éviter le flash de contenu non stylé -->
     <style>
-      /* Prevent flash of unstyled content */
+      /* Prévention du flash de contenu non stylé (FOUC) */
       body {
         background: #ffffff;
         color: #1f2937;
@@ -45,13 +52,13 @@
         transition: all 0.3s ease;
       }
       
-      /* Dark mode support */
+      /* Support du mode sombre */
       .dark body {
         background: #111827;
         color: #f9fafb;
       }
       
-      /* Loading screen */
+      /* Écran de chargement */
       #loading-screen {
         position: fixed;
         top: 0;
@@ -66,11 +73,13 @@
         transition: opacity 0.5s ease-out;
       }
       
+      /* Contenu de l'écran de chargement */
       .loading-content {
         text-align: center;
         color: white;
       }
       
+      /* Texte de chargement avec animation */
       .loading-text {
         font-family: 'Inter', sans-serif;
         font-size: 1.5rem;
@@ -79,6 +88,7 @@
         animation: pulse 2s infinite;
       }
       
+      /* Spinner de chargement */
       .loading-spinner {
         width: 40px;
         height: 40px;
@@ -89,11 +99,13 @@
         margin: 0 auto;
       }
       
+      /* Animation de pulsation pour le texte */
       @keyframes pulse {
         0%, 100% { opacity: 1; }
         50% { opacity: 0.7; }
       }
       
+      /* Animation de rotation pour le spinner */
       @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
@@ -101,7 +113,7 @@
     </style>
   </head>
   <body>
-    <!-- Loading Screen -->
+    <!-- Écran de chargement affiché pendant le chargement de l'application -->
     <div id="loading-screen">
       <div class="loading-content">
         <div class="loading-text">Chargement du portfolio...</div>
@@ -109,11 +121,14 @@
       </div>
     </div>
     
+    <!-- Point de montage de l'application React -->
     <div id="root"></div>
+    <!-- Script principal de l'application React -->
     <script type="module" src="/src/main.jsx"></script>
     
+    <!-- Scripts JavaScript pour l'initialisation -->
     <script>
-      // Remove loading screen after page load
+      // Suppression de l'écran de chargement après le chargement de la page
       window.addEventListener('load', () => {
         setTimeout(() => {
           const loadingScreen = document.getElementById('loading-screen');
@@ -126,7 +141,7 @@
         }, 1500);
       });
       
-      // Dark mode detection
+      // Détection du mode sombre basée sur les préférences utilisateur
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
       } else {

@@ -2,18 +2,18 @@
   {
     "id": "1",
     "title": "Booki",
-    "description": "Site de réservation d’hébergements et d’activités",
-    "longDescription": "Création d’un site responsive en HTML et CSS permettant aux utilisateurs de rechercher des hébergements et activités à partir d’une maquette Figma. Le projet met l’accent sur la structure sémantique du HTML, la mise en page en Flexbox et Grid, et la compatibilité multi-écrans.",
+    "description": "Site de réservation d'hébergements et d'activités",
+    "longDescription": "Création d'un site responsive en HTML et CSS permettant aux utilisateurs de rechercher des hébergements et activités à partir d'une maquette Figma. Le projet met l'accent sur la structure sémantique du HTML, la mise en page en Flexbox et Grid, et la compatibilité multi-écrans.",
     "challenges": [
       "Reproduction fidèle de la maquette Figma",
-      "Responsive design sur toutes tailles d’écran",
+      "Responsive design sur toutes tailles d'écran",
       "Utilisation correcte de la sémantique HTML",
       "Structure CSS claire et maintenable"
     ],
     "solutions": [
       "Organisation du code en sections réutilisables",
       "Utilisation de Flexbox et Grid pour la mise en page",
-      "Balises HTML5 adaptées pour l’accessibilité",
+      "Balises HTML5 adaptées pour l'accessibilité",
       "Commentaires et indentation pour faciliter la lecture du code"
     ],
     "technologies": ["HTML5/CSS3", "Figma"],
@@ -27,8 +27,8 @@
   {
     "id": "2",
     "title": "Kasa",
-    "description": "Application de location d’appartements en React",
-    "longDescription": "Refonte d’un site de location avec React, incluant la navigation entre pages, l’affichage dynamique des logements via un fichier JSON, et la gestion de composants comme les carrousels, collapses et système de routing. Le projet utilise Sass pour le style et respecte les bonnes pratiques de React.",
+    "description": "Application de location d'appartements en React",
+    "longDescription": "Refonte d'un site de location avec React, incluant la navigation entre pages, l'affichage dynamique des logements via un fichier JSON, et la gestion de composants comme les carrousels, collapses et système de routing. Le projet utilise Sass pour le style et respecte les bonnes pratiques de React.",
     "challenges": [
       "Architecture du projet React",
       "Navigation dynamique via React Router",
@@ -53,17 +53,17 @@
     "id": "3",
     "title": "Mon Vieux Grimoire",
     "description": "API sécurisée de gestion et notation de livres",
-    "longDescription": "Développement complet du backend d’un site de référencement de livres avec Node.js, Express et MongoDB. L’API permet de créer, modifier, supprimer et noter des livres, avec système d’authentification sécurisé, gestion d’images, et calcul des moyennes des notes.",
+    "longDescription": "Développement complet du backend d'un site de référencement de livres avec Node.js, Express et MongoDB. L'API permet de créer, modifier, supprimer et noter des livres, avec système d'authentification sécurisé, gestion d'images, et calcul des moyennes des notes.",
     "challenges": [
       "Authentification et sécurisation des routes",
       "Gestion des fichiers (images de couverture)",
-      "Mise en place des règles d’ownership",
+      "Mise en place des règles d'ownership",
       "Calcul dynamique des moyennes de notation"
     ],
     "solutions": [
       "JWT pour sécuriser les accès utilisateurs",
-      "Multer et Sharp pour l’upload et l’optimisation des images",
-      "Middleware personnalisé pour vérifier l’ownership",
+      "Multer et Sharp pour l'upload et l'optimisation des images",
+      "Middleware personnalisé pour vérifier l'ownership",
       "Algorithme de calcul de moyenne après chaque notation"
     ],
     "technologies": ["Node.js", "Express", "MongoDB", "JWT", "Multer", "Sharp"],
@@ -74,23 +74,22 @@
     "status": "Actif",
     "team": "Solo"
   },
-
   {
     "id": "4",
     "title": "Sophie Bluel",
     "description": "Portfolio dynamique d'une architecte d'intérieur",
-    "longDescription": "Refonte complète du portfolio d’une architecte d’intérieur avec une interface d’administration permettant de gérer dynamiquement les projets. Le site consomme une API REST sécurisée, avec authentification, modale d’édition, et upload d’images.",
+    "longDescription": "Refonte complète du portfolio d'une architecte d'intérieur avec une interface d'administration permettant de gérer dynamiquement les projets. Le site consomme une API REST sécurisée, avec authentification, modale d'édition, et upload d'images.",
     "challenges": [
       "Consommer une API REST sécurisée",
-      "Gérer l’authentification avec JWT",
-      "Créer une modale fonctionnelle pour l’administration",
+      "Gérer l'authentification avec JWT",
+      "Créer une modale fonctionnelle pour l'administration",
       "Uploader dynamiquement des images de projets"
     ],
     "solutions": [
       "Utilisation de fetch pour les appels API",
       "Gestion du token JWT via localStorage",
-      "Création d’une modale responsive avec gestion DOM",
-      "Upload d’images via FormData et validation en front"
+      "Création d'une modale responsive avec gestion DOM",
+      "Upload d'images via FormData et validation en front"
     ],
     "technologies": ["HTML5/CSS3", "JavaScript", "JWT", "Fetch", "API REST"],
     "githubUrl": "https://github.com/Hocine-kbc/Cr-ez-une-page-web-dynamique-avec-JavaScript",
@@ -100,5 +99,4 @@
     "status": "Terminé",
     "team": "Solo"
   }
-  
 ]

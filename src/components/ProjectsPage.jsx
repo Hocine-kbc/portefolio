@@ -1,19 +1,35 @@
-import React, { useState } from 'react'; // Importation de React et du hook useState
-import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter, ArrowRight } from 'lucide-react'; // Importation des icônes
-import { useNavigation } from '../contexts/NavigationContext'; // Importation du contexte de navigation
-import projectsData from '../data/projects.json'; // Importation des données projets
-import '../styles/ProjectsPage.scss'; // Importation des styles spécifiques à la page projets
+// Importation de React et du hook useState pour la gestion de l'état
+import React, { useState } from 'react';
+// Importation des icônes Lucide React pour l'interface utilisateur
+import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter, ArrowRight } from 'lucide-react';
+// Importation du contexte de navigation pour la gestion des pages
+import { useNavigation } from '../contexts/NavigationContext';
+// Importation des données des projets depuis le fichier JSON
+import projectsData from '../data/projects.json';
+// Importation des styles spécifiques à la page projets
+import '../styles/ProjectsPage.scss';
 
+/**
+ * Composant ProjectsPage - Page d'affichage de tous les projets
+ * Affiche une grille de projets avec système de filtrage par technologie
+ * @returns {JSX.Element} La page des projets complète
+ */
 const ProjectsPage = () => {
-  const { navigateTo } = useNavigation(); // Hook pour naviguer entre les pages
-  const [filter, setFilter] = useState('all'); // État pour le filtre sélectionné
+  // Récupération de la fonction de navigation depuis le contexte
+  const { navigateTo } = useNavigation();
+  // État pour gérer le filtre de technologie sélectionné
+  const [filter, setFilter] = useState('all');
 
-  const projects = projectsData; // Liste des projets importée
+  // Récupération des données des projets depuis le fichier JSON
+  const projects = projectsData;
 
-  // Liste des technologies pour le filtre
+  // Liste des technologies disponibles pour le filtrage
   const technologies = ['all', 'HTML5/CSS3', 'React', 'Node.js', 'MongoDB', 'JavaScript'];
 
-  // Filtrage des projets selon la technologie sélectionnée
+  /**
+   * Filtrage des projets selon la technologie sélectionnée
+   * Retourne tous les projets si 'all' est sélectionné, sinon filtre par technologie
+   */
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.technologies.includes(filter));

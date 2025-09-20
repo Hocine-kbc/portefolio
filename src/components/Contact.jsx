@@ -1,4 +1,6 @@
+// Importation de React et du hook useState
 import React, { useState } from 'react';
+// Importation des icônes Lucide React pour l'interface utilisateur
 import {
   Mail,
   Phone,
@@ -11,14 +13,24 @@ import {
   MessageSquare,
   Sparkles,
 } from 'lucide-react';
+// Importation des styles spécifiques au composant Contact
 import '../styles/Contact.scss';
+// Importation d'EmailJS pour l'envoi d'emails depuis le frontend
 import emailjs from '@emailjs/browser';
 
-const SERVICE_ID = 'service_wnsf7qn';
-const TEMPLATE_ID = 'template_j4dpozm';
-const PUBLIC_KEY = 'lw7mu8Zgapk170cDm';
+// Configuration EmailJS pour l'envoi d'emails
+const SERVICE_ID = 'service_wnsf7qn'; // ID du service EmailJS
+const TEMPLATE_ID = 'template_j4dpozm'; // ID du template d'email
+const PUBLIC_KEY = 'lw7mu8Zgapk170cDm'; // Clé publique EmailJS
 
+/**
+ * Composant Contact - Section de contact du portfolio
+ * Affiche un formulaire de contact et les informations de contact
+ * Utilise EmailJS pour l'envoi d'emails depuis le frontend
+ * @returns {JSX.Element} La section Contact complète
+ */
 const Contact = () => {
+  // État pour gérer les données du formulaire
   const [formData, setFormData] = useState({
     nom: '',
     prenom: '',
@@ -26,10 +38,18 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  // État pour gérer l'état de soumission du formulaire
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // État pour afficher le message de succès
   const [isSubmitted, setIsSubmitted] = useState(false);
+  // État pour gérer les erreurs d'envoi
   const [error, setError] = useState('');
 
+  /**
+   * Gestionnaire de changement des champs du formulaire
+   * Met à jour l'état formData avec la nouvelle valeur
+   * @param {Event} e - L'événement de changement
+   */
   const handleInputChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -38,12 +58,17 @@ const Contact = () => {
     }));
   };
 
+  /**
+   * Gestionnaire de soumission du formulaire
+   * Envoie l'email via EmailJS et gère les états de succès/erreur
+   * @param {Event} e - L'événement de soumission du formulaire
+   */
   const handleSubmit = async e => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
 
-    // Préparation des variables pour EmailJS
+    // Préparation des paramètres pour le template EmailJS
     const templateParams = {
       nom: formData.nom,
       prenom: formData.prenom,
@@ -53,10 +78,13 @@ const Contact = () => {
     };
 
     try {
+      // Envoi de l'email via EmailJS
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       setIsSubmitting(false);
       setIsSubmitted(true);
+      // Réinitialisation du formulaire après succès
       setFormData({ nom: '', prenom: '', societe: '', email: '', message: '' });
+      // Masquage du message de succès après 5 secondes
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       setIsSubmitting(false);
