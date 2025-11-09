@@ -26,9 +26,14 @@ import {
   SiHtml5,
   SiCss3,
   SiJavascript,
+  SiTypescript,
   SiReact,
+  SiTailwindcss,
+  SiFramer,
   SiNodedotjs,
   SiMongodb,
+  SiSupabase,
+  SiSendgrid,
   SiGit,
   SiGithub,
   SiFigma,
@@ -40,7 +45,7 @@ import {
   SiLightning,
 } from 'react-icons/si';
 // Importation des icônes Font Awesome pour les technologies spécifiques
-import { FaLock, FaFileUpload, FaCog, FaDatabase } from 'react-icons/fa';
+import { FaLock, FaFileUpload, FaCog, FaDatabase, FaChartLine } from 'react-icons/fa';
 // Importation des styles spécifiques au composant About
 import '../styles/About.scss';
 
@@ -72,10 +77,36 @@ const About = () => {
       icon: <SiJavascript style={{ color: '#f7df1e' }} />,
     },
     {
+      name: 'TypeScript',
+      level: 'Intermédiaire',
+      category: 'Frontend',
+      icon: <SiTypescript style={{ color: '#3178c6' }} />,
+    },
+    {
       name: 'React',
       level: 'Avancé',
       category: 'Frontend',
       icon: <SiReact style={{ color: '#61dafb' }} />,
+    },
+    {
+      name: 'Tailwind CSS',
+      level: 'Intermédiaire',
+      percent: 80,
+      category: 'Frontend',
+      icon: <SiTailwindcss style={{ color: '#38bdf8' }} />,
+    },
+    {
+      name: 'Recharts',
+      level: 'Intermédiaire',
+      category: 'Frontend',
+      icon: <FaChartLine style={{ color: '#ef4444' }} />,
+    },
+    {
+      name: 'Framer Motion',
+      level: 'Intermédiaire',
+      percent: 70,
+      category: 'Frontend',
+      icon: <SiFramer style={{ color: '#0055ff' }} />,
     },
     {
       name: 'Intégration Figma ',
@@ -117,6 +148,20 @@ const About = () => {
           <FaLock style={{ color: '#888' }} />
         </>
       ),
+    },
+    {
+      name: 'Supabase',
+      level: 'Intermédiaire',
+      percent: 95,
+      category: 'Backend',
+      icon: <SiSupabase style={{ color: '#3ecf8e' }} />,
+    },
+    {
+      name: 'SendGrid (emails)',
+      level: 'Intermédiaire',
+      percent: 100,
+      category: 'Backend',
+      icon: <SiSendgrid style={{ color: '#1a82e2' }} />,
     },
 
     // Outils & Méthodes
@@ -266,6 +311,44 @@ const About = () => {
       default:
         return 40;
     }
+  };
+
+  const clampPercent = value => Math.max(0, Math.min(100, Number.isFinite(value) ? value : 0));
+
+  const getColorForPercent = percent => {
+    const value = clampPercent(percent);
+    if (value >= 95) return '#059669'; // vert intense
+    if (value >= 85) return '#10b981'; // vert
+    if (value >= 75) return '#0ea5e9'; // bleu
+    if (value >= 65) return '#6366f1'; // indigo
+    if (value >= 55) return '#f59e0b'; // ambre
+    if (value >= 45) return '#f97316'; // orange
+    return '#ef4444'; // rouge
+  };
+
+  const hexToRgb = hex => {
+    if (!hex) return null;
+    const normalized = hex.replace('#', '');
+    const value =
+      normalized.length === 3
+        ? normalized
+            .split('')
+            .map(ch => ch + ch)
+            .join('')
+        : normalized;
+    const int = parseInt(value, 16);
+    if (Number.isNaN(int)) return null;
+    return {
+      r: (int >> 16) & 255,
+      g: (int >> 8) & 255,
+      b: int & 255,
+    };
+  };
+
+  const withAlpha = (hex, alpha = 0.2) => {
+    const rgb = hexToRgb(hex);
+    if (!rgb) return undefined;
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
   };
 
   // Références pour les animations des barres de compétences
@@ -479,26 +562,40 @@ const About = () => {
                     .filter(skill => skill.category === category.name)
                     .map(skill => {
                       const isADevelopper = category.name === 'À développer';
+                      const rawPercent =
+                        typeof skill.percent === 'number'
+                          ? skill.percent
+                          : getLevelPercent(skill.level);
+                      const skillPercent = clampPercent(rawPercent);
+                      const barColor = getColorForPercent(skillPercent);
+                      const badgeBg = !isADevelopper ? withAlpha(barColor, 0.18) : undefined;
+                      const badgeBorder = !isADevelopper ? withAlpha(barColor, 0.35) : undefined;
+                      const percentColor = !isADevelopper ? barColor : undefined;
                       const progressWidth = animateBars[
                         skills.findIndex(s => s.name === skill.name)
                       ]
                         ? isADevelopper
                           ? '100%'
-                          : skill.level === 'Expert'
-                          ? '100%'
-                          : skill.level === 'Avancé'
-                          ? '80%'
-                          : skill.level === 'Intermédiaire'
-                          ? '60%'
-                          : skill.level === 'Débutant'
-                          ? '40%'
-                          : '40%'
+                          : `${skillPercent}%`
                         : '0%';
                       return (
                         <div key={skill.name} className="skill">
                           <div className="skill-header">
                             <span className="skill-name">{skill.name}</span>
-                            <span className="skill-level">{skill.level}</span>
+                            <span
+                              className="skill-level"
+                              style={
+                                !isADevelopper && barColor
+                                  ? {
+                                      backgroundColor: badgeBg,
+                                      color: barColor,
+                                      border: `1px solid ${badgeBorder}`,
+                                    }
+                                  : undefined
+                              }
+                            >
+                              {skill.level}
+                            </span>
                           </div>
                           <div
                             className="progress-bar"
@@ -523,6 +620,8 @@ const About = () => {
                                   position: 'relative',
                                   width: progressWidth,
                                   transition: 'width 1.2s cubic-bezier(0.4,0,0.2,1)',
+                                  backgroundColor: !isADevelopper && barColor ? barColor : undefined,
+                                  border: !isADevelopper && barColor ? `1px solid ${withAlpha(barColor, 0.3)}` : undefined,
                                 }}
                               ></div>
                               {isADevelopper ? (
@@ -545,9 +644,10 @@ const About = () => {
                                     fontSize: '0.95rem',
                                     fontWeight: 600,
                                     whiteSpace: 'nowrap',
+                                    color: percentColor,
                                   }}
                                 >
-                                  {getLevelPercent(skill.level)}%
+                                  {skillPercent}%
                                 </span>
                               )}
                             </div>

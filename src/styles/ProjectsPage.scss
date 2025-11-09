@@ -244,6 +244,8 @@
   border-radius: 0.25rem;
   color: white;
   font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
 }
 
 .status-indicator {

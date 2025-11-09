@@ -98,5 +98,43 @@
     "duration": "3 semaines",
     "status": "Terminé",
     "team": "Solo"
+  },
+  {
+    "id": "5",
+    "title": "ProFlow",
+    "description": "Application web de gestion pour auto-entrepreneurs",
+    "longDescription": "ProFlow est une application web moderne développée en TypeScript avec React et Supabase. Elle permet aux auto-entrepreneurs de gérer efficacement leur activité : suivi du chiffre d’affaires, gestion des prestations réalisées, édition et envoi automatisé de factures, ainsi qu’une messagerie interne pour communiquer avec leurs clients. L’objectif de ProFlow est de simplifier la gestion quotidienne tout en offrant une interface fluide, professionnelle et responsive.",
+    "challenges": [
+      "Création d’une architecture front-end robuste en TypeScript (TSX)",
+      "Connexion et gestion sécurisée des données via Supabase",
+      "Génération et envoi automatisé de factures personnalisées en PDF",
+      "Mise en place d’un tableau de bord avec statistiques interactives",
+      "Conception d’une expérience utilisateur intuitive et performante"
+    ],
+    "solutions": [
+      "Utilisation de Supabase comme base de données et service d’authentification",
+      "Développement d’interfaces réactives et typées avec React + TypeScript",
+      "Intégration de l’envoi d’emails automatisés via SendGrid",
+      "Création de graphiques dynamiques avec Recharts et Framer Motion",
+      "Mise en place d’un design system cohérent en SCSS et Tailwind"
+    ],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "SendGrid",
+      "Recharts",
+      "SCSS",
+      "Framer Motion",
+      "TailwindCSS"
+    ],
+    "githubUrl": "https://github.com/Hocine-kbc/ProFlow",
+    "imageUrl": "/ProFlow.jpg",
+    "year": 2025,
+    "duration": "3 mois",
+    "status": "En développement",
+    "team": "Solo"
   }
+
+  
 ]

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Github, ExternalLink, Calendar, Clock, Star, Filter, ArrowRight } from 'lucide-react';
 // Importation du contexte de navigation pour la gestion des pages
 import { useNavigation } from '../contexts/NavigationContext';
+import { getStatusConfig } from '../utils/status';
 // Importation des données des projets depuis le fichier JSON
 import projectsData from '../data/projects.json';
 // Importation des styles spécifiques à la page projets
@@ -24,7 +25,21 @@ const ProjectsPage = () => {
   const projects = projectsData;
 
   // Liste des technologies disponibles pour le filtrage
-  const technologies = ['all', 'HTML5/CSS3', 'React', 'Node.js', 'MongoDB', 'JavaScript'];
+  const technologies = [
+    'all',
+    'HTML5/CSS3',
+    'React',
+    'TypeScript',
+    'Node.js',
+    'Express',
+    'MongoDB',
+    'Supabase',
+    'JavaScript',
+    'SCSS',
+    'TailwindCSS',
+    'Framer Motion',
+    'SendGrid'
+  ];
 
   /**
    * Filtrage des projets selon la technologie sélectionnée
@@ -74,7 +89,10 @@ const ProjectsPage = () => {
 
         {/* Grille des projets */}
         <div className="projects-grid"> {/* Conteneur de la grille de projets */}
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => {
+            const { label: statusLabel, color: statusColor } = getStatusConfig(project.status);
+
+            return (
             <div
               key={project.id} // Clé unique pour chaque projet
               className="project-card" // Classe de la carte projet
@@ -87,9 +105,9 @@ const ProjectsPage = () => {
                   alt={project.title} // Texte alternatif
                   className="card-image"
                 />
-                <div className="status-badge"> {/* Badge d'état du projet */}
-                  <div className="status-indicator"></div> {/* Indicateur visuel (ex: rond vert) */}
-                  <span>Actif</span> {/* Texte d'état */}
+                <div className="status-badge" style={{ borderColor: statusColor }}> {/* Badge d'état du projet */}
+                  <div className="status-indicator" style={{ backgroundColor: statusColor }}></div> {/* Indicateur visuel (ex: rond vert) */}
+                  <span>{statusLabel}</span> {/* Texte d'état */}
                 </div>
                 <div className="image-overlay"></div> {/* Overlay sur l'image */}
               </div>
@@ -159,7 +177,8 @@ const ProjectsPage = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Message si aucun projet */}

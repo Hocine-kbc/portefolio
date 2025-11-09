@@ -1,9 +1,10 @@
 // Importation de React
 import React from 'react';
 // Importation des icônes Lucide React pour l'interface utilisateur
-import { ArrowLeft, Github, ExternalLink, Code, Lightbulb, Wrench, Calendar, Clock, Star, Users } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Code, Lightbulb, Wrench, Calendar, Clock, Users } from 'lucide-react';
 // Importation du contexte de navigation pour la gestion des pages
 import { useNavigation } from '../contexts/NavigationContext';
+import { getStatusConfig } from '../utils/status';
 // Importation des styles spécifiques au composant ProjectDetail
 import '../styles/ProjectDetail.scss';
 // Importation des données des projets depuis le fichier JSON
@@ -40,6 +41,8 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
+  const { label: statusLabel, color: statusColor } = getStatusConfig(project.status);
 
   return (
     <div className="project-detail">
@@ -188,24 +191,27 @@ const ProjectDetail = () => {
                 Informations du projet
               </h3>
               <div className="project-detail__info-card-list">
-  <div className="project-detail__info-card-item">
-    <span className="project-detail__info-card-label">Statut</span>
-    <div className="project-detail__info-card-value--status">
-      <div className="status-dot"></div>
-      <span>Actif</span>
+                <div className="project-detail__info-card-item">
+                  <span className="project-detail__info-card-label">Statut</span>
+                  <div
+                    className="project-detail__info-card-value project-detail__info-card-value--status"
+                    style={{ color: statusColor }}
+                  >
+                    <div className="status-dot" style={{ backgroundColor: statusColor }}></div>
+                    <span>{statusLabel}</span>
                   </div>
                 </div>
-  <div className="project-detail__info-card-item">
-    <span className="project-detail__info-card-label">Durée</span>
-    <span className="project-detail__info-card-value">{project.duration}</span>
-  </div>
-  <div className="project-detail__info-card-item">
-    <span className="project-detail__info-card-label">Équipe</span>
-    <span className="project-detail__info-card-value">Solo</span>
+                <div className="project-detail__info-card-item">
+                  <span className="project-detail__info-card-label">Durée</span>
+                  <span className="project-detail__info-card-value">{project.duration}</span>
                 </div>
-  <div className="project-detail__info-card-item">
-    <span className="project-detail__info-card-label">Année</span>
-    <span className="project-detail__info-card-value">{project.year}</span>
+                <div className="project-detail__info-card-item">
+                  <span className="project-detail__info-card-label">Équipe</span>
+                  <span className="project-detail__info-card-value">{project.team}</span>
+                </div>
+                <div className="project-detail__info-card-item">
+                  <span className="project-detail__info-card-label">Année</span>
+                  <span className="project-detail__info-card-value">{project.year}</span>
                 </div>
                 </div>
               </div>
